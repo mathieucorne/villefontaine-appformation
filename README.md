@@ -42,7 +42,7 @@ php make:entity
 Un controlleur représente la classe chargée de manipuler la donnée en elle même pour les opérations de création, lecture, modification et suppression (CRUD).
 php make:entity
 
-[DOC - Créer une entité](https://symfony.com/doc/current/controller.html#a-basic-controller)
+[DOC - Créer un controller](https://symfony.com/doc/current/controller.html#a-basic-controller)
 
 ## API
 
@@ -52,7 +52,7 @@ php make:entity
 [DOC - Créer une réunion](https://learn.microsoft.com/en-us/graph/api/application-post-onlinemeetings?view=graph-rest-1.0&tabs=http)
 
 
-https://www.bing.com/videos/riverview/relatedvideo?q=Cr%C3%A9er+et+envoyer+un+mail+api+outlook&mid=CDF1DBE8521CDAD226D3CDF1DBE8521CDAD226D3&FORM=VIRE
+[DOC - Créer et envoyer un mail](https://learn.microsoft.com/fr-fr/graph/api/user-sendmail?view=graph-rest-1.0&tabs=http)
 
 ---
 
