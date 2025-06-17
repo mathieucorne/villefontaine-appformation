@@ -44,6 +44,15 @@ php make:entity
 
 [DOC - Créer une entité](https://symfony.com/doc/current/controller.html#a-basic-controller)
 
+## API
+
+### Outlook
+[DOC - Créer un événement Outlook](https://learn.microsoft.com/fr-fr/graph/api/calendar-post-events?view=graph-rest-1.0&tabs=http#response)
+
+[DOC - Créer une réunion](https://learn.microsoft.com/en-us/graph/api/application-post-onlinemeetings?view=graph-rest-1.0&tabs=http)
+
+
+https://www.bing.com/videos/riverview/relatedvideo?q=Cr%C3%A9er+et+envoyer+un+mail+api+outlook&mid=CDF1DBE8521CDAD226D3CDF1DBE8521CDAD226D3&FORM=VIRE
 
 ---
 
