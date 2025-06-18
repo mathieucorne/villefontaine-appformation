@@ -1,20 +1,22 @@
-# Informations sur le projet
+# AppFormation
+
+## Informations sur le projet
 
 - nom : AppFormation - Mairie de Villefontaine
 - description : Application interne de réservation de sessions de formations
 
-# Prérequis
+## Prérequis
 - VS Code
 - PHP
 - Composer
 
 --- 
 
-# Initialiser le projet
+## Initialiser le projet
 
-## Mise en place de l'environnement
+### Mise en place de l'environnement
 
-## Installation des dépendances
+#### Installation des dépendances
 
 - ORM Symfony
 Un ORM (Object Relational Mapper) permet de transposer une architecture orienté objet à une base de données relationnelle comme MySQL ou PostgreSQL, ce qui facilite la maintenance d'une application.
@@ -28,25 +30,25 @@ Le bundle Symfony Maker permet de générer des entités ainsi que leurs control
 Pour installer Symfony Maker:
 composer require --dev symfony/maker-bundle
 
-## Utilisation du Symfony Maker pour modifier l'architecture de la base de données
+#### Utilisation du Symfony Maker pour modifier l'architecture de la base de données
 Symfony suit une architecture MVC (Model, View, Controller). Le bundle Symfony Maker doit être installé au préalable.
 
-### Créer une entité
+##### Créer une entité
 Une entité ou le modèle représente le concept de la donnée à manipuler (Un utilisateur, une formation, une session).
 Afin de créer une entité, il faut utiliser la commande :
 php make:entity
 
 [DOC - Créer une entité](https://symfony.com/doc/current/the-fast-track/en/8-doctrine.html#creating-entity-classes)
 
-### Créer un controlleur
+##### Créer un controlleur
 Un controlleur représente la classe chargée de manipuler la donnée en elle même pour les opérations de création, lecture, modification et suppression (CRUD).
 php make:entity
 
 [DOC - Créer un controller](https://symfony.com/doc/current/controller.html#a-basic-controller)
 
-## API
+### API
 
-### Outlook et Teams
+#### Outlook et Teams
 [DOC - Créer un événement Outlook](https://learn.microsoft.com/fr-fr/graph/api/calendar-post-events?view=graph-rest-1.0&tabs=http#response)
 
 [DOC - Créer une réunion](https://learn.microsoft.com/en-us/graph/api/application-post-onlinemeetings?view=graph-rest-1.0&tabs=http)
@@ -54,40 +56,58 @@ php make:entity
 
 [DOC - Créer et envoyer un mail](https://learn.microsoft.com/fr-fr/graph/api/user-sendmail?view=graph-rest-1.0&tabs=http)
 
-## FullCalendar
+### FullCalendar
 
 [DOC - Calendrier WebComponent](https://fullcalendar.io/docs/web-component)
 [DOC - Calendrier à la semaine](https://fullcalendar.io/docs/business-hours)
 
 ---
 
-# Exécuter les outils de développement
+## Exécuter les outils de développement
 
-## PHP
+### PHP
 C:\Users\mathieu.corne\Desktop\php-8.4.8\php.exe 
 
 Installer PHP sur le [site officiel de PHP](https://windows.php.net/download/).
 
 PHP doit être ajouté aux varibales d'environement.
 
-## Composer 
+### Composer 
 Installer Composer sur [le site](https://getcomposer.org/download/)
 
-## Symfony
+### Symfony
 C:\Users\mathieu.corne\Desktop\symfony-cli\symfony.exe
 
 Installer Symfony sur [le site](https://symfony.com/doc/current/setup.html)
 
-## XAMPP
+### XAMPP
 Installer XAMPP depuis [Sourceforge](https://sourceforge.net/projects/xampp/)
+
 
 ---
 
-# Résoudre les erreurs
+## Modèle Logique de Données
 
-## Erreurs de dépendances (DEP)
+utilisateurs (id, type, id_service)
+services (id, nom, email)
+participations (id_utilisateur, id_session, date_inscription, type_inscription)
+sessions (id, intitulé, heure_debut, heure_fin, nb_participants_max, statut_session, id_formation, id_salle)
+salle (id, nom, batiment, nb_places_max)
+formations (id, titre, description, image, estVisible)
+competences (id, nom)
+utilisateurs_competences (id_utilisateur, id_competences)
+formations_competences (id_formations, id_competences)
+services_sessions (id_service, id_session)
 
-### DEP1
+
+
+---
+
+## Résoudre les erreurs
+
+### Erreurs de dépendances (DEP)
+
+#### DEP1
 
 A l'installation du bundle Symfony Maker avec l'aide la commande "composer require --dev symfony/maker-bundle", l'erreur **DEP1** peut survenir, empêchant l'installation de certains éléments.
 
