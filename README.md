@@ -46,7 +46,7 @@ php make:entity
 
 ## API
 
-### Outlook
+### Outlook et Teams
 [DOC - Créer un événement Outlook](https://learn.microsoft.com/fr-fr/graph/api/calendar-post-events?view=graph-rest-1.0&tabs=http#response)
 
 [DOC - Créer une réunion](https://learn.microsoft.com/en-us/graph/api/application-post-onlinemeetings?view=graph-rest-1.0&tabs=http)
@@ -59,11 +59,22 @@ php make:entity
 # Exécuter les outils de développement
 
 ## PHP
-C:\Users\mathieu.corne\Desktop\php-8.4.8\php.exe
-Installer PHP sur [Site officiel de PHP](https://windows.php.net/download/)
+C:\Users\mathieu.corne\Desktop\php-8.4.8\php.exe 
+
+Installer PHP sur le [site officiel de PHP](https://windows.php.net/download/).
+
+PHP doit être ajouté aux varibales d'environement.
+
+## Composer 
+Installer Composer sur [le site](https://getcomposer.org/download/)
 
 ## Symfony
 C:\Users\mathieu.corne\Desktop\symfony-cli\symfony.exe
+
+Installer Symfony sur [le site](https://symfony.com/doc/current/setup.html)
+
+## XAMPP
+Installer XAMPP depuis [Sourceforge](https://sourceforge.net/projects/xampp/)
 
 ---
 
