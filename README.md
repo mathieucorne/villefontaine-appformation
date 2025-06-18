@@ -54,6 +54,11 @@ php make:entity
 
 [DOC - Créer et envoyer un mail](https://learn.microsoft.com/fr-fr/graph/api/user-sendmail?view=graph-rest-1.0&tabs=http)
 
+## FullCalendar
+
+[DOC - Calendrier WebComponent](https://fullcalendar.io/docs/web-component)
+[DOC - Calendrier à la semaine](https://fullcalendar.io/docs/business-hours)
+
 ---
 
 # Exécuter les outils de développement
