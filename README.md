@@ -60,6 +60,7 @@ php make:entity
 
 ## PHP
 C:\Users\mathieu.corne\Desktop\php-8.4.8\php.exe
+Installer PHP sur [Site officiel de PHP](https://windows.php.net/download/)
 
 ## Symfony
 C:\Users\mathieu.corne\Desktop\symfony-cli\symfony.exe
