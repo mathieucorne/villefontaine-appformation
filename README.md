@@ -111,4 +111,11 @@ sessions_services (id_service, id_session)
 
 A l'installation du bundle Symfony Maker avec l'aide la commande "composer require --dev symfony/maker-bundle", l'erreur **DEP1** peut survenir, empêchant l'installation de certains éléments.
 
-![Failed to download symfony/x from dist: The zip extension and unzip/7z commands are both missing, skipping.](C:/Users/mathieu.corne/Documents/doc_AppFormation/erreur_DEP1.png "Erreur DEP1")
+![Failed to download symfony/x from dist: The zip extension and unzip/7z commands are both missing, skipping.](./doc_AppFormation/erreur_DEP/erreur_DEP1.png "Erreur DEP1")
+
+#### DEP2
+
+Il est possible de rencontrer cette erreur ![Could not create database `app` for connection named default An exception occurred in the driver: could not find driver](./doc_AppFormation/erreur_DEP/erreur_DEP2.png)
+
+Le problème viens du fichier php.ini du PATH de php. Il faut décommenter les lignes ```;extension=pdo_mysql``` et ```;extension=mysqli```.
+
