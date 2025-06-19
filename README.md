@@ -88,16 +88,16 @@ Installer XAMPP depuis [Sourceforge](https://sourceforge.net/projects/xampp/)
 
 ## Modèle Logique de Données
 
-utilisateurs (id, type, id_service)
+utilisateurs (id, prenom, nom, email, password, type, id_service)
 services (id, nom, email)
 participations (id_utilisateur, id_session, date_inscription, type_inscription)
-sessions (id, intitulé, heure_debut, heure_fin, nb_participants_max, statut_session, id_formation, id_salle)
+sessions (id, titre, heure_debut, heure_fin, nb_participants_max, statut_session, id_formation, id_salle)
 salle (id, nom, batiment, nb_places_max)
-formations (id, titre, description, image, estVisible)
+formations (id, titre, description, imageURL, estVisible)
 competences (id, nom)
 utilisateurs_competences (id_utilisateur, id_competences)
 formations_competences (id_formations, id_competences)
-services_sessions (id_service, id_session)
+sessions_services (id_service, id_session)
 
 
 

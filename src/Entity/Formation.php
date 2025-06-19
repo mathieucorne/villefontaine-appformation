@@ -19,8 +19,14 @@ class Formation
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageURL = null;
+
+    #[ORM\Column]
+    private ?bool $estVisible = null;
 
     /**
      * @var Collection<int, Session>
@@ -28,9 +34,16 @@ class Formation
     #[ORM\OneToMany(targetEntity: Session::class, mappedBy: 'formation', orphanRemoval: true)]
     private Collection $sessions;
 
+    /**
+     * @var Collection<int, FormationCompetence>
+     */
+    #[ORM\OneToMany(targetEntity: FormationCompetence::class, mappedBy: 'formation', orphanRemoval: true)]
+    private Collection $competences;
+
     public function __construct()
     {
         $this->sessions = new ArrayCollection();
+        $this->competences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -55,9 +68,33 @@ class Formation
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getImageURL(): ?string
+    {
+        return $this->imageURL;
+    }
+
+    public function setImageURL(?string $imageURL): static
+    {
+        $this->imageURL = $imageURL;
+
+        return $this;
+    }
+
+    public function isEstVisible(): ?bool
+    {
+        return $this->estVisible;
+    }
+
+    public function setEstVisible(bool $estVisible): static
+    {
+        $this->estVisible = $estVisible;
 
         return $this;
     }
@@ -86,6 +123,36 @@ class Formation
             // set the owning side to null (unless already changed)
             if ($session->getFormation() === $this) {
                 $session->setFormation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FormationCompetence>
+     */
+    public function getCompetences(): Collection
+    {
+        return $this->competences;
+    }
+
+    public function addCompetence(FormationCompetence $competence): static
+    {
+        if (!$this->competences->contains($competence)) {
+            $this->competences->add($competence);
+            $competence->setFormation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompetence(FormationCompetence $competence): static
+    {
+        if ($this->competences->removeElement($competence)) {
+            // set the owning side to null (unless already changed)
+            if ($competence->getFormation() === $this) {
+                $competence->setFormation(null);
             }
         }
 
