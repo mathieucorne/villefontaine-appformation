@@ -147,7 +147,24 @@ Au moment de la migration via Doctrine via la commande **php bin/console doctrin
 > 
 > La base de donnée renseignée est celle renseignée entre / et le ?, ici **app**. 
 
-**Pour résoudre l'erreur DEP4**, il faut créer au préalable la base de donnée, ce qui peut se faire également via Doctrine avec la commande :
+**Pour résoudre l'erreur DEP4**, il faut créer au préalable la base de données, ce qui peut se faire également via Doctrine avec la commande :
 ```php bin/console doctrine:database:create```
 
+### Erreurs concernant les outils de développement (TOOL)
 
+Lors du lancement de phpMyAdmin via XAMPP (localhost), l'erreur TOOL1 peut survenir. 
+
+Contrairement à ce qui est indiqué dans l'erreur, cela n'est pas lié à un problème d'extension, et il est possible que MySQL fonctionne correctement (ainsi que phpMyAdmin) et soit décommenté dans le php.ini, sans que l'erreur disparaisse. 
+
+![Il manque l'extension mysqli](./doc_AppFormation/erreur_TOOL/erreur_TOOL1.png).
+
+Bien que la raison n'a pas été trouvée, il existe un moyen pour contourner cette erreur et accéder à phpMyAdmin.
+
+**Pour contourner l'erreur TOOL1 :**
+1. Se rendre dans le dossier où phpMyAdmin est installé, généralement `C:/xampp/phpmyadmin`.
+
+2. Ouvrir un invite de commande dans le dossier (clic droit > "Ouvrir dans le terminal")
+
+3. Lancer un serveur PHP via la commande `php -S localhost:5000`. Le serveur se lancera sur le port 5000.
+
+4. Ouvrir un navigateur et entrez le chemin `localhost:5000`.
