@@ -9,6 +9,9 @@
 - VS Code
 - PHP
 - Composer
+- Node
+- npm (Node Package Manager)
+- XAMPP
 
 --- 
 
@@ -16,33 +19,51 @@
 
 ### Mise en place de l'environnement
 
+#### Outils de développement
+
+> **PHP**
+> [Télécharger PHP via le site officiel PHP](https://windows.php.net/download/).
+> 
+> **PHP doit être ajouté aux variables d'environement.**
+
+> **Composer** 
+> [Télécharger Composer via le site officiel Composer](https://getcomposer.org/download/)
+
+> **Symfony**
+> [Télécharger Symfony via le site officiel Symfony](https://symfony.com/doc/current/setup.html)
+
+> **XAMPP**
+> [Télécharger XAMPP via Sourceforge](https://sourceforge.net/projects/xampp/)
+
 #### Installation des dépendances
 
-- ORM Symfony
-Un ORM (Object Relational Mapper) permet de transposer une architecture orienté objet à une base de données relationnelle comme MySQL ou PostgreSQL, ce qui facilite la maintenance d'une application.
+>- **ORM Symfony**
+>Un ORM (Object Relational Mapper) permet de transposer une architecture orienté objet à une base de données relationnelle comme MySQL ou PostgreSQL, ce qui facilite la maintenance d'une application.
+>
+>Pour installer l'ORM Symfony :
+>`composer require symfony/orm-pack`
 
-Pour installer l'ORM Symfony :
-composer require symfony/orm-pack
-
-- Symfony Maker
-Le bundle Symfony Maker permet de générer des entités ainsi que leurs controlleurs en nous évitant de devoir nous-même écrire le code en utilisant des commandes qui nous guident étape par étape pour le faire.
-
-Pour installer Symfony Maker:
-composer require --dev symfony/maker-bundle
+> - **Symfony Maker**
+> Le bundle Symfony Maker permet de générer des entités ainsi que leurs controlleurs en nous évitant de devoir nous-même écrire le code en utilisant des commandes qui nous guident étape par étape pour le faire.
+> 
+> Pour installer Symfony Maker :
+> `composer require --dev symfony/maker-bundle`
 
 #### Utilisation du Symfony Maker pour modifier l'architecture de la base de données
-Symfony suit une architecture MVC (Model, View, Controller). Le bundle Symfony Maker doit être installé au préalable.
+Symfony suit une architecture **MVC (Model, View, Controller)**, dans la logique d'une **programmation orientée objet (POO)**. Le bundle **Symfony Maker** permet ainsi de créer de manière guidée pour nous les **entités (ou modèles)** ainsi que les **controlleurs**, uniquement via des commandes sans avoir à écrire du code.
+
+**Le bundle Symfony Maker doit être installé au préalable.**
 
 ##### Créer une entité
 Une entité ou le modèle représente le concept de la donnée à manipuler (Un utilisateur, une formation, une session).
 Afin de créer une entité, il faut utiliser la commande :
-php make:entity
+**php bin/console make:entity**
 
 [DOC - Créer une entité](https://symfony.com/doc/current/the-fast-track/en/8-doctrine.html#creating-entity-classes)
 
 ##### Créer un controlleur
 Un controlleur représente la classe chargée de manipuler la donnée en elle même pour les opérations de création, lecture, modification et suppression (CRUD).
-php make:entity
+**php bin/console make:entity**
 
 [DOC - Créer un controller](https://symfony.com/doc/current/controller.html#a-basic-controller)
 
@@ -63,41 +84,18 @@ php make:entity
 
 ---
 
-## Exécuter les outils de développement
-
-### PHP
-C:\Users\mathieu.corne\Desktop\php-8.4.8\php.exe 
-
-Installer PHP sur le [site officiel de PHP](https://windows.php.net/download/).
-
-PHP doit être ajouté aux varibales d'environement.
-
-### Composer 
-Installer Composer sur [le site](https://getcomposer.org/download/)
-
-### Symfony
-C:\Users\mathieu.corne\Desktop\symfony-cli\symfony.exe
-
-Installer Symfony sur [le site](https://symfony.com/doc/current/setup.html)
-
-### XAMPP
-Installer XAMPP depuis [Sourceforge](https://sourceforge.net/projects/xampp/)
-
-
----
-
 ## Modèle Logique de Données
 
-utilisateurs (id, prenom, nom, email, password, type, id_service)
-services (id, nom, email)
-participations (id_utilisateur, id_session, date_inscription, type_inscription)
-sessions (id, titre, heure_debut, heure_fin, nb_participants_max, statut_session, id_formation, id_salle)
-salle (id, nom, batiment, nb_places_max)
-formations (id, titre, description, imageURL, estVisible)
-competences (id, nom)
-utilisateurs_competences (id_utilisateur, id_competences)
-formations_competences (id_formations, id_competences)
-sessions_services (id_service, id_session)
+- `utilisateur` (<u>**id**</u>, prenom, nom, email, password, type, **#id_service**)
+- `service` (<u>**id**</u>, nom, email)
+- `participation` (<u>**#id_utilisateur, #id_session**</u>, date_inscription, type_inscription)
+- `session` (<u>**id**</u>, titre, heure_debut, heure_fin, nb_participants_max, statut_session, **#id_formation**, **#id_salle**)
+- `salle` (<u>**id**</u>, nom, batiment, nb_places_max)
+- `formation` (<u>**id**</u>, titre, description, imageURL, estVisible)
+- `competence` (<u>**id**</u>, nom)
+- `utilisateur_competence` (<u>**#id_utilisateur**, **#id_competences**</u>)
+- `formation_competence` (<u>**#id_formation, #id_competence**</u>)
+- `session_service` (<u>**#id_service, #id_session**</u>)
 
 
 
