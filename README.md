@@ -115,7 +115,41 @@ A l'installation du bundle Symfony Maker avec l'aide la commande "composer requi
 
 #### DEP2
 
-Il est possible de rencontrer cette erreur ![Could not create database `app` for connection named default An exception occurred in the driver: could not find driver](./doc_AppFormation/erreur_DEP/erreur_DEP2.png)
+Au moment de créer la base de données via Doctrine (php bin/console doctrine:database:create), l'erreur DEP2 peut survenir, empêchant la création par Doctrine de cette même base de données.
 
-Le problème viens du fichier php.ini du PATH de php. Il faut décommenter les lignes ```;extension=pdo_mysql``` et ```;extension=mysqli```.
+Cette erreur est liée à une mauvaise configuration du fichier php.ini, plus précisément le PHP principal renseigné dans le PATH. 
+
+**Pour résoudre l'erreur DEP2**, il faut décommenter les lignes `;extension=pdo_mysql` et `;extension=mysqli` en enlevant `;`.
+
+![Could not create database `app` for connection named default An exception occurred in the driver: could not find driver](./doc_AppFormation/erreur_DEP/erreur_DEP2.png)
+
+#### DEP3
+
+Au moment de l'installation des dépendances Symfony ou d'autres dépendances PHP, en utilisant Composer, l'erreur DEP3 peut survenir, notamment via les commandes suivantes :
+```
+composer install
+composer require x/x (ex: symfony/orm-pack)
+```
+
+![The openssl extension is required for SSL/TLS protection but is not available.](./doc_AppFormation/erreur_DEP/erreur_DEP3.png).
+
+Cette erreur est liée à une mauvaise configuration du fichier php.ini, plus précisément le PHP principal renseigné dans le PATH.
+
+**Pour résoudre l'erreur DEP3**, il faut décommenter la ligne `;extension=openssl` en enlevant le `;`.
+
+#### DEP4
+
+Au moment de la migration via Doctrine via la commande **php bin/console doctrine:migration:migrate**, l'erreur DEP4 peut survenir, en raison de la non création au préalable de la base de données renseignée dans le **fichier .env**. 
+
+![An exception occured in the driver: SQLSTATE[YY000] [1049] Unknow database 'app'](./doc_AppFormation/erreur_DEP/erreur_DEP4.png)
+
+> **Exemple de fichier .env**
+> 
+> ```DATABASE_URL="mysql://root@127.0.0.1:3306/app?serverVersion=10.5.8-MariaDB"```
+> 
+> La base de donnée renseignée est celle renseignée entre / et le ?, ici **app**. 
+
+**Pour résoudre l'erreur DEP4**, il faut créer au préalable la base de donnée, ce qui peut se faire également via Doctrine avec la commande :
+```php bin/console doctrine:database:create```
+
 
