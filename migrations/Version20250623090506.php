@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250623084453 extends AbstractMigration
+final class Version20250623090506 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,10 +21,7 @@ final class Version20250623084453 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql(<<<'SQL'
-            ALTER TABLE utilisateur ADD roles JSON NOT NULL COMMENT '(DC2Type:json)', CHANGE email email VARCHAR(180) NOT NULL
-        SQL);
-        $this->addSql(<<<'SQL'
-            CREATE UNIQUE INDEX UNIQ_IDENTIFIER_EMAIL ON utilisateur (email)
+            ALTER TABLE utilisateur DROP type
         SQL);
     }
 
@@ -32,10 +29,7 @@ final class Version20250623084453 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql(<<<'SQL'
-            DROP INDEX UNIQ_IDENTIFIER_EMAIL ON utilisateur
-        SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE utilisateur DROP roles, CHANGE email email VARCHAR(255) NOT NULL
+            ALTER TABLE utilisateur ADD type SMALLINT NOT NULL
         SQL);
     }
 }
