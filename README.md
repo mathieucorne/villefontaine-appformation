@@ -67,6 +67,10 @@ Un controlleur représente la classe chargée de manipuler la donnée en elle m�
 
 [DOC - Créer un controller](https://symfony.com/doc/current/controller.html#a-basic-controller)
 
+##### Gérer les rôles
+
+[DOC - Gérer les rôles](https://nouvelle-techno.fr/articles/live-coding-gerer-les-roles-utilisateur-avec-symfony-4#:~:text=Nous%20attribuons%20les%20r%C3%B4les)
+
 ### API
 
 #### Outlook et Teams
