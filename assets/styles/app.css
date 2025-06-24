@@ -1,3 +1,112 @@
-body {
-    background-color: skyblue;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --utility-color: #6F82FF;
+    --login-background-color: #A7C13C;
 }
+
+body {
+    font-family: "Inter", sans-serif;
+    width: 100vw;
+    height: 100vh;
+    transition: all 0.3s ease-in-out;
+}
+
+main {
+    width: inherit;
+    min-height: inherit;
+}
+
+.primary-background {
+    background-color: var(--login-background-color);
+}
+
+.utility-color {
+    color: white;
+    background-color: var(--utility-color);
+    border: solid 1px var(--utility-color);
+}
+
+.utility-color:hover {
+    color: var(--utility-color);
+    background-color: white;
+}
+
+
+/* ---------------------------------------------- */
+
+h1, h2, h3 {
+    width: inherit;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.h3 {
+    font-size: 1.5rem;
+}
+
+input {
+    min-width: 15rem;
+    box-sizing: border-box;
+}
+
+label {
+    font-size: 1.125rem;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.textfield {
+    width: inherit;
+    font-size: 1.125rem;
+    border: solid 1px rgba(0, 0, 0, 0.30);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+}
+
+.btn {
+    width: inherit;
+    min-width: 15rem;
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+    border-radius: 15px;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* ---------------------------------------------- */
+
+.login-main {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.login-panel {
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px white;
+    border-radius: 25px;
+    background-color: white;
+    padding: 3rem 4rem;
+    
+}
+
+.login-panel-logo {
+    width: 75px;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+.login-btn {
+    padding: 1rem;
+    margin: 4rem 0 1rem 0;
+}
+
+/* ---------------------------------------------- */

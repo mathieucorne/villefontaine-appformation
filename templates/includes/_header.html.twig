@@ -1,8 +1,17 @@
-<header>
-    <nav>
-        <a href="{{ path('app_home') }}"> <img src="{{ asset('img/logo.png') }}"> </a>
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/header.css') }}">
+{% endblock %}
+
+<header id="header">
+    <nav id="header_nav">
+        <a href="{{ path('app_home') }}"><img src="{{ asset('img/logo.png') }}"></a>
+        <div class="liens">
         <a href="{{ path('app_admin_dashboard') }}">Administration</a>
         <a href="{{ path('app_formation') }}">Formation</a>
         <a href="{{ path('app_account') }}">Compte</a>
+        </div>
+        <div class="logout">
+        <a class="logout-link" href="/lougout">Se déconnecter <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+        </div>
     </nav>
 </header>
