@@ -7,8 +7,6 @@
 
 body {
     font-family: "Inter", sans-serif;
-    width: 100vw;
-    height: 100vh;
 }
 
 main {
@@ -109,11 +107,84 @@ label {
 }
 
 /* ---------------------------------------------- */
-
 header {
-    display: flex;
-    flex-direction: row;
-    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    height: 90px;
+    font-family: 'Inter';
+    border-bottom: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: lightgray;
+}
+
+#header_nav {
+    padding: 1%;
+    margin-right: 60%;
+}
+
+a {
+    margin-left: 10%;
+    margin-top: 25%;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+img {
+    position: absolute;
+    max-width: 4%;
+    min-width: 2%;
+    left: 10px;
+    top: 1%;
+}
+
+.liens {
+    position: relative;
+    margin: auto;
+    margin-left: 25%;
+    padding: 10px;
+    top: -7px;
+    font-size: large;
+    width: 100%;
+}
+
+.logout {
+    position: absolute;
+    background-color: red;
+    border-radius: 5px;
+    padding: 5px;
+    width: 155px;
+    border-left: 1px;
+    right: 10px;
+    top : 25px;
+}
+
+.logout-link {
+    color: white !important;
+    margin-left: 7px;
+}
+
+@media only screen and (max-width: 600px){
+    .liens {
+        display: none;
+    }
+    img {
+        max-width: 15%;
+        left : 50px
+    }
+    .logout {
+        width: 150px;
+        padding: 15px;
+        right : 50px;
+        border-radius: 10px;
+    }
 }
 
 
