@@ -9,7 +9,12 @@
 </style>
 
 <div class="bienvenue">
-    <h1> Bienvenue 
+    {% if app.user %}
+        <h1>Bienvenue {{ app.user.prenom }}</h1>
+    {% else %}
+        <h1>Bienvenue Invité</h1>
+        <h2>Pour utiliser l'application veuillez vous connecter<h2>
+    {% endif %}
 </div>
 
 <div class="example-wrapper">
