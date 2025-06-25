@@ -14,25 +14,26 @@
 <div class="bienvenue">
     {% if app.user %}
         <h1>Bienvenue {{ app.user.prenom}}</h1>
-        <h2 class="reprendre">Reprenez où vous en étiez</h2>
     {% else %}
         <h1>Bienvenue Invité</h1>
-        <h2 class="reprendre">Reprenez où vous en étiez</h2>
+        <h2 class="reprendre">Connectez vous pour voir vos formations</h2>
     {% endif %}
 </div>
 
 <div class="formations">
-    {% if formations is empty %}
-        <p>Aucune formation disponible pour le moment.</p>
-    {% else %}
-        {% for formation in formations %}
-            {% if formation.estVisible == 1 %}
-                <h2>{{ formation.titre }}</h2>
-                <div class="truncate">
-                    {{ formation.description }}
-                </div>
-            {% endif %}
-        {% endfor %}
+    {% set hasFormation = false %}
+    {% for formation in formations %}
+        {% if formation.estVisible == 1 %}
+            {% set hasFormation = true %}
+            <h2>{{ formation.titre }}</h2>
+            <div class="truncate">
+                {{ formation.description }}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% if not hasFormation %}
+        <h2>Aucune formation disponible.</h2>
     {% endif %}
 </div>
 
