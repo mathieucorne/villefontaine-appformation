@@ -172,3 +172,13 @@ Bien que la raison n'a pas été trouvée, il existe un moyen pour contourner ce
 3. Lancer un serveur PHP via la commande `php -S localhost:5000`. Le serveur se lancera sur le port 5000.
 
 4. Ouvrir un navigateur et entrez le chemin `localhost:5000`.
+
+## Sécurité 
+
+### Système de hashage 
+
+Le système par défaut de hashage est bcrypt. Les mots de passes sont chiffrés en base de donnée grâce au hash. 
+
+Si le hash correspond alors la connexion est autorisée.
+
+Il est possible d' augmenter le "coût" (cost) du hashage ce qui aura pour résusltat d'améliorer la protection du mot de passe en utilisant plus d'énergie en échange. 
