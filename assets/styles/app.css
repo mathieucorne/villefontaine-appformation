@@ -361,9 +361,46 @@ MEDIA QUERIES
 
 /* ---------------------------------------------- */
 .bienvenue {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 40px;
     width: 80%;
     text-align: center;
+    width: 550px;
+    font-size: 25px;
 }
 
+.bienvenue h2 {
+    font-weight: lighter;
+    font-size: 35px;
+    width: 540px;
+}
+
+
+/* ---------------------------------------------- */
+.truncate {
+    width: 80%;
+    margin: auto;
+    font-weight: 200; /* Utilise 300, 400, etc. – 250 n’est pas standard */
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* Facultatif : pour éviter des effets visuels bizarres */
+    word-break: break-word;
+
+}
+
+.formations {
+    width:  100%;
+    height: 50px;
+    font-size: 23px;
+}
+
+.formations h2 {
+    text-align: left;
+    margin-top: 100px;
+    margin-left: 150px;
+}

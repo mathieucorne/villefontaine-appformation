@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block body_attributes %}
-    class="primary-background"
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: {{ background_color|default('#ffffff') }};
+        }
+    </style>
+{% endblock %}{% block body_attributes %}
+    
 {% endblock %}
 
 {% block main_attributes %}

@@ -11,19 +11,23 @@
 <div class="bienvenue">
     {% if app.user %}
         <h1>Bienvenue {{ app.user.prenom }}</h1>
+        <h2 class="reprendre">Reprenez où vous en étiez</h2>
     {% else %}
         <h1>Bienvenue Invité</h1>
-        <h2>Pour utiliser l'application veuillez vous connecter<h2>
+        <h2 class="reprendre">Reprenez où vous en étiez</h2>
     {% endif %}
 </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/arthur.richert/Desktop/villefontaine-appformation/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>C:/Users/arthur.richert/Desktop/villefontaine-appformation/templates/home/index.html.twig</code></li>
-    </ul>
+<div class="formations">
+    {% for formation in formations %}
+        {% if formation.estVisible == 1 %}
+        <h2> {{ formation.titre }}</h2>
+        <div class="truncate">
+        {{ formation.description }}
+        </div> 
+        {% endif %}
+    {% endfor %}
 </div>
+
+
 {% endblock %}
