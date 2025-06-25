@@ -2,6 +2,8 @@
 
 {% block body %}
     {% include 'includes/_header.html.twig' %}
-    {% block main %}{% endblock %}
+    <main {% block main_attributes %}{% endblock %}>
+        {% block main %}{% endblock %}
+    </main>
     {% include 'includes/_footer.html.twig' %}
 {% endblock %}

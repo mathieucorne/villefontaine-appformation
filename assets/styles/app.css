@@ -239,6 +239,10 @@ ACCOUNT PAGE
     margin-left: 3rem;
 }
 
+.settings-main {
+    position: relative;
+}
+
 .settings-container {
     padding: 0 3rem;
     text-align: left;
