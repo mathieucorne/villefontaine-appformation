@@ -154,6 +154,19 @@ Au moment de la migration via Doctrine via la commande **php bin/console doctrin
 **Pour résoudre l'erreur DEP4**, il faut créer au préalable la base de données, ce qui peut se faire également via Doctrine avec la commande :
 ```php bin/console doctrine:database:create```
 
+#### DEP5
+
+Au moment du chargement d'une page dans le navigateur, l'erreur DEP5 peut survenir, en raison du non-démarrage du serveur MySQL dans XAMPP (souvent par inadvertance).
+
+
+**Erreur DEP5 dans phpMyAdmin**
+![phpMyAdmin - mysql::real_connect(): (HY000/2002): Aucune connexion n'a pu être établie car l'ordinateur cible l'a expressément refusée](./doc_AppFormation/erreur_DEP/erreur_DEP5_phpmyadmin.png)
+
+**Erreur DEP5 dans Symfony**
+![Symfony - An exception occured in the driver: SQLSTATE[HY000][2002] Aucune connexion n'a pu être établie car l'ordinateur cible l'a expressément refusée](./doc_AppFormation/erreur_DEP/erreur_DEP5_Symfony.png)
+
+**Pour résoudre l'erreur DEP5**, il faut dans le Control Panel de XAMPP appuyer sur le bouton `Start` en face de MySQL.
+
 ### Erreurs concernant les outils de développement (TOOL)
 
 Lors du lancement de phpMyAdmin via XAMPP (localhost), l'erreur TOOL1 peut survenir. 
