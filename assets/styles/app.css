@@ -7,6 +7,9 @@
 
     --login-background-color: var(--primary-color);
 
+    --header-height: 100px;
+    --footer-height: 120px;
+
     --header-transition: all 0.5s ease-in-out;
     --footer-transition: all 0.5s ease-in-out;
 }
@@ -19,8 +22,8 @@ body {
 }
 
 main {
-    width: inherit;
-    min-height: inherit;
+    width: 100%;
+    min-height: max-content;
 }
 
 .primary-background {
@@ -104,10 +107,14 @@ HEADER
 */
 header {
     width: inherit;
-    height: 100px;
+    height: var(--header-height);
+    position: fixed;
+    top:0;
     padding-right: 3rem;
     box-sizing: border-box;
+    background-color: white;
     border-bottom: solid 1px var(--primary-color);
+    z-index: 1000;
 }
 
 #header-nav {
@@ -179,12 +186,34 @@ FOOTER
 
 footer {
     display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: var(--footer-height);
+    border-top: solid 1px var(--primary-color);
+    background-color: white;
+    z-index: 1000;
 }
 
 .footer-nav-links {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+#footer-nav, #footer-nav-links, #footer-nav-links>a {
+    height: 100%;
+}
+
+#footer-nav-links>a>svg {
+    width: 50px;
+    height: 50px;
+    padding: 2rem 5rem;
+    transition: var(--footer-transition);
+}
+
+#footer-nav-links>a>svg:hover {
+    background-color: #A2BF3D;
 }
 
 
@@ -240,6 +269,8 @@ ACCOUNT PAGE
 }
 
 .settings-main {
+    top: var(--header-height);
+    bottom: var(--footer-height);
     position: relative;
 }
 
@@ -281,6 +312,11 @@ ACCOUNT PAGE
     padding: 0 2rem;
 }
 
+.settings-btn {
+    padding: 1rem;
+    margin-top: 4rem;
+}
+
 
 /*
 ---------------------------------------------- 
@@ -303,26 +339,10 @@ MEDIA QUERIES
     }
 
     footer {
-        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        position: fixed;
-        bottom: 0;
-        border-top: solid 1px var(--primary-color);
-        background-color: white;
-    }
-
-    #footer-nav-links>a>svg {
-        width: 50px;
-        height: 50px;
-        padding: 2rem 5rem;
-        transition: var(--footer-transition);
-    }
-
-    #footer-nav-links>a>svg:hover {
-        background-color: #A2BF3D;
     }
 
 }

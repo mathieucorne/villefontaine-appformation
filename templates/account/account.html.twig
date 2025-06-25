@@ -1,0 +1,56 @@
+{% extends 'layout/main.html.twig' %}
+
+{% block main_attributes %}
+    class="settings-main"
+{% endblock %}
+
+
+{% block main %}
+<h1 class="h1 title-main">Paramètres</h1>
+<div class="settings-container">
+    <div class="settings-title-container">
+        <h2 class="h2 settings-title">Mon Compte</h2>
+        <div class="line"></div>
+    </div>
+    <p>Cette section est consacrée aux informations de votre compte.</p>
+    <p>
+        L’adresse mail associée à votre compte est : <b>bob@mairie-villefontaine.fr</b>
+        <br>
+        Le statut du compte est <b>gestionnaire de formations</b>
+    </p>
+    <p>Service : <b>Ressources humaines</b></p>
+</div>
+<div class="settings-container">
+    <div class="settings-title-container">
+        <h2 class="h2 settings-title">Sécurité</h2>
+        <div class="line"></div>
+    </div>
+    <p>Cette section est consacrée à la sécurité de votre compte. Vous pouvez par exemple y changer votre mot de passe.</p>
+    <form method="post" class="settings-reset-password-container">
+        <div class="settings-reset-password-inputs-container">
+            <div class="settings-reset-password-input-box">
+                <label for="old_password">Ancien mot de passe</label>
+                <input class="textfield form-control" type="password" name="_old_password" id="old_password" autocomplete="current-password" required>
+            </div>
+            <div class="settings-reset-password-input-box">
+                <label for="new_password">Nouveau mot de passe</label>
+                <input class="textfield form-control" type="password" name="_new_password" id="new_password" autocomplete="current-password" required>
+            </div>
+            <div class="settings-reset-password-input-box">
+                <label for="confirm_password">Confirmer mot de passe</label>
+                <input class="textfield form-control" type="password" name="_confirm_password" id="confirm_password" autocomplete="current-password" required>
+            </div>
+        </div>
+        <button class="btn settings-btn warning-color" type="submit">Changer mon mot de passe</button>
+    </form>
+</div>
+<div class="settings-container">
+        <div class="settings-title-container">
+            <h2 class="h2 settings-title">Support</h2>
+            <div class="line"></div>
+        </div>
+        <p>Cette section est consacrée au contact du support de l’application. A travers des tickets, vous pouvez faire remonter des bugs, proposer des pistes d’améliorations...</p>
+        <a class="btn settings-btn utility-color">Changer mon mot de passe</a>
+</div>
+
+{% endblock %}
