@@ -15,7 +15,7 @@ final class HomeController extends AbstractController
     {
         $formations = $formationRepository->findAll(); // ou un findBy(['estVisible' => true])
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('home/home.html.twig', [
             'formations' => $formations,
         ]);
     }
