@@ -23,7 +23,8 @@ body {
 
 main {
     width: 100%;
-    min-height: max-content;
+    height: 100%;
+    padding: 3rem;
 }
 
 .primary-background {
@@ -82,10 +83,14 @@ label {
 }
 
 .btn {
-    min-width: 80%;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
     font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.125rem;
+    padding: 1rem;
     border-radius: 15px;
     white-space: nowrap;
     transition: all 0.3s ease-in-out;
@@ -100,17 +105,22 @@ a {
     text-align: center;
 }
 
+.scrollable-main {
+    top: var(--header-height);
+    bottom: var(--footer-height);
+    position: relative;
+}
+
 /*
 ---------------------------------------------- 
 HEADER
 ---------------------------------------------- 
 */
 header {
-    width: inherit;
+    width: 100%;
     height: var(--header-height);
     position: fixed;
     top:0;
-    padding-right: 3rem;
     box-sizing: border-box;
     background-color: white;
     border-bottom: solid 1px var(--primary-color);
@@ -172,9 +182,11 @@ header {
     color: white;
 }
 
-.logout-btn {
-    padding: 1rem;
-    margin-top: 4rem;
+.logout-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
 }
 
 
@@ -253,7 +265,6 @@ LOGIN PAGE
 }
 
 .login-btn {
-    padding: 1rem;
     margin-top: 4rem;
 }
 
@@ -262,17 +273,6 @@ LOGIN PAGE
 ACCOUNT PAGE
 ---------------------------------------------- 
 */
-
-.title-main {
-    margin-top: 3rem;
-    margin-left: 3rem;
-}
-
-.settings-main {
-    top: var(--header-height);
-    bottom: var(--footer-height);
-    position: relative;
-}
 
 .settings-container {
     padding: 0 3rem;
@@ -313,8 +313,7 @@ ACCOUNT PAGE
 }
 
 .settings-btn {
-    padding: 1rem;
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 
 

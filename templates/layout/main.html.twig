@@ -2,7 +2,7 @@
 
 {% block body %}
     {% include 'includes/_header.html.twig' %}
-    <main {% block main_attributes %}{% endblock %}>
+    <main class="scrollable-main" {% block main_attributes %}{% endblock %}>
         {% block main %}{% endblock %}
     </main>
     {% include 'includes/_footer.html.twig' %}
