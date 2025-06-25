@@ -22,19 +22,17 @@
 </div>
 
 <div class="formations">
-    {% set hasFormation = false %}
-    {% for formation in formations %}
-        {% if formation.estVisible == 1 %}
-            {% set hasFormation = true %}
-            <h2>{{ formation.titre }}</h2>
-            <div class="truncate">
-                {{ formation.description }}
-            </div>
-        {% endif %}
-    {% endfor %}
-
-    {% if not hasFormation %}
-        <p>Aucune formation disponible.</p>
+    {% if formations is empty %}
+        <p>Aucune formation disponible pour le moment.</p>
+    {% else %}
+        {% for formation in formations %}
+            {% if formation.estVisible == 1 %}
+                <h2>{{ formation.titre }}</h2>
+                <div class="truncate">
+                    {{ formation.description }}
+                </div>
+            {% endif %}
+        {% endfor %}
     {% endif %}
 </div>
 
