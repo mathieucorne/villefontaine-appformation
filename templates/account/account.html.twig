@@ -1,5 +1,7 @@
 {% extends 'layout/main.html.twig' %}
 
+{% block title %}Compte{% endblock %}
+
 {% block main_attributes %}
     class="settings-main"
 {% endblock %}
@@ -25,7 +27,7 @@
         <br>
         Le statut du compte est <b>gestionnaire de formations</b>
     </p>
-    <p>Service : <b>Ressources humaines</b></p>
+    <p>Service : <b>{{ app.user.service.nom }}</b></p>
 </div>
 <div class="settings-container">
     <div class="settings-title-container">
