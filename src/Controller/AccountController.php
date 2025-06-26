@@ -11,6 +11,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use App\Repository\ParametreRepository;
 
 
 final class AccountController extends AbstractController
@@ -19,7 +20,8 @@ final class AccountController extends AbstractController
     public function index(
         Request $request,
         UserPasswordHasherInterface $passwordHasher,
-        ORMEntityManagerInterface $entityManager
+        ORMEntityManagerInterface $entityManager,
+        ParametreRepository $parametreRepository
     ): Response
     {
         $user = $this -> getUser();

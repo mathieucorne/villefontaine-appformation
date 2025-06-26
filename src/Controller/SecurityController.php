@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use App\Repository\ParametreRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Repository\ParametreRepository;
 
 class SecurityController extends AbstractController
 {
@@ -26,6 +26,10 @@ class SecurityController extends AbstractController
             'error' => $error,
             'login_background_color' => $loginbBackgroundColor
         ]);
+
+        $backgroundColor = $parametreRepository
+            ->findOneBy(['nom' => 'background_color'])
+            ?->getValeur() ?? '#ffffff';
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
