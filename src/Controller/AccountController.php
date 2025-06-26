@@ -49,11 +49,8 @@ final class AccountController extends AbstractController
                 $this->addFlash('success', 'Mot de passe mis à jour avec succès.');
                 return $this->redirectToRoute('app_account');
             }
-        }
 
-        $backgroundColor = $parametreRepository
-            ->findOneBy(['nom' => 'background_color'])
-            ?->getValeur() ?? '#ffffff';
+        }
 
         return $this->render('account/account.html.twig', [
             'background_color' => $backgroundColor,
