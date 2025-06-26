@@ -21,10 +21,6 @@ body {
     margin: 0;
 }
 
-main {
-    padding: 2rem 4rem;
-}
-
 .primary-background {
     background-color: var(--login-background-color);
 }
@@ -73,7 +69,7 @@ label {
 }
 
 .textfield {
-    min-width: 80%;
+    min-width: 100%;
     font-size: 1.125rem;
     border: solid 1px rgba(0, 0, 0, 0.30);
     border-radius: 10px;
@@ -104,6 +100,7 @@ a {
 }
 
 .scrollable-main {
+    padding: 2rem 4rem;
     top: var(--header-height);
     bottom: var(--footer-height);
     position: relative;
@@ -253,13 +250,25 @@ LOGIN PAGE
     border: solid 1px white;
     border-radius: 25px;
     background-color: white;
-    padding: 3rem 0rem;
+    padding: 3rem;
 }
 
 .login-panel-logo {
     width: 100px;
-    height: auto;
+    height: 100px;
     margin-bottom: 1.5rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 3rem;
+}
+
+.login-form>label {
+    text-align: center;
 }
 
 .login-btn {
@@ -273,7 +282,7 @@ ACCOUNT PAGE
 */
 
 .settings-container {
-    padding: 0 3rem;
+    padding: 0 1rem;
     text-align: left;
 }
 
