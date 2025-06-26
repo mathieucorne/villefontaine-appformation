@@ -13,8 +13,12 @@ final class FormationController extends AbstractController
     #[Route('/formation', name: 'app_formation')]
     public function index(FormationRepository $formationRepository): Response
     {
+        $backgroundColor = $parametreRepository
+            ->findOneBy(['nom' => 'background_color'])
+            ?->getValeur() ?? '#ffffff';
+
         return $this->render('formation/formation.html.twig', [
-            'controller_name' => 'FormationController',
+            'background_color' => $backgroundColor,
         ]);
     }
 }

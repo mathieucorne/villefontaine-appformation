@@ -2,6 +2,10 @@
 
 {% block title %}Formations{% endblock %}
 
+{% block body_attributes %}
+    style="background-color: {{ background_color|default('#ffffff') }};"
+{% endblock %}
+
 {% block main %}
 <style>
     body {
