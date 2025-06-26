@@ -182,6 +182,7 @@ header {
     flex-direction: row;
     align-items: center;
     height: 100%;
+    margin-right: 3rem;
 }
 
 
@@ -237,6 +238,10 @@ LOGIN PAGE
     justify-content: center;
     align-items: center;
     margin: 0;
+}
+
+.alert {
+    display: absolute;
 }
 
 .login-panel {
@@ -356,6 +361,10 @@ MEDIA QUERIES
 @media screen and (max-width: 700px) {
     #footer-nav-links>a>svg {
         padding: 2rem 3rem;
+    }
+
+    .logout-btn>span {
+        display: none;
     }
 }
 
