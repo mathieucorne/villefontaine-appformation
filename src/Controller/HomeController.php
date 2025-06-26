@@ -18,7 +18,7 @@ final class HomeController extends AbstractController
             ->findOneBy(['nom' => 'background_color'])
             ?->getValeur() ?? '#ffffff';
 
-        $formations = $formationRepository->findAll(); // ou un findBy(['estVisible' => true])
+        $formations = $formationRepository->findBy(['estVisible' => true]); //findAll();
 
         return $this->render('home/home.html.twig', [
             'background_color' => $backgroundColor,

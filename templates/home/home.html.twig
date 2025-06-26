@@ -17,18 +17,15 @@
 </div>
 
 <div class="formations">
-    {% set hasFormation = false %}
     {% for formation in formations %}
-        {% if formation.estVisible == 1 %}
-            {% set hasFormation = true %}
-            <h2>{{ formation.titre }}</h2>
+         <h2>{{ formation.titre }}</h2>
             <div class="truncate">
                 {{ formation.description }}
             </div>
-        {% endif %}
+        
     {% endfor %}
 
-    {% if not hasFormation %}
+    {% if formations is empty  %}
         <h2>Aucune formation disponible.</h2>
     {% endif %}
 </div>
