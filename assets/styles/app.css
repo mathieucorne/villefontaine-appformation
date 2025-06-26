@@ -101,7 +101,6 @@ a {
 .scrollable-main {
     padding: 2rem 4rem;
     top: var(--header-height);
-    bottom: var(--footer-height);
     position: absolute;
     overflow-y: auto;
     width: 100%;
@@ -362,7 +361,15 @@ MEDIA QUERIES
         align-items: center;
         position:fixed;
     }
-
+    .scrollable-main {
+        padding: 2rem 4rem;
+        top: var(--header-height);
+        bottom: var(--footer-height);
+        position: absolute;
+        overflow-y: auto;
+        width: 100%;
+        box-sizing: border-box;
+    } 
 }
 
 @media screen and (max-width: 700px) {
