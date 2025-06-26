@@ -13,8 +13,12 @@ final class AdminDashboardController extends AbstractController
     #[Route('/admin', name: 'app_admin_dashboard')]
     public function index(): Response
     {
+        $backgroundColor = $parametreRepository
+            ->findOneBy(['nom' => 'background_color'])
+            ?->getValeur() ?? '#ffffff';
+
         return $this->render('admin_dashboard/admin_dashboard.html.twig', [
-            'controller_name' => 'AdminDashboardController',
+            'background_color' => $backgroundColor,
         ]);
     }
 }
