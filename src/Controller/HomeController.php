@@ -13,9 +13,14 @@ final class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(FormationRepository $formationRepository): Response
     {
+        $backgroundColor = $parametreRepository
+            ->findOneBy(['nom' => 'background_color'])
+            ?->getValeur() ?? '#ffffff';
+
         $formations = $formationRepository->findAll(); // ou un findBy(['estVisible' => true])
 
         return $this->render('home/home.html.twig', [
+            'background_color' => $backgroundColor,
             'formations' => $formations,
         ]);
     }
