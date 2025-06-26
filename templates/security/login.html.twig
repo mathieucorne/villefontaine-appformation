@@ -2,15 +2,8 @@
 
 {% block title %}Se connecter{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <style>
-        body {
-            background-color: {{ background_color|default('#ffffff') }};
-        }
-    </style>
-{% endblock %}{% block body_attributes %}
-
+{% block body_attributes %}
+    style="background-color: {{ login_background_color|default('#ffffff') }};"
 {% endblock %}
 
 {% block main_attributes %}

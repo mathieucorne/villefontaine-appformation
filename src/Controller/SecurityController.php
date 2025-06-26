@@ -17,14 +17,14 @@ class SecurityController extends AbstractController
 
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        $backgroundColor = $parametreRepository
-            ->findOneBy(['nom' => 'background_color'])
+        $loginbBackgroundColor = $parametreRepository
+            ->findOneBy(['nom' => 'login_background_color'])
             ?->getValeur() ?? '#ffffff';
 
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
-            'background_color' => $backgroundColor
+            'login_background_color' => $loginbBackgroundColor
         ]);
     }
 
