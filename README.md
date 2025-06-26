@@ -100,7 +100,7 @@ Un controlleur représente la classe chargée de manipuler la donnée en elle m�
 - `utilisateur_competence` (<u>**#id_utilisateur**, **#id_competences**</u>)
 - `formation_competence` (<u>**#id_formation, #id_competence**</u>)
 - `session_service` (<u>**#id_service, #id_session**</u>)
-
+- `parametre` (<u>**id**</u>, nom, valeur, commentaires)
 
 
 ---
