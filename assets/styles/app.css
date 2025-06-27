@@ -101,7 +101,6 @@ a {
     padding: 2rem 4rem;
     top: var(--header-height);
     position: absolute;
-    overflow-y: auto;
     width: 100%;
     box-sizing: border-box;
 }
@@ -383,6 +382,9 @@ MEDIA QUERIES
         width: 100%;
         box-sizing: border-box;
     } 
+
+
+    
 }
 
 @media screen and (max-width: 700px) {
