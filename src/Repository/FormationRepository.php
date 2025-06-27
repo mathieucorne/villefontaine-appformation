@@ -16,6 +16,18 @@ class FormationRepository extends ServiceEntityRepository
         parent::__construct($registry, Formation::class);
     }
 
+    public function findUserCompetence(array $competenceIds): array {
+        return $this -> createQueryBuilder('f')
+            ->distinct()
+            ->innerJoin('f.competences','fc')
+            ->innerJoin('fc.competence', 'c')
+            ->where('f.estVisible=true')
+            ->andWhere('c.id IN (:ids)')
+            ->setParameter('ids', $competenceIds)
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Formation[] Returns an array of Formation objects
     //     */
