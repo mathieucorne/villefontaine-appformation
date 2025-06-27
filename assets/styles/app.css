@@ -59,7 +59,6 @@ BALISES GENERALES
 }
 
 input {
-    min-width: 15rem;
     box-sizing: border-box;
 }
 
@@ -105,6 +104,20 @@ a {
     overflow-y: auto;
     width: 100%;
     box-sizing: border-box;
+}
+
+.table-panel {
+    background-color: #eee;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.table-panel td {
+    margin: 2rem 0;
+}
+
+.table-panel svg {
+    width: 25px;
 }
 
 /*
