@@ -189,6 +189,8 @@ Bien que la raison n'a pas été trouvée, il existe un moyen pour contourner ce
 
 Au moment de lancer le serveur MySQL dans XAMPP, l'erreur TOOL2 peut survenir et empêcher le démarrage complet de MySQL, en raison de fichiers corrompus dans le dossier `C:\xampp\mysql\data`.
 
+![Logs MySQL - File 'C:\xampp\mysql\data\ibtmp1' size is now 12MB](./doc_AppFormation/erreur_TOOL/erreur_TOOL2.png).
+
 **Pour résoudre l'erreur TOOL2**, il faut copier les fichiers du dossier `C:\xampp\mysql\backup` en remplaçant l'ensemble de ceux du dossier `C:\xampp\mysql\data`.
 
 [Résoudre l'erreur TOOL2](https://stackoverflow.com/questions/56767200/cant-run-xampp-mysql)
