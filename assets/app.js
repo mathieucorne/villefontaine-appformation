@@ -8,9 +8,43 @@ fileSelector.onclick = () => fileSelectorInput.click();
 fileSelectorInput.onchange = () => {
     [...fileSelectorInput.files].forEach((file) => {
         if(typeValidation(file.type)) {
-            console.log(file)
+            uploadFile(file);
         }
     })
+}
+
+fileSelector.ondragover = (e) => {
+    e.preventdefault();
+    [...e.dataTransfer.items].forEach((item) => {
+        if (typeValidation(item.type)) {
+            fileSelector.classList.add(".file-selector-drag-over")
+        }
+    })
+}
+
+fileSelector.ondragleave = () => {
+    fileSelector.classList.remove("file-selector-drag-over")
+}
+
+fileSelector.ondrop = (e) => {
+    e.preventdefault();
+    fileSelector.classList.remove("file-selector-drag-over")
+    if (e.dataTransfer.items) {
+        [...e.dataTransfer.items].forEach((item) => {
+            if (item.kind === "file") {
+                const file = item.getAsFile();
+                if (typeValidation(file.type)) {
+                    uploadFile(file, "/formations/image")
+                }
+            }
+        })
+    } else {
+        [...e.dataTransfer.files].forEach((file) => {
+            if (typeValidation(file.type)) {
+                uploadFile(file, "/formations/image")
+            }
+        })
+    }
 }
 
 function typeValidation(type) {
@@ -18,6 +52,18 @@ function typeValidation(type) {
     if (splitType == "image") {
         return true
     }
+}
+
+
+
+function uploadFile(file, endpoint : str) {
+    var data = new FormData()
+    data.append('file', file)
+
+    fetch(endpoint, {
+        method: 'POST',
+        body: data
+    })
 }
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
