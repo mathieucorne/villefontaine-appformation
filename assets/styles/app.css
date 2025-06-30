@@ -105,26 +105,6 @@ a {
     box-sizing: border-box;
 }
 
-.table-panel {
-    background-color: #eee;
-    padding: 2rem;
-    border-radius: 15px;
-}
-
-.table-panel td {
-    margin: 2rem 0;
-}
-
-.table-panel svg {
-    width: 25px;
-}
-
-.table-textfield {
-    width: 100%;
-    padding: 0.5rem;
-    border: none;
-}
-
 /*
 ---------------------------------------------- 
 HEADER
@@ -347,6 +327,37 @@ ACCOUNT PAGE
     margin-top: 2rem;
 }
 
+/*
+---------------------------------------------- 
+GESTION
+---------------------------------------------- 
+*/
+
+
+.table-panel {
+    background-color: #eee;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.table-panel td {
+    margin: 0.5rem 0;
+}
+
+.table-panel svg {
+    width: 25px;
+}
+
+.table-textfield {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+}
+
+.file-selector-container {
+    background-color: white;
+    padding: 1rem 3rem;
+}
 
 /*
 ---------------------------------------------- 
