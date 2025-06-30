@@ -195,6 +195,24 @@ Au moment de lancer le serveur MySQL dans XAMPP, l'erreur TOOL2 peut survenir et
 
 [Résoudre l'erreur TOOL2](https://stackoverflow.com/questions/56767200/cant-run-xampp-mysql)
 
+#### TOOL3
+
+Au moment de l'utilisation du dossier de backup pour résoudre l'erreur TOOL2, l'erreur TOOL3 peut survenir lorsque l'on essaye de supprimer la base de données afin de la refaire de zéro, en raison de la corruption du dossier de données correspondant à cette même BDD.
+
+![phpMyAdmin - #1010 - Erreur en effançant la base (rmdir '.\app', erreur 41 "Directory not empty)](./doc_AppFormation/erreur_TOOL/erreur_TOOL3.png).
+
+**Attention, la base de données corrompue nécessitant d'être supprimée, il est nécessaire d'exporter les données des tables au préalable, sans quoi toutes les informations présentes seront perdues.**
+
+**Pour résoudre l'erreur TOO3**, il faut supprimer la base de données corrompue. Cependant, phpMyAdmin n'arrive pas forcément à supprimer totalement la base de données, même si d'apparence il n'y a plus aucune table. il faut donc supprimer le dossier de la base de données corrompue directement dans `C:\xampp\mysql\data\`, le dossier à supprimer étant celui du même nom que la base de données dans phpMyAdmin. 
+
+Une fois la base de données supprimée, il faut utiliser les commandes pour créer de nouveau l'architecture de la base de données
+- `php bin/console doctrine:database:create` - Créer la base de données renseigné dans le fichier .env comme étant celui de l'application
+- `php bin/console make:migration` - (OPTIONNEL si fichier de migration déjà existant) Créer un fichier de migration, qui permet à l'ORM de transposer le schéma d'architecture orienté objet en tables relationnelles
+- `php bin/console doctrine:migration:migrate` - Exécuter la migration pour mettre à jour l'architecture de la base de données.
+
+
+[Résoudre l'erreur TOOL3](https://stackoverflow.com/questions/17947255/error-in-dropping-a-database-in-mysql-cant-rmdir-oro-errno-41)
+
 ## Sécurité 
 
 ### Système de hashage 
