@@ -338,6 +338,7 @@ GESTION
     background-color: #eee;
     padding: 2rem;
     border-radius: 15px;
+    width: 100%;
 }
 
 .table-panel td {
