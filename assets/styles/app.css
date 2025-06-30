@@ -472,5 +472,9 @@ ADMIN PAGE
 
 .admin-settings-buttons .btn {
     width: 100%;
+}
 
+.hex-btn {
+    flex-direction: column;
+    padding-bottom: 1em;
 }
