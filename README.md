@@ -158,14 +158,13 @@ Au moment de la migration via Doctrine via la commande **php bin/console doctrin
 
 Au moment du chargement d'une page dans le navigateur, l'erreur DEP5 peut survenir, en raison du non-démarrage du serveur MySQL dans XAMPP (souvent par inadvertance).
 
-
 **Erreur DEP5 dans phpMyAdmin**
 ![phpMyAdmin - mysql::real_connect(): (HY000/2002): Aucune connexion n'a pu être établie car l'ordinateur cible l'a expressément refusée](./doc_AppFormation/erreur_DEP/erreur_DEP5_phpmyadmin.png)
 
 **Erreur DEP5 dans Symfony**
 ![Symfony - An exception occured in the driver: SQLSTATE[HY000][2002] Aucune connexion n'a pu être établie car l'ordinateur cible l'a expressément refusée](./doc_AppFormation/erreur_DEP/erreur_DEP5_Symfony.png)
 
-**Pour résoudre l'erreur DEP5**, il faut dans le Control Panel de XAMPP appuyer sur le bouton `Start` en face de MySQL.
+**Pour résoudre l'erreur DEP5**, il faut appuyer sur le bouton `Start` en face de MySQL dans le Control Panel de XAMPP.
 
 ### Erreurs concernant les outils de développement (TOOL)
 
@@ -185,6 +184,14 @@ Bien que la raison n'a pas été trouvée, il existe un moyen pour contourner ce
 3. Lancer un serveur PHP via la commande `php -S localhost:5000`. Le serveur se lancera sur le port 5000.
 
 4. Ouvrir un navigateur et entrez le chemin `localhost:5000`.
+
+#### TOOL2
+
+Au moment de lancer le serveur MySQL dans XAMPP, l'erreur TOOL2 peut survenir et empêcher le démarrage complet de MySQL, en raison de fichiers corrompus dans le dossier `C:\xampp\mysql\data`.
+
+**Pour résoudre l'erreur TOOL2**, il faut copier les fichiers du dossier `C:\xampp\mysql\backup` en remplaçant l'ensemble de ceux du dossier `C:\xampp\mysql\data`.
+
+[Résoudre l'erreur TOOL2](https://stackoverflow.com/questions/56767200/cant-run-xampp-mysql)
 
 ## Sécurité 
 
