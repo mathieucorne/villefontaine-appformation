@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\FormationRepository;
 use App\Repository\ParametreRepository;
+use App\Repository\CompetenceRepository;
 
 
 final class FormationController extends AbstractController
