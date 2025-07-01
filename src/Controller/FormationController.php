@@ -18,8 +18,12 @@ final class FormationController extends AbstractController
             ->findOneBy(['nom' => 'background_color'])
             ?->getValeur() ?? '#ffffff';
 
+        $formation = $formationRepository
+            ->findAll();
+
         return $this->render('formation/formation.html.twig', [
             'background_color' => $backgroundColor,
+            'formations' => $formation
         ]);
     }
 }

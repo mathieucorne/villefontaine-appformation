@@ -34,7 +34,7 @@
     {% elseif 'ROLE_USER' in app.user.roles %}
         Le statut du compte est <b>utilisateur.</b>
     {% else %}
-        Le statut du compte est <b>Inconnu</b>
+        Le statut du compte est <b>inconnu</b>
     {% endif %}        
     </p>
     <p>Service : <b>{{ app.user.service.nom }}</b></p>
