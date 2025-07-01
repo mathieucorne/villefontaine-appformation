@@ -34,14 +34,14 @@ fileSelector.ondrop = (e) => {
             if (item.kind === "file") {
                 const file = item.getAsFile();
                 if (typeValidation(file.type)) {
-                    uploadFile(file, "/formations/image")
+                    uploadFile(file, "/api/formations/image")
                 }
             }
         })
     } else {
         [...e.dataTransfer.files].forEach((file) => {
             if (typeValidation(file.type)) {
-                uploadFile(file, "/formations/image")
+                uploadFile(file, "/api/formations/image")
             }
         })
     }
@@ -56,7 +56,7 @@ function typeValidation(type) {
 
 
 
-function uploadFile(file, endpoint : str) {
+function uploadFile(file, endpoint) {
     var data = new FormData()
     data.append('file', file)
 
