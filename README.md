@@ -67,9 +67,46 @@ Un controlleur représente la classe chargée de manipuler la donnée en elle m�
 
 [DOC - Créer un controller](https://symfony.com/doc/current/controller.html#a-basic-controller)
 
+#### Actions Symfony
+
 ##### Gérer les rôles
 
 [DOC - Gérer les rôles](https://nouvelle-techno.fr/articles/live-coding-gerer-les-roles-utilisateur-avec-symfony-4#:~:text=Nous%20attribuons%20les%20r%C3%B4les)
+
+##### Créer un service
+
+Afin de créer un service, il faut créer un fichier PHP dans le dossier `src/Service/` sous le format `<Nom>Interface.php`. Ce fichier doit contenir une unique classe PHP, celle du service que vous souhaitez créer, ainsi que l'ensemble des méthodes nécessaires pour répondre à vos besoins.
+
+Une fois votre fichier PHP terminé, il est important de vérifier qu'il n'y est pas d'éventuelles erreurs de syntaxe via la commande ` php -l src/Service/<Nom>Interface.php`.
+
+Symfony détecte automatiquement les services mais il peut être important de vérifier qu'un service est bien pris en compte. Pour cela, il faut exécuter la commande `php bin/console debug:container App\Service\<Nom>Interface` (Il faut indiquer `<namespace><classe>` après `debug:container`, et non le chemin - Ici le namespace est `App\Service` et la classe `<Nom>Interface`).
+
+[DOC - Services Symfony](https://symfony.com/doc/8.0/service_container.html)
+[DOC - Debugger un Service Symfony](https://symfony.com/doc/8.0/service_container/debug.html)
+
+Le fichier de configuration est [services.yaml](/config/services.yaml). 
+
+Normalement, il n'est pas vraiment nécessaire d'y toucher puisque le système d'autowiring détecte automatiquement les services pour nous.
+
+##### Créer une variable globale Twig (éventuellement dynamique)
+
+Afin de créer une variable globale Twig qui sera disponible dans tous les templates Twig du projet, il faut ajouter une ligne dans la section `twig > globals` du fichier [twig.yaml](config/packages/twig.yaml):
+```
+twig:
+    file_name_pattern: '*.twig'
+    globals:
+        <ici>
+```
+
+Les variables peuvent être de n'importe quel type primitif, ou être dynamique via l'utilisation d'un Service. Cela permet ainsi de lier des variables à un mécanisme en back-end, qui peut être un appel à une API ou à la BDD directement.
+
+Pour assigner un service à une variable globale Twig, il faut préfixer par `@` comme suit `@<Namespace><Classe>`, sinon le service sera considéré comme une chaîne de caractères :
+```
+twig:
+    file_name_pattern: '*.twig'
+    globals:
+        parametres: '@App\Service\ParametreInterface'
+```
 
 ### API
 
