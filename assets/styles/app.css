@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
-    --primary-color: #A2BF3D;
-    --utility-color: #6F82FF;
-    --warning-color: #ff0000;
-
     --login-background-color: var(--primary-color);
 
     --header-height: 100px;
@@ -27,12 +23,12 @@ body {
 
 .utility-color {
     color: white;
-    background-color: var(--utility-color);
-    border: solid 1px var(--utility-color);
+    background-color: var(--utility-button);
+    border: solid 1px var(--utility-button);
 }
 
 .utility-color:hover {
-    color: var(--utility-color);
+    color: var(--utility-button);
     background-color: white;
 }
 

@@ -5,6 +5,14 @@
         <title>{% block title %}{% endblock %} - AppFormation - Mairie de Villefontaine</title>
         <link rel="icon" href="/img/logo.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            :root {
+                --primary-color:{{ parametres.getParametre("primary_color", "#A2BF3D") }} ;
+                --utility-button:{{ parametres.getParametre("utility_button", "#6F82FF") }} ;
+                --warning-color:{{ parametres.getParametre("warning_button", "#ff0000") }} ;
+            }
+            
+        </style>
         {% block stylesheets %}{% endblock %}
 
         {% block javascripts %}
@@ -13,5 +21,6 @@
     </head>
     <body {% block body_attributes %}{% endblock %}>
         {% block body %}{% endblock %}
+        
     </body>
 </html>
