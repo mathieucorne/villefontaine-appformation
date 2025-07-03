@@ -50,8 +50,6 @@ final class FormationController extends AbstractController
         $em->persist($formation);
         $em->flush();
 
-        $this->addFlash('success', 'Formation créée avec succès.');
-
         return $this->redirectToRoute('app_formation');
     }
 

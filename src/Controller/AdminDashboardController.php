@@ -48,8 +48,6 @@ public function updateColors(
 
     $entityManager->flush();
 
-    $this->addFlash('success', 'Les couleurs ont été mises à jour.');
-
     return $this->redirectToRoute('app_admin_dashboard');
     }
 }
