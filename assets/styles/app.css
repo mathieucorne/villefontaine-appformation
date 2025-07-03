@@ -403,9 +403,11 @@ MEDIA QUERIES
         align-items: center;
         gap: 1rem;
     }
-
-
     
+    .responsiv {
+        flex-wrap:wrap;
+    }
+
 }
 
 @media screen and (max-width: 700px) {
