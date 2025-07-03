@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\FormationRepository;
 use App\Repository\ParametreRepository;
 use App\Entity\Formation;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -51,6 +52,16 @@ final class FormationController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('app_formation');
+    }
+
+    #[Route('formation/{id}/suprimmer', name:'app_formation_delete', methods:['POST'])]
+    public function suprimmerFormation(Formation $formation, EntityManagerInterface $em) : RedirectResponse 
+    {
+        $em-> remove($formation);
+        $em->flush();
+
+        return $this->redirectToRoute('app_formation');
+
     }
 
 }
