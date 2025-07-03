@@ -1,51 +1,61 @@
 import './bootstrap.js';
 import './styles/app.css';
 
-const fileSelector = document.querySelector('.file-selector-container')
-const fileSelectorInput = document.querySelector('.file-selector-input')
+const fileSelectors = document.querySelectorAll('.file-selector-container')
 
-fileSelector.onclick = () => fileSelectorInput.click();
-fileSelectorInput.onchange = () => {
-    [...fileSelectorInput.files].forEach((file) => {
-        if(typeValidation(file.type)) {
-            uploadFile(file);
-        }
-    })
-}
 
-fileSelector.ondragover = (e) => {
-    e.preventdefault();
-    [...e.dataTransfer.items].forEach((item) => {
-        if (typeValidation(item.type)) {
-            fileSelector.classList.add(".file-selector-drag-over")
-        }
-    })
-}
+fileSelectors.forEach(fileSelector => {
+    const rowID = fileSelector.dataset.rowId
+    const fileSelectorInput = document.querySelector(`.file-selector-input[data-row-id="${rowID}"]`)
+    fileSelector.onclick = () => fileSelectorInput.click();
 
-fileSelector.ondragleave = () => {
-    fileSelector.classList.remove("file-selector-drag-over")
-}
-
-fileSelector.ondrop = (e) => {
-    e.preventdefault();
-    fileSelector.classList.remove("file-selector-drag-over")
-    if (e.dataTransfer.items) {
-        [...e.dataTransfer.items].forEach((item) => {
-            if (item.kind === "file") {
-                const file = item.getAsFile();
-                if (typeValidation(file.type)) {
-                    uploadFile(file, "/api/formations/image")
-                }
-            }
-        })
-    } else {
-        [...e.dataTransfer.files].forEach((file) => {
-            if (typeValidation(file.type)) {
-                uploadFile(file, "/api/formations/image")
+    fileSelectorInput.onchange = () => {
+        [...fileSelectorInput.files].forEach((file) => {
+            if(typeValidation(file.type)) {
+                console.log(file)
+                console.log("/api/formations/"+rowID)
+                uploadFile(file, "/api/formations/"+rowID);
             }
         })
     }
-}
+
+    fileSelector.ondragover = (e) => {
+        e.preventdefault();
+        [...e.dataTransfer.items].forEach((item) => {
+            if (typeValidation(item.type)) {
+                fileSelector.classList.add(".file-selector-drag-over")
+            }
+        })
+    }
+
+    fileSelector.ondragleave = () => {
+        fileSelector.classList.remove("file-selector-drag-over")
+    }
+
+    fileSelector.ondrop = (e) => {
+        e.preventdefault();
+        fileSelector.classList.remove("file-selector-drag-over")
+        if (e.dataTransfer.items) {
+            [...e.dataTransfer.items].forEach((item) => {
+                if (item.kind === "file") {
+                    const file = item.getAsFile();
+                    if (typeValidation(file.type)) {
+                        uploadFile(file, "/api/formations/image")
+                    }
+                }
+            })
+        } else {
+            [...e.dataTransfer.files].forEach((file) => {
+                if (typeValidation(file.type)) {
+                    uploadFile(file, "/api/formations/image")
+                }
+            })
+        }
+    }
+})
+
+
+
 
 function typeValidation(type) {
     var splitType = type.split('/')[0]
