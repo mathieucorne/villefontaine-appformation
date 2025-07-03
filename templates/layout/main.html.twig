@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block body_attributes %}
+    style="background-color: var(--background-color);"
+{% endblock %}
+
 {% block body %}
     {% include 'includes/_header.html.twig' %}
     <main class="scrollable-main" {% block main_attributes %}{% endblock %}>
