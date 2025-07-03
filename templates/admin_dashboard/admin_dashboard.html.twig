@@ -60,9 +60,5 @@
     </div>
     <button type="submit" class="btn admin-btn utility-color">Appliquer</button>
 </form>
-{% for message in app.flashes('success') %}
-    <div class="alert alert-success">
-        {{ message }}
-    </div>
 {% endfor %}
 {% endblock %}
