@@ -1,7 +1,3 @@
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('app.css') }}">
-{% endblock %}
-
 {% set afficher = false %}
     {% if 'ROLE_ADMIN' in app.user.roles %}
         {% set afficher = true %}
