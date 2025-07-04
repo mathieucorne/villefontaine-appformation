@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sessions{% endblock %}
+
+{% block body %}
+        <h1>Sessions</h1>
+    <table class="table-panel">
+        <thead>
+            <tr>
+                <th scope="col"><input type="checkbox"></th>
+                <th scope="col">Titre</th>
+                <th scope="col">Début</th>
+                <th scope="col">Fin</th>
+                <th scope="col">Participants Max</th>
+                <th scope="col">Services</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <form id="formation-create-form" action="{{ path('app_formation_create') }}" method="post">
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-file-circle-plus"></i>
+                    </td>
+                    <td>
+                        <input class="table-textfield" type="text" name="titre" required>
+                    </td>
+                    <td>
+                        <input type="date" name="heure_debut" required>
+                    </td>
+                    <td>
+                        <input type="date" name="heure_fin" required>
+                    </td>
+                    <td>
+                        <input type="number">
+                    </td>
+                    <td>
+                        <i class="fa-solid fa-plus"></i>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="estVisible">
+                    </td>
+                    <td>
+                        <button type="submit" class="table-btn utility-button" title="création">
+                        <i class="fa-solid fa-check"></i>
+                        </button>
+                    </td>
+                </tr>
+            </form>
+        </tbody>
+    </table>
+{% endblock %}
