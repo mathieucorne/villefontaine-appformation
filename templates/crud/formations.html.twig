@@ -4,7 +4,6 @@
 
 {% block main %}
 <h1>Formations</h1>
-<form id="formation-create-form" action="{{ path('app_formation_create') }}" method="post">
 <table class="table-panel">
     <thead>
         <tr>
@@ -18,34 +17,36 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                <i class="fa-solid fa-file-circle-plus"></i>
-            </td>
-            <td>
-                <input class="table-textfield" type="text" name="titre" required>
-            </td>
-            <td>
-                <input class="table-textfield" type="text" name="description" required>
-            </td>
-            <td>
-                <i class="fa-solid fa-plus"></i>
-            </td>
-            <td>
-                <div class="file-selector-container" data-row-id=0>
+        <form id="formation-create-form" action="{{ path('app_formation_create') }}" method="post">
+            <tr>
+                <td>
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                </td>
+                <td>
+                    <input class="table-textfield" type="text" name="titre" required>
+                </td>
+                <td>
+                    <input class="table-textfield" type="text" name="description" required>
+                </td>
+                <td>
                     <i class="fa-solid fa-plus"></i>
-                </div>
-                <input type="file" class="file-selector-input" data-row-id=0 hidden>
-            </td>
-            <td>
-                <input type="checkbox" name="estVisible">
-            </td>
-            <td>
-                <button type="submit" class="table-btn utility-button" title="création">
-                <i class="fa-solid fa-check"></i>
-                </button>
-            </td>
-        </tr>
+                </td>
+                <td>
+                    <div class="file-selector-container" data-row-id=0>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <input type="file" class="file-selector-input" data-row-id=0 hidden>
+                </td>
+                <td>
+                    <input type="checkbox" name="estVisible">
+                </td>
+                <td>
+                    <button type="submit" class="table-btn utility-button" title="création">
+                    <i class="fa-solid fa-check"></i>
+                    </button>
+                </td>
+            </tr>
+        </form>
         {% for formation in formations %}
             {% include 'includes/_row_table.html.twig' with {'formation': formation} %}
 
