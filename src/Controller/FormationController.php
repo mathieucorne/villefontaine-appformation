@@ -16,7 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final class FormationController extends AbstractController
 {
-    #[Route('/formation', name: 'app_formation')]
+    #[Route('/formation', name: 'app_crud_formation')]
     public function index(FormationRepository $formationRepository, ParametreRepository $parametreRepository): Response
     {
         $backgroundColor = $parametreRepository
@@ -40,7 +40,7 @@ final class FormationController extends AbstractController
 
         if (!$titre) {
          $this->addFlash('error', 'Le titre est obligatoire.');
-            return $this->redirectToRoute('app_formation');
+            return $this->redirectToRoute('app_crud_formation');
         }
 
         $formation = new Formation();
@@ -51,7 +51,7 @@ final class FormationController extends AbstractController
         $em->persist($formation);
         $em->flush();
 
-        return $this->redirectToRoute('app_formation');
+        return $this->redirectToRoute('app_crud_formation');
     }
 
     #[Route('formation/{id}/supprimer', name:'app_formation_delete', methods:['POST'])]
@@ -60,7 +60,7 @@ final class FormationController extends AbstractController
         $em-> remove($formation);
         $em->flush();
 
-        return $this->redirectToRoute('app_formation');
+        return $this->redirectToRoute('app_crud_formation');
 
     }
 
