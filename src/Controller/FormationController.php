@@ -31,7 +31,7 @@ final class FormationController extends AbstractController
             'formations' => $formation
         ]);
     }
-    #[Route('/formation/creer', name: 'app_formation_creer', methods: ['POST'])]
+    #[Route('/formation/creer', name: 'app_formation_create', methods: ['POST'])]
     public function creer(Request $request, EntityManagerInterface $em): RedirectResponse
     {
         $titre = $request->request->get('titre');
@@ -54,7 +54,7 @@ final class FormationController extends AbstractController
         return $this->redirectToRoute('app_formation');
     }
 
-    #[Route('formation/{id}/suprimmer', name:'app_formation_delete', methods:['POST'])]
+    #[Route('formation/{id}/supprimer', name:'app_formation_delete', methods:['POST'])]
     public function suprimmerFormation(Formation $formation, EntityManagerInterface $em) : RedirectResponse 
     {
         $em-> remove($formation);
