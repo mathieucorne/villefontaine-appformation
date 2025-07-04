@@ -11,9 +11,9 @@
     </div>
     <p>Cette section est consacrée a la gestion des utilisateurs, des services et des salles.</p>
     <div class="admin-settings-buttons settings-btn "> 
-        <a href="/admin/utilisateur"> <button class="btn admin-btn settings-button utility-color"> Gérer les utilisateurs </button> </a>
-        <a href="/admin/#"> <button class="btn admin-btn utility-color"> Gérer les services </button> </a>
-        <a href="/admin/#"> <button class="btn admin-btn utility-color"> Gérer les salles </button> </a>
+        <a href="/admin/utilisateur"> <button class="btn admin-btn settings-button utility-button"> Gérer les utilisateurs </button> </a>
+        <a href="/admin/#"> <button class="btn admin-btn utility-button"> Gérer les services </button> </a>
+        <a href="/admin/#"> <button class="btn admin-btn utility-button"> Gérer les salles </button> </a>
     </div>
 </div>
 <div class="settings-container">
@@ -23,9 +23,9 @@
     </div>
     <p>Cette section est consacrée à la gestion des formations et de leurs sessions.</p>
     <div class="admin-settings-buttons responsiv settings-btn"> 
-        <a href="/formation"> <button class="btn responsiv admin-btn utility-color"> Gérer les formations </button> </a>
-        <a href="/admin/#"> <button class="btn responsiv admin-btn utility-color"> Gérer les sessions de formations </button> </a>
-        <a href="/admin/#"> <button class="btn responsiv admin-btn utility-color"> Gérer les compétences </button> </a>
+        <a href="/formation"> <button class="btn responsiv admin-btn utility-button"> Gérer les formations </button> </a>
+        <a href="/admin/#"> <button class="btn responsiv admin-btn utility-button"> Gérer les sessions de formations </button> </a>
+        <a href="/admin/#"> <button class="btn responsiv admin-btn utility-button"> Gérer les compétences </button> </a>
     </div>
 </div>
 <form method="post" action="{{ path('admin_update_colors') }}">
@@ -58,6 +58,6 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn admin-btn utility-color">Appliquer</button>
+    <button type="submit" class="btn admin-btn utility-button">Appliquer</button>
 </form>
 {% endblock %}

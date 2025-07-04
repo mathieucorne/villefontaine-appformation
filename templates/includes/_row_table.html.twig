@@ -43,10 +43,13 @@
             {% endif %}
         </td>
         <td>
-            <i class="fa-solid fa-pen"></i>
+            <button type="submit" class="table-btn utility-button" title="Modifier" onclick="">
+                <i class="fa-solid fa-pen"></i>
+            </button>
             <form method="post" action="{{ path('app_formation_delete', {'id':formation.id}) }}" style="display:inline">
-            <button type="submit" class="utility-button" title="supression" onclick="return confirm('Etes-vous sûr de vouloir supprimer cette formation ?';)">
-            <i class="fa-solid fa-xmark"></i>
+            <button type="submit" class="table-btn warning-button" title="Supprimer" onclick="return confirm('Etes-vous sûr de vouloir supprimer cette formation ?';)">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
             </form>
         </td>
     </tr>

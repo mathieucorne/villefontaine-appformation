@@ -13,7 +13,7 @@
             <th scope="col">Description</th>
             <th scope="col">Compétences</th>
             <th scope="col">Image</th>
-            <th scope="col">Visibilité</th>
+            <th scope="col"><i class="fa-solid fa-eye"></i></th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -41,13 +41,14 @@
                 <input type="checkbox" name="estVisible">
             </td>
             <td>
-                <button type="submit" class="utility-button" title="création">
+                <button type="submit" class="table-btn utility-button" title="création">
                 <i class="fa-solid fa-check"></i>
                 </button>
             </td>
         </tr>
         {% for formation in formations %}
             {% include 'includes/_row_table.html.twig' with {'formation': formation} %}
+
         {% endfor %}
     </tbody>
 </table>

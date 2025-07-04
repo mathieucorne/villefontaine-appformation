@@ -19,25 +19,25 @@ body {
     background-color: var(--login-background-color);
 }
 
-.utility-color {
+.utility-button {
     color: white;
     background-color: var(--utility-button);
     border: solid 1px var(--utility-button);
 }
 
-.utility-color:hover {
+.utility-button:hover {
     color: var(--utility-button);
     background-color: white;
 }
 
-.warning-color {
+.warning-button {
     color: white;
-    background-color: var(--warning-color);
-    border: solid 1px var(--warning-color);
+    background-color: var(--warning-button);
+    border: solid 1px var(--warning-button);
 }
 
-.warning-color:hover {
-    color: var(--warning-color);
+.warning-button:hover {
+    color: var(--warning-button);
     background-color: white;
 }
 
@@ -351,12 +351,18 @@ GESTION
     width: 100%;
 }
 
-.table-panel td {
-    margin: 0.5rem 0;
+.table-btn {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 5px;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
 }
 
-.table-panel i {
-    font-size: 1.5rem;
+.table-panel td {
+    margin: 0.5rem 0;
 }
 
 .table-textfield {
