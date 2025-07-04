@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class CRUDSallesController extends AbstractController
 {
-    #[Route('salles', name: 'app_crud_salles')]
+    #[Route('salles', name: 'app_crud_salle')]
     public function index(): Response
     {
         return $this->render('crud/salles.html.twig');
