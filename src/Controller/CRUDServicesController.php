@@ -11,8 +11,6 @@ final class CRUDServicesController extends AbstractController
     #[Route('/services', name: 'app_crud_service')]
     public function index(): Response
     {
-        return $this->render('crud/services.html.twig', [
-            'controller_name' => 'CRUDServicesController',
-        ]);
+        return $this->render('crud/services.html.twig');
     }
 }
