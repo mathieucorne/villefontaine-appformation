@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %} - AppFormation - Mairie de Villefontaine</title>
         <link rel="icon" href="/img/logo.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             :root {
                 --primary-color:{{ parametres.getParametre("primary_color", "#A2BF3D") }} ;
@@ -20,9 +19,9 @@
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
+        <script src="https://kit.fontawesome.com/0ffe4ff22f.js"></script>
     </head>
     <body {% block body_attributes %}{% endblock %}>
         {% block body %}{% endblock %}
-        
     </body>
 </html>
