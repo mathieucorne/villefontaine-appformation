@@ -13,7 +13,7 @@
     <div class="admin-settings-buttons settings-btn "> 
         <a href={{ path('app_crud_utilisateur') }}> <button class="btn admin-btn settings-button utility-button"> Gérer les utilisateurs </button> </a>
         <a href={{ path('app_crud_service') }}> <button class="btn admin-btn utility-button"> Gérer les services </button> </a>
-        <a href="/admin/#"> <button class="btn admin-btn utility-button"> Gérer les salles </button> </a>
+        <a href={{ path('app_crud_salle') }}> <button class="btn admin-btn utility-button"> Gérer les salles </button> </a>
     </div>
 </div>
 <div class="settings-container">
@@ -25,7 +25,7 @@
     <div class="admin-settings-buttons responsiv settings-btn"> 
         <a href={{ path('app_crud_formation') }}> <button class="btn responsiv admin-btn utility-button"> Gérer les formations </button> </a>
         <a href={{ path('app_crud_session') }}> <button class="btn responsiv admin-btn utility-button"> Gérer les sessions de formations </button> </a>
-        <a href="/admin/#"> <button class="btn responsiv admin-btn utility-button"> Gérer les compétences </button> </a>
+        <a href={{ path('app_crud_competence') }}> <button class="btn responsiv admin-btn utility-button"> Gérer les compétences </button> </a>
     </div>
 </div>
 <form method="post" action="{{ path('admin_update_colors') }}">
