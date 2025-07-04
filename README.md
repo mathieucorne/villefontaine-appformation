@@ -67,13 +67,13 @@ Un controlleur représente la classe chargée de manipuler la donnée en elle m�
 
 [DOC - Créer un controller](https://symfony.com/doc/current/controller.html#a-basic-controller)
 
-#### Actions Symfony
+### Actions Symfony
 
-##### Gérer les rôles
+#### Gérer les rôles
 
 [DOC - Gérer les rôles](https://nouvelle-techno.fr/articles/live-coding-gerer-les-roles-utilisateur-avec-symfony-4#:~:text=Nous%20attribuons%20les%20r%C3%B4les)
 
-##### Créer un service
+#### Créer un service
 
 Afin de créer un service, il faut créer un fichier PHP dans le dossier `src/Service/` sous le format `<Nom>Interface.php`. Ce fichier doit contenir une unique classe PHP, celle du service que vous souhaitez créer, ainsi que l'ensemble des méthodes nécessaires pour répondre à vos besoins.
 
