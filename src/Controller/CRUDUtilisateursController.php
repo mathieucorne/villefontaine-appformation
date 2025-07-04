@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class CRUDUtilisateursController extends AbstractController
 {
-    #[Route('/utilisateurs', name: 'app_admin_utilisateur')]
+    #[Route('/utilisateurs', name: 'app_crud_utilisateur')]
     public function utilisateurs(UtilisateurRepository $utilisateurRepository): Response
     {
         $utilisateurs = $utilisateurRepository->findAll();
