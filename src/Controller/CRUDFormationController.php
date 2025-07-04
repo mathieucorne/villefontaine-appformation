@@ -14,9 +14,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
 
-final class FormationController extends AbstractController
+final class CRUDFormationsController extends AbstractController
 {
-    #[Route('/formation', name: 'app_crud_formation')]
+    #[Route('/formations', name: 'app_crud_formation')]
     public function index(FormationRepository $formationRepository, ParametreRepository $parametreRepository): Response
     {
         $backgroundColor = $parametreRepository
@@ -26,12 +26,12 @@ final class FormationController extends AbstractController
         $formation = $formationRepository
             ->findAll();
 
-        return $this->render('formation/formation.html.twig', [
+        return $this->render('crud/formations.html.twig', [
             'background_color' => $backgroundColor,
             'formations' => $formation
         ]);
     }
-    #[Route('/formation/creer', name: 'app_formation_create', methods: ['POST'])]
+    #[Route('/formations/creer', name: 'app_formation_create', methods: ['POST'])]
     public function creer(Request $request, EntityManagerInterface $em): RedirectResponse
     {
         $titre = $request->request->get('titre');
@@ -54,7 +54,7 @@ final class FormationController extends AbstractController
         return $this->redirectToRoute('app_crud_formation');
     }
 
-    #[Route('formation/{id}/supprimer', name:'app_formation_delete', methods:['POST'])]
+    #[Route('formations/{id}/supprimer', name:'app_formation_delete', methods:['POST'])]
     public function suprimmerFormation(Formation $formation, EntityManagerInterface $em) : RedirectResponse 
     {
         $em-> remove($formation);
