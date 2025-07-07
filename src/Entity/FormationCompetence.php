@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\FormationCompetenceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FormationCompetenceRepository::class)]
+#[ApiResource]
 class FormationCompetence
 {
     #[ORM\Id]
