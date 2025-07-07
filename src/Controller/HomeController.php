@@ -25,10 +25,12 @@ final class HomeController extends AbstractController
             ]);
         }
 
-        $userCompetences = $user->getCompetences()->map(
+        if ($user instanceof Utilisateur) {
+            $userCompetences = $user->getCompetences()->map(
             fn($uc) => $uc->getCompetence()->getId()
-        )->toArray();
-
+            )->toArray();
+        }
+        
         $backgroundColor = $parametreRepository
             ->findOneBy(['nom' => 'background_color'])
             ?->getValeur() ?? '#ffffff';
