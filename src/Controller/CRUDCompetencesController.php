@@ -11,6 +11,6 @@ final class CRUDCompetencesController extends AbstractController
     #[Route('/competences', name: 'app_crud_competence')]
     public function index(): Response
     {
-        return $this->render('crud/competence.html.twig');
+        return $this->render('crud/competences.html.twig');
     }
 }
