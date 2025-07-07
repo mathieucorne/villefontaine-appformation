@@ -110,7 +110,7 @@ header {
     position: fixed;
     top:0;
     box-sizing: border-box;
-    background-color: white;
+    background-color: var(--background-color);
     border-bottom: solid 1px var(--primary-color);
     z-index: 1000;
 }
@@ -192,7 +192,7 @@ footer {
     width: 100%;
     height: var(--footer-height);
     border-top: solid 1px var(--primary-color);
-    background-color: white;
+    background-color: var(--background-color);
     z-index: 1000;
 }
 
