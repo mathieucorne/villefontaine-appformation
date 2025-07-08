@@ -115,6 +115,39 @@ twig:
 
 ### API
 
+#### Symfony avec API Platform
+Pour configurer l'API pour les entités, il suffit d'annoter la classe (au dessus) de `#[ApiResource]`.
+
+A partir de là, si cette annotation est ajoutée pour chaque entité, elles seront toutes disponibles à l'adresse `/api`, la page de test API Platform.
+
+Cependant, il est possible de remarquer que certains attributs sont en doublon, comme "nb_places_max", et cela est normal, alors qu'en base de données, il n'y a qu'un seul attribut "nb_places_max"
+
+En fait, Doctrine détecte non seulement la variable PHP qui est "nb_places_max" (si en snake_case) que les getters/setters, qui eux sont en camelCase étant donné qu'ils représentent des noms de méthodes, ce qui fait que l'API renverra à la fois "nb_places_max" et "nbPlacesMax", avec les mêmes valeurs. 
+
+Pour régler cette erreur, il faut modifier la variable PHP en la passant en camelCase mais l'annotant de `#[ORM\Column(name: "nb_places_max"]` pour que la sérialisation se fasse. Ainsi, aucune migration n'est nécessaire. Les requêtes seront automatiquement faîtes avec "nb_places_max" avec la variable PHP `nbPlacesMax` qui respectent la convention en camelCase.
+
+Enfin, ils restent à régler quels sont les attributs renvoyées en lecture et quels sont ceux nécessaires en écriture.
+
+Pour cela, il faut utiliser les Groupes en modifiant l'annotation `#[ApiResource]` en :
+```
+#[ApiResource(
+    normalizationContext: ['groups' => ['competence:read']],
+    denormalizationContext: ['groups' => ['competence:write']]
+)]
+```
+Il suffit d'annoter les variables en fonction de ce que l'on souhaite rendre disponible en lecture et en écriture. Les ID auto-générés et les attributs de relations OneToMany (les tableaux) doivent être accessibles en lecture seulement. En revanche, les autres attributs, y compris les attributs ManyToOne, doivent être accessibles à la fois en lecture et écriture : 
+```
+    #[Groups(['competence:read'])]
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[Groups(['competence:read', 'competence:write'])]
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
+```
+
 #### Outlook et Teams
 [DOC - Créer un événement Outlook](https://learn.microsoft.com/fr-fr/graph/api/calendar-post-events?view=graph-rest-1.0&tabs=http#response)
 
