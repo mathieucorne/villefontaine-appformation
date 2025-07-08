@@ -7,28 +7,36 @@ use App\Repository\CompetenceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CompetenceRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['competence:read']],
+    denormalizationContext: ['groups' => ['competence:write']]
+)]
 class Competence
 {
+    #[Groups(['competence:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups(['competence:read', 'competence:write'])]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
     /**
      * @var Collection<int, UtilisateurCompetence>
      */
+    #[Groups(['competence:read', 'competence:write'])]
     #[ORM\OneToMany(targetEntity: UtilisateurCompetence::class, mappedBy: 'competence', orphanRemoval: true)]
     private Collection $utilisateurs;
 
     /**
      * @var Collection<int, FormationCompetence>
      */
+    #[Groups(['competence:read', 'competence:write'])]
     #[ORM\OneToMany(targetEntity: FormationCompetence::class, mappedBy: 'competence', orphanRemoval: true)]
     private Collection $formations;
 
