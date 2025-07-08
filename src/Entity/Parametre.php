@@ -6,22 +6,30 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ParametreRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ParametreRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['parametre:read']],
+    denormalizationContext: ['groups' => ['parametre:write']]
+)]
 class Parametre
 {
+    #[Groups(['parametre:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups(['parametre:read', 'parametre:write'])]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
+    #[Groups(['parametre:read', 'parametre:write'])]
     #[ORM\Column(length: 255)]
     private ?string $valeur = null;
 
+    #[Groups(['parametre:read', 'parametre:write'])]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $commentaires = null;
 
