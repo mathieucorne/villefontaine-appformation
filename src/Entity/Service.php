@@ -7,31 +7,40 @@ use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['service:read']],
+    denormalizationContext: ['groups' => ['service:write']]
+)]
 class Service
 {
+    #[Groups(['service:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups(['service:read', 'service:write'])]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
+    #[Groups(['service:read', 'service:write'])]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
 
     /**
      * @var Collection<int, Utilisateur>
      */
+    #[Groups(['service:read'])]
     #[ORM\OneToMany(targetEntity: Utilisateur::class, mappedBy: 'service', orphanRemoval: true)]
     private Collection $utilisateurs;
 
     /**
      * @var Collection<int, SessionService>
      */
+    #[Groups(['service:read'])]
     #[ORM\OneToMany(targetEntity: SessionService::class, mappedBy: 'service', orphanRemoval: true)]
     private Collection $sessions;
 
