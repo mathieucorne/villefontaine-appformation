@@ -8,37 +8,48 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: FormationRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['formation:read']],
+    denormalizationContext: ['groups' => ['formation:write']]
+)]
 class Formation
 {
+    #[Groups(['formation:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups(['formation:read', 'formation:write'])]
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
+    #[Groups(['formation:read', 'formation:write'])]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+    #[Groups(['formation:read', 'formation:write'])]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageURL = null;
 
+    #[Groups(['formation:read', 'formation:write'])]
     #[ORM\Column]
     private ?bool $estVisible = null;
 
     /**
      * @var Collection<int, Session>
      */
+    #[Groups(['formation:read'])]
     #[ORM\OneToMany(targetEntity: Session::class, mappedBy: 'formation', orphanRemoval: true)]
     private Collection $sessions;
 
     /**
      * @var Collection<int, FormationCompetence>
      */
+    #[Groups(['formation:read'])]
     #[ORM\OneToMany(targetEntity: FormationCompetence::class, mappedBy: 'formation', orphanRemoval: true)]
     private Collection $competences;
 
