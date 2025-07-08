@@ -8,28 +8,37 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SalleRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['salle:read']],
+    denormalizationContext: ['groups' => ['salle:write']]
+)]
 class Salle
 {
+    #[Groups(['salle:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups(['salle:read', 'salle:write'])]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
+    #[Groups(['salle:read', 'salle:write'])]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $batiment = null;
 
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $nb_places_max = null;
+    #[Groups(['salle:read', 'salle:write'])]
+    #[ORM\Column(name: "nb_places_max", type: Types::SMALLINT)]
+    private ?int $nbPlacesMax = null;
 
     /**
      * @var Collection<int, Session>
      */
+    #[Groups(['salle:read'])]
     #[ORM\OneToMany(targetEntity: Session::class, mappedBy: 'salle')]
     private Collection $sessions;
 
@@ -69,12 +78,12 @@ class Salle
 
     public function getNbPlacesMax(): ?int
     {
-        return $this->nb_places_max;
+        return $this->nbPlacesMax;
     }
 
-    public function setNbPlacesMax(int $nb_places_max): static
+    public function setNbPlacesMax(int $nbPlacesMax): static
     {
-        $this->nb_places_max = $nb_places_max;
+        $this->nbPlacesMax = $nbPlacesMax;
 
         return $this;
     }
