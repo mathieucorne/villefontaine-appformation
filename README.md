@@ -148,6 +148,8 @@ Il suffit d'annoter les variables en fonction de ce que l'on souhaite rendre dis
     private ?string $nom = null;
 ```
 
+[DOC - Configuration de l'API pour les entités](https://symfony.com/doc/current/the-fast-track/fr/26-api.html)
+
 #### Outlook et Teams
 [DOC - Créer un événement Outlook](https://learn.microsoft.com/fr-fr/graph/api/calendar-post-events?view=graph-rest-1.0&tabs=http#response)
 
