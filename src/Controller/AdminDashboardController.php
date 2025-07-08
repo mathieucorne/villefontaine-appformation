@@ -21,7 +21,7 @@ final class AdminDashboardController extends AbstractController
         return $this->render('admin_dashboard/admin_dashboard.html.twig', [
         ]);
     }
-#[Route('/admin/update-colors', name: 'admin_update_colors', methods: ['POST'])]
+#[Route('/admin/update-colors', name: 'app_admin_update_colors', methods: ['POST'])]
 public function updateColors(
     Request $request,
     ParametreRepository $parametreRepository,
