@@ -8,35 +8,47 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SessionRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['session:read']],
+    denormalizationContext: ['groups' => ['session:write']]
+)]
 class Session
 {
+    #[Groups(['session:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
+    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column]
     private ?\DateTime $heure_debut = null;
 
+    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column]
     private ?\DateTime $heure_fin = null;
 
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $nb_participants_max = null;
+    #[Groups(['session:read', 'session:write'])]
+    #[ORM\Column(name: "nb_participants_max", type: Types::SMALLINT)]
+    private ?int $nbParticipantsMax = null;
 
+    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
     private ?int $statut_session = null;
 
+    #[Groups(['session:read'])]
     #[ORM\ManyToOne(inversedBy: 'sessions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Formation $formation = null;
 
+    #[Groups(['session:read'])]
     #[ORM\ManyToOne(inversedBy: 'sessions')]
     private ?Salle $salle = null;
 
@@ -101,12 +113,12 @@ class Session
 
     public function getNbParticipantsMax(): ?int
     {
-        return $this->nb_participants_max;
+        return $this->nbParticipantsMax;
     }
 
-    public function setNbParticipantsMax(int $nb_participants_max): static
+    public function setNbParticipantsMax(int $nbParticipantsMax): static
     {
-        $this->nb_participants_max = $nb_participants_max;
+        $this->nbParticipantsMax = $nbParticipantsMax;
 
         return $this;
     }
