@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Formation;
+use App\Entity\Service;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -24,6 +25,19 @@ class FormationRepository extends ServiceEntityRepository
             ->where('f.estVisible=true')
             ->andWhere('c.id IN (:ids)')
             ->setParameter('ids', $competenceIds)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findFormationsDisponiblesPourService(Service $service): array {
+        return $this -> createQueryBuilder('f')
+            ->distinct()
+            ->innerJoin('f.sessions', 's')
+            ->innerJoin('s.sessionServices', 'ss')
+            ->andWhere('f.estVisible = true')
+            ->andWhere('ss.service = :service')
+            ->andWhere('s.nbParticipantsMax IS NULL OR SIZE(s.participations) < s.nbParticipantsMax')
+            ->setParameter('service', $service)
             ->getQuery()
             ->getResult();
     }
