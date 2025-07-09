@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\FormationRepository;
-use App\Repository\ParametreRepository;
 use App\Repository\UtilisateurRepository;
 use App\Entity\Utilisateur;
 
@@ -14,7 +13,7 @@ use App\Entity\Utilisateur;
 final class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(FormationRepository $formationRepository, ParametreRepository $parametreRepository): Response
+    public function index(FormationRepository $formationRepository): Response
     {
 
         $user = $this->getUser();
