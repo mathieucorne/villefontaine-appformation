@@ -31,14 +31,10 @@ final class HomeController extends AbstractController
             )->toArray();
         }
         
-        $backgroundColor = $parametreRepository
-            ->findOneBy(['nom' => 'background_color'])
-            ?->getValeur() ?? '#ffffff';
 
         $formations = $formationRepository->findUserCompetence($userCompetences);
 
         return $this->render('home/home.html.twig', [
-            'background_color' => $backgroundColor,
             'formations' => $formations,
         ]);
     }
