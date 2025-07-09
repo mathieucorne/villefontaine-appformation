@@ -28,12 +28,12 @@ class Session
     private ?string $titre = null;
 
     #[Groups(['session:read', 'session:write'])]
-    #[ORM\Column]
-    private ?\DateTime $heure_debut = null;
+    #[ORM\Column(name: "heure_debut")]
+    private ?\DateTime $heureDebut = null;
 
     #[Groups(['session:read', 'session:write'])]
-    #[ORM\Column]
-    private ?\DateTime $heure_fin = null;
+    #[ORM\Column(name: "heure_fin")]
+    private ?\DateTime $heureFin = null;
 
     #[Groups(['session:read', 'session:write'])]
     #[ORM\Column(name: "nb_participants_max", type: Types::SMALLINT)]
@@ -62,12 +62,12 @@ class Session
      * @var Collection<int, SessionService>
      */
     #[ORM\OneToMany(targetEntity: SessionService::class, mappedBy: 'session', orphanRemoval: true)]
-    private Collection $services;
+    private Collection $sessionServices;
 
     public function __construct()
     {
         $this->participations = new ArrayCollection();
-        $this->services = new ArrayCollection();
+        $this->sessionServices = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,24 +89,24 @@ class Session
 
     public function getHeureDebut(): ?\DateTime
     {
-        return $this->heure_debut;
+        return $this->heureDebut;
     }
 
-    public function setHeureDebut(\DateTime $heure_debut): static
+    public function setHeureDebut(\DateTime $heureDebut): static
     {
-        $this->heure_debut = $heure_debut;
+        $this->heureDebut = $heureDebut;
 
         return $this;
     }
 
     public function getHeureFin(): ?\DateTime
     {
-        return $this->heure_fin;
+        return $this->heureFin;
     }
 
-    public function setHeureFin(\DateTime $heure_fin): static
+    public function setHeureFin(\DateTime $heureFin): static
     {
-        $this->heure_fin = $heure_fin;
+        $this->heureFin = $heureFin;
 
         return $this;
     }
@@ -192,15 +192,15 @@ class Session
     /**
      * @return Collection<int, SessionService>
      */
-    public function getServices(): Collection
+    public function getSessionServices(): Collection
     {
-        return $this->services;
+        return $this->sessionServices;
     }
 
     public function addService(SessionService $service): static
     {
-        if (!$this->services->contains($service)) {
-            $this->services->add($service);
+        if (!$this->sessionServices->contains($service)) {
+            $this->sessionServices->add($service);
             $service->setSession($this);
         }
 
@@ -209,7 +209,7 @@ class Session
 
     public function removeService(SessionService $service): static
     {
-        if ($this->services->removeElement($service)) {
+        if ($this->sessionServices->removeElement($service)) {
             // set the owning side to null (unless already changed)
             if ($service->getSession() === $this) {
                 $service->setSession(null);
