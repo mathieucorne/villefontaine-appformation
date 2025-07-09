@@ -5,23 +5,29 @@
 {% block main %}
 <div class="bienvenue">
     {% if app.user %}
-        <h1>Bienvenue {{ app.user.prenom}}</h1>
+        <h1>Bienvenue {{ app.user.prenom }}</h1>
     {% else %}
         <h1>Bienvenue Invité</h1>
         <h2 class="reprendre">Connectez vous pour voir vos formations</h2>
     {% endif %}
 </div>
-
+<h2>Formations disponibles</h2>
 <div class="formations">
-    {% for formation in formations %}
-         <h2>{{ formation.titre }}</h2>
+    {% for formation in formationsDisponibles %}
+         <h3>{{ formation.titre }}</h3>
             <div class="truncate">
                 {{ formation.description }}
             </div>
-        
+            <ul>
+                {% for session in formation.sessions %}
+                    <li>
+                        {{ session.heureDebut|date('d/m/Y') }} - {{ session.heureFin|date('d/m/Y') }}
+                    </li>
+                {% endfor %}
+            </ul>
     {% endfor %}
 
-    {% if formations is empty  %}
+    {% if formationsDisponibles is empty %}
         <h2>Aucune formation disponible.</h2>
     {% endif %}
 </div>

@@ -2,39 +2,32 @@
 
 namespace App\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Repository\FormationRepository;
-use App\Repository\UtilisateurRepository;
 use App\Entity\Utilisateur;
-
+use App\Repository\FormationRepository;
+use App\Repository\ParticipationRepository;
 
 final class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(FormationRepository $formationRepository): Response
+    public function index(
+        FormationRepository $formationRepository,
+        ParticipationRepository $participationRepository
+    ): Response
     {
+        /** @var Utilisateur $utilisateur */
+        $utilisateur = $this->getUser();
+        $service = $utilisateur->getService();
 
-        $user = $this->getUser();
-
-        if (!$user){
-            return $this->render('home/home.html.twig',[
-                'formations'=>[]
-            ]);
-        }
-
-        if ($user instanceof Utilisateur) {
-            $userCompetences = $user->getCompetences()->map(
-            fn($uc) => $uc->getCompetence()->getId()
-            )->toArray();
-        }
-        
-
-        $formations = $formationRepository->findUserCompetence($userCompetences);
+        $formationsDisponibles = $formationRepository->findFormationsDisponiblesPourService($service, $utilisateur);
+        $participations = $participationRepository->findParticipationsUtilisateur($utilisateur);
 
         return $this->render('home/home.html.twig', [
-            'formations' => $formations,
+            'formationsDisponibles' => $formationsDisponibles,
+            'participations' => $participations
         ]);
     }
 }
