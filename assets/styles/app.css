@@ -339,47 +339,6 @@ ACCOUNT PAGE
 
 /*
 ---------------------------------------------- 
-GESTION
----------------------------------------------- 
-*/
-
-
-.table-panel {
-    background-color: #eee;
-    padding: 2rem;
-    border-radius: 15px;
-    width: 100%;
-}
-
-.table-btn {
-    display: block;
-    text-align: center;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 5px;
-    white-space: nowrap;
-    transition: all 0.3s ease-in-out;
-}
-
-.table-panel td {
-    margin: 0.5rem 0;
-}
-
-.table-textfield {
-    width: 100%;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-}
-
-.file-selector-container {
-    border-radius: 5px;
-    background-color: white;
-    padding: 1rem 3rem;
-}
-
-/*
----------------------------------------------- 
 MEDIA QUERIES
 ---------------------------------------------- 
 */
