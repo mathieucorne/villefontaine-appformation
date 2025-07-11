@@ -290,6 +290,14 @@ Une fois la base de données supprimée, il faut utiliser les commandes pour cr�
 
 [Résoudre l'erreur TOOL3](https://stackoverflow.com/questions/17947255/error-in-dropping-a-database-in-mysql-cant-rmdir-oro-errno-41)
 
+#### TOOL4
+
+Au moment de l'édition d'une ligne dans une page CRUD EasyAdmin d'une entité, et si la méthode configureFields dans le controlleur associé à été utilisé avec un CollectionField avec comme objectif de gérer directement les relations, l'erreur TOOL4 peut survenir.
+
+![EasyAdmin - Object of class App\Entity\<X> could not be converted to string](./doc_AppFormation/erreur_TOOL/erreur_TOOL4.png)
+
+**Pour résoudre l'erreur TOOL4**, il faut créer justement cette méthode __toString() dans l'entité correspondant à l'attribut de relation sous forme de Collection qui utilise le CollectionField, celle indiquée dans l'erreur, ce qui permettra à EasyAdmin d'afficher les valeurs en question pour représenter l'entité dans les pages CRUD.
+
 ## Sécurité 
 
 ### Système de hashage 
