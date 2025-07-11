@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Formation;
 use App\Entity\Service;
+use App\Entity\Utilisateur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,18 +18,6 @@ class FormationRepository extends ServiceEntityRepository
         parent::__construct($registry, Formation::class);
     }
 
-    public function findUserCompetence(array $competenceIds): array {
-        return $this -> createQueryBuilder('f')
-            ->distinct()
-            ->innerJoin('f.competences','fc')
-            ->innerJoin('fc.competence', 'c')
-            ->where('f.estVisible=true')
-            ->andWhere('c.id IN (:ids)')
-            ->setParameter('ids', $competenceIds)
-            ->getQuery()
-            ->getResult();
-    }
-
     public function findFormationsDisponiblesPourService(Service $service): array {
         return $this -> createQueryBuilder('f')
             ->distinct()
@@ -38,6 +27,16 @@ class FormationRepository extends ServiceEntityRepository
             ->andWhere('ss.service = :service')
             ->andWhere('s.nbParticipantsMax IS NULL OR SIZE(s.participations) < s.nbParticipantsMax')
             ->setParameter('service', $service)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findMesFormations(Utilisateur $utilisateur): array {
+        return $this -> createQueryBuilder('f')
+            ->distinct()
+            ->innerJoin('f.sessions', 's')
+            ->innerJoin('s.participations', 'p')
+            ->andWhere('f.estVisible = true')
             ->getQuery()
             ->getResult();
     }

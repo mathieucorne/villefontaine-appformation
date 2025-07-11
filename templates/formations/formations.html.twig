@@ -1,7 +1,55 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout/main.html.twig' %}
 
 {% block title %}Mes Formations{% endblock %}
 
-{% block body %}
+{% block main %}
+<h2>Formations disponibles</h2>
+<div>
+    {% for formation in formationsDisponibles %}
+        <h3>{{ formation.titre }}</h3>
+            <div class="truncate">
+                {{ formation.description }}
+            </div>
+            <ul>
+                {% for session in formation.sessions %}
+                    <li>
+                        {% if session.heureDebut|date('d/m/Y') == session.heureFin|date('d/m/Y')  %}
+                            De {{ session.heureDebut|date('H:i:s') }} à {{ session.heureFin|date('H:i:s') }} le {{ session.heureDebut|date('d/m/Y') }}
+                        {% else %}
+                            De {{ session.heureDebut|date('H:i:s') }} à {{ session.heureFin|date('H:i:s') }} du {{ session.heureDebut|date('d/m/Y') }} à {{ session.heureFin|date('d/m/Y') }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+    {% endfor %}
+</div>
 
+{% if formationsDisponibles is empty %}
+    <p>Aucune formation disponible.</p>
+{% endif %}
+
+<h2>Mes Formations</h2>
+<div>
+    {% for formation in mesFormations %}
+        <h3>{{ formation.titre }}</h3>
+            <div class="truncate">
+                {{ formation.description }}
+            </div>
+            <ul>
+                {% for session in formation.sessions %}
+                    <li>
+                        {% if session.heureDebut|date('d/m/Y') == session.heureFin|date('d/m/Y')  %}
+                            De {{ session.heureDebut|date('H:i:s') }} à {{ session.heureFin|date('H:i:s') }} le {{ session.heureDebut|date('d/m/Y') }}
+                        {% else %}
+                            De {{ session.heureDebut|date('H:i:s') }} à {{ session.heureFin|date('H:i:s') }} du {{ session.heureDebut|date('d/m/Y') }} à {{ session.heureFin|date('d/m/Y') }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+    {% endfor %}
+
+    {% if mesFormations is empty %}
+        <p>Pas d'inscription</p>
+    {% endif %}
+</div>
 {% endblock %}
