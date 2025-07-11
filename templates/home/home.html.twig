@@ -18,13 +18,6 @@
             <div class="truncate">
                 {{ formation.description }}
             </div>
-            <ul>
-                {% for session in formation.sessions %}
-                    <li>
-                        {{ session.heureDebut|date('d/m/Y') }} - {{ session.heureFin|date('d/m/Y') }}
-                    </li>
-                {% endfor %}
-            </ul>
     {% endfor %}
 
     {% if formationsDisponibles is empty %}
