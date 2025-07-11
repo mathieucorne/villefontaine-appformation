@@ -425,8 +425,6 @@ MEDIA QUERIES
 
 /* ---------------------------------------------- */
 .truncate {
-    width: 80%;
-    margin: auto;
     font-weight: 200; /* Utilise 300, 400, etc. – 250 n’est pas standard */
     
     display: -webkit-box;
@@ -439,17 +437,6 @@ MEDIA QUERIES
     /* Facultatif : pour éviter des effets visuels bizarres */
     word-break: break-word;
 
-}
-
-.formations {
-    width:  100%;
-    height: 50px;
-}
-
-.formations h2 {
-    text-align: left;
-    margin-top: 100px;
-    margin-left: 150px;
 }
 
 /*
