@@ -243,6 +243,16 @@ Au moment du chargement d'une page dans le navigateur, l'erreur DEP5 peut surven
 
 **Pour résoudre l'erreur DEP5**, il faut appuyer sur le bouton `Start` en face de MySQL dans le Control Panel de XAMPP.
 
+#### DEP6
+
+Au moment de la création ou de la modification d'un élément d'une entité dans EasyAdmin, l'erreur DEP6 peut survenir en raison d'une erreur de configuration du fichier php.ini.
+
+Cette erreur est liée à une mauvaise configuration du fichier php.ini.
+
+![Symfony - Unable to guess the MIME type as no guessers are available](./doc_AppFormation/erreur_DEP/erreur_DEP6.png)
+
+**Pour résoudre l'erreur DEP6**, il faut décommenter la ligne `;extension=fileinfo`.
+
 ### Erreurs concernant les outils de développement (TOOL)
 
 Lors du lancement de phpMyAdmin via XAMPP (localhost), l'erreur TOOL1 peut survenir. 
