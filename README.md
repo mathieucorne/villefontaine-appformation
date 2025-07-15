@@ -298,6 +298,28 @@ Au moment de l'édition d'une ligne dans une page CRUD EasyAdmin d'une entité, 
 
 **Pour résoudre l'erreur TOOL4**, il faut créer justement cette méthode __toString() dans l'entité correspondant à l'attribut de relation sous forme de Collection qui utilise le CollectionField, celle indiquée dans l'erreur, ce qui permettra à EasyAdmin d'afficher les valeurs en question pour représenter l'entité dans les pages CRUD.
 
+#### TOOL5
+
+Au moment du lancement de MySQL dans XAMPP, l'erreur TOOL5 peut survenir en raison de fichiers de logs corrompus.
+
+![XAMPP - Error: MySQL shutdown unexpectedly](./doc_AppFormation/erreur_TOOL/erreur_TOOL5.png)
+
+**Pour résoudre l'erreur TOOL5**, il faut commencer par supprimer les fichiers de logs corrompus, identifiés par le format aria_log_*.
+
+![Etape 1 - Effacer les fichiers de logs corrompus](./doc_AppFormation/erreur_TOOL/erreur_TOOL5_step1.png)
+
+
+Ensuite, il faut vérifier les tables ARIA de la BDD pour résoudre les potentielles erreurs.
+
+```
+C:\xampp\mysql\bin>aria_chk -r C:\xampp\mysql\data\mysql\*.MAI
+C:\xampp\mysql\bin>aria_chk -r -o C:\xampp\mysql\data\mysql\*.MAI
+```
+
+Enfin, il devrait être possible de relancer le serveur Apache et MySQL dans XAMPP.
+
+[Résoudre l'erreur TOOL5](https://www.youtube.com/watch?v=FvTYkET3Pfc)
+
 ## Sécurité 
 
 ### Système de hashage 
