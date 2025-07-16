@@ -58,4 +58,9 @@ class SessionService
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getSession()->__toString().", ".$this->getService()->__toString();
+    }
 }
