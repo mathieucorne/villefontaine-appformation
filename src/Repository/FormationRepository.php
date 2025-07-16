@@ -22,7 +22,7 @@ class FormationRepository extends ServiceEntityRepository
         return $this -> createQueryBuilder('f')
             ->distinct()
             ->innerJoin('f.sessions', 's')
-            ->innerJoin('s.sessionServices', 'ss')
+            ->innerJoin('s.services', 'ss')
             ->andWhere('f.estVisible = true')
             ->andWhere('ss.service = :service')
             ->andWhere('s.nbParticipantsMax IS NULL OR SIZE(s.participations) < s.nbParticipantsMax')
