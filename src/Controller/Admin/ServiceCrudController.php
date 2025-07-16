@@ -4,9 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Service;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ServiceCrudController extends AbstractCrudController
@@ -21,7 +19,7 @@ class ServiceCrudController extends AbstractCrudController
         return [
             TextField::new('nom'),
             TextField::new('email'),
-            CollectionField::new('sessions')
+            AssociationField::new('sessions')
         ];
     }
 }
