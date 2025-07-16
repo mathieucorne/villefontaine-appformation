@@ -4,11 +4,10 @@ namespace App\Controller\Admin;
 
 use App\Entity\Salle;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 
 class SalleCrudController extends AbstractCrudController
 {
@@ -23,7 +22,7 @@ class SalleCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextEditorField::new('batiment'),
             IntegerField::new('nbPlacesMax'),
-            CollectionField::new('sessions')
+            AssociationField::new('sessions')
         ];
     }
 }
