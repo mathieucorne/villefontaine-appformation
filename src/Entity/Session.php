@@ -62,12 +62,12 @@ class Session
      * @var Collection<int, SessionService>
      */
     #[ORM\OneToMany(targetEntity: SessionService::class, mappedBy: 'session', orphanRemoval: true)]
-    private Collection $sessionServices;
+    private Collection $services;
 
     public function __construct()
     {
         $this->participations = new ArrayCollection();
-        $this->sessionServices = new ArrayCollection();
+        $this->services = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -192,15 +192,15 @@ class Session
     /**
      * @return Collection<int, SessionService>
      */
-    public function getSessionServices(): Collection
+    public function getServices(): Collection
     {
-        return $this->sessionServices;
+        return $this->services;
     }
 
     public function addService(SessionService $service): static
     {
-        if (!$this->sessionServices->contains($service)) {
-            $this->sessionServices->add($service);
+        if (!$this->services->contains($service)) {
+            $this->services->add($service);
             $service->setSession($this);
         }
 
@@ -209,7 +209,7 @@ class Session
 
     public function removeService(SessionService $service): static
     {
-        if ($this->sessionServices->removeElement($service)) {
+        if ($this->services->removeElement($service)) {
             // set the owning side to null (unless already changed)
             if ($service->getSession() === $this) {
                 $service->setSession(null);
@@ -217,5 +217,10 @@ class Session
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitre()."(".$this->getHeureDebut()->format("H:i:s d-m-Y").", ".$this->getHeureFin()->format("H:i:s d-m-Y").")";
     }
 }
