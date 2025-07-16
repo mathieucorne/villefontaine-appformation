@@ -4,10 +4,11 @@ namespace App\Controller\Admin;
 
 use App\Entity\Salle;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+
 
 class SalleCrudController extends AbstractCrudController
 {
@@ -19,10 +20,11 @@ class SalleCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
-            TextEditorField::new('batiment'),
+            TextField::new('batiment'),
             IntegerField::new('nbPlacesMax'),
-            AssociationField::new('sessions')
+            CollectionField::new('sessions')
         ];
     }
 }
