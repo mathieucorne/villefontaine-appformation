@@ -20,6 +20,7 @@ class FormationCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            IdField::new('id')->hideOnForm(),
             TextField::new('titre'),
             TextEditorField::new('description'),
             ImageField::new('image_url')
