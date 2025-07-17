@@ -51,5 +51,45 @@
     {% if mesFormations is empty %}
         <p>Pas d'inscription</p>
     {% endif %}
+    <div id="calendar-holder"></div>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const calendarEl = document.getElementById('calendar-holder');
+
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            defaultView: 'dayGridMonth',
+            editable: true,
+            locale: 'fr',
+            firstDay: 1,
+            eventSources: [
+                {
+                    url: '/fc-load-events',
+                    method: 'POST',
+                    extraParams: {
+                        filters: JSON.stringify({})
+                    },
+                    failure: () => {
+                        // alert('There was an error while fetching FullCalendar!');
+                    },
+                },
+            ],
+            eventTimeFormat: { // like '14:30:00'
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            },
+            headerToolbar: {
+                start: 'prev,next today',
+                center: 'title',
+                end: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            timeZone: 'UTC',
+            });
+
+            calendar.render();
+        });
+    </script>
 </div>
 {% endblock %}
