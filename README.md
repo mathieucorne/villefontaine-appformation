@@ -155,13 +155,12 @@ Il suffit d'annoter les variables en fonction de ce que l'on souhaite rendre dis
 
 [DOC - Créer une réunion](https://learn.microsoft.com/en-us/graph/api/application-post-onlinemeetings?view=graph-rest-1.0&tabs=http)
 
-
 [DOC - Créer et envoyer un mail](https://learn.microsoft.com/fr-fr/graph/api/user-sendmail?view=graph-rest-1.0&tabs=http)
 
 ### FullCalendar
 
-[DOC - Calendrier WebComponent](https://fullcalendar.io/docs/web-component)
-[DOC - Calendrier à la semaine](https://fullcalendar.io/docs/business-hours)
+[CalendarBundle](https://github.com/tattali/CalendarBundle?tab=readme-ov-file#1-download-calendarbundle-using-composer)
+[DOC - FullCalendar](https://fullcalendar.io/docs/)
 
 ---
 
