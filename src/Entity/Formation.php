@@ -176,4 +176,19 @@ class Formation
     {
         return $this->getTitre();
     }
+
+    public function getNbSessions(): int {
+        return count($this->sessions);
+    }
+
+    public function getNbSessionsNonPleines(): int {
+        $sessionsNonPleines = array();
+        foreach($this->sessions as $session) {
+            if(!$session->estComplet()) {
+                array_push($sessionsNonPleines, $session);
+            }
+        }
+
+        return count($sessionsNonPleines);
+    }
 }
