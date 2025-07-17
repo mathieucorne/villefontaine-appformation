@@ -4,7 +4,12 @@
 
 {% block main %}
     <a href={{ path('app_formations') }}>Mes Formations</a>
-    <h1>{{ session.getTitreComplet() }}</h1>
-    <p>Session du {{ session.heureDebut|format_datetime() }} au {{ session.heureFin|format_datetime() }}</p>
-    <p>{{ session.formation.description|raw }}</p>
+    {% if session.formation.estVisible %}
+        <h1>{{ session.getTitreComplet() }}</h1>
+        <p>Session du {{ session.heureDebut|format_datetime() }} au {{ session.heureFin|format_datetime() }}</p>
+        <p>{{ session.formation.description|raw }}</p>
+    {% else %}
+        <h1>Session invalide</h1>
+        <a href={{ path('app_formations') }}>Cette session n'est pas accessible pour votre profil - Retourner à la page Mes formations</a>
+    {% endif %}
 {% endblock %}
