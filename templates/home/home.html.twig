@@ -4,12 +4,7 @@
 
 {% block main %}
 <div class="bienvenue">
-    {% if app.user %}
-        <h1>Bienvenue {{ app.user.prenom }}</h1>
-    {% else %}
-        <h1>Bienvenue Invité</h1>
-        <h2 class="reprendre">Connectez vous pour voir vos formations</h2>
-    {% endif %}
+    <h1>Bienvenue {{ app.user.prenom }}</h1>
 </div>
 <h2>Formations disponibles</h2>
 <div class="formations">
