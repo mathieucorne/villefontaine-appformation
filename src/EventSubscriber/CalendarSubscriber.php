@@ -2,12 +2,23 @@
 
 namespace App\EventSubscriber;
 
+use App\Repository\SessionRepository;
 use CalendarBundle\Entity\Event;
 use CalendarBundle\Event\SetDataEvent;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class CalendarSubscriber implements EventSubscriberInterface
 {
+    private SessionRepository $sessionRepository;
+    private Security $security;
+
+    public function __construct(SessionRepository $sessionRepository, Security $security)
+    {
+        $this->sessionRepository = $sessionRepository;
+        $this->security = $security;
+    }
+
     public static function getSubscribedEvents()
     {
         return [
@@ -20,19 +31,16 @@ class CalendarSubscriber implements EventSubscriberInterface
         $start = $setDataEvent->getStart();
         $end = $setDataEvent->getEnd();
         $filters = $setDataEvent->getFilters();
+        $utilisateur = $this->security->getUser();
 
-        // You may want to make a custom query from your database to fill the calendar
+        $sessions = $this->sessionRepository->findMesSessions($utilisateur);
 
-        $setDataEvent->addEvent(new Event(
-            'Event 1',
-            new \DateTime('Tuesday this week'),
-            new \DateTime('Wednesdays this week')
-        ));
-
-        // If the end date is null or not defined, it creates a all day event
-        $setDataEvent->addEvent(new Event(
-            'All day event',
-            new \DateTime('Friday this week')
-        ));
+        foreach ($sessions as $session) {
+            $setDataEvent->addEvent(new Event(
+                $session->getTitre(),
+                $session->getHeureDebut(),
+                $session->getHeureFin()
+            ));
+        }
     }
 }
