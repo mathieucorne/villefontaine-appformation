@@ -46,7 +46,7 @@ class CalendarSubscriber implements EventSubscriberInterface
                 'id' => $session->getId()
             ]);
             $setDataEvent->addEvent(new Event(
-                $session->getTitre(),
+                $session->getTitreComplet(),
                 $session->getHeureDebut(),
                 $session->getHeureFin(),
                 null,

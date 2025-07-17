@@ -4,10 +4,7 @@
 
 {% block main %}
     <a href={{ path('app_formations') }}>Mes Formations</a>
-    <h1>{{ session.formation }}</h1>
-    {% if session.titre %}
-        <h2>Session - {{ session.titre }}</h2>
-    {% endif %}
+    <h1>{{ session.getTitreComplet() }}</h1>
     <p>Session du {{ session.heureDebut|format_datetime() }} au {{ session.heureFin|format_datetime() }}</p>
     <p>{{ session.formation.description|raw }}</p>
 {% endblock %}
