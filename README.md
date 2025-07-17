@@ -108,7 +108,7 @@ twig:
         parametres: '@App\Service\ParametreInterface'
 ```
 
-##### Créer un flux Turbo Stream (WebSocket)
+### Créer un flux Turbo Stream (WebSocket)
 
 [Turbo](https://ux.symfony.com/turbo)
 [DOC - Turbo](https://symfony.com/bundles/ux-turbo/current/index.html)
@@ -161,6 +161,9 @@ Il suffit d'annoter les variables en fonction de ce que l'on souhaite rendre dis
 
 [CalendarBundle](https://github.com/tattali/CalendarBundle?tab=readme-ov-file#1-download-calendarbundle-using-composer)
 [DOC - FullCalendar](https://fullcalendar.io/docs/)
+
+### EasyAdmin
+[DOC - Créer un backOffice avec EasyAdmin](https://www.youtube.com/watch?v=0zLZ_LnS1Lg)
 
 ---
 
