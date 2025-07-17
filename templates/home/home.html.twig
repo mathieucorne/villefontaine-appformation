@@ -11,7 +11,7 @@
     {% for formation in formationsDisponibles %}
          <h3>{{ formation.titre }}</h3>
             <div class="truncate">
-                {{ formation.description }}
+                <p>{{ session.formation.description|raw }}</p>
             </div>
     {% endfor %}
 
