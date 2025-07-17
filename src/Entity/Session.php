@@ -230,4 +230,16 @@ class Session
         }
         return $this->formation->getTitre();
     }
+
+    public function getNbParticipants(): int {
+        return count($this->participations);
+    }
+
+    public function getNbParticipantsRestants(): int {
+        return $this->getNbParticipantsMax() - $this->getNbParticipants();
+    }
+
+    public function estComplet(): int {
+        return $this->getNbParticipantsRestants() == 0;
+    }
 }
