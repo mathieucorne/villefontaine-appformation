@@ -14,11 +14,9 @@
             }
             
         </style>
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% block stylesheets %}{% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        {% block javascripts %}{% endblock %}
         <script src="https://kit.fontawesome.com/0ffe4ff22f.js"></script>
     </head>
     <body {% block body_attributes %}{% endblock %}>
