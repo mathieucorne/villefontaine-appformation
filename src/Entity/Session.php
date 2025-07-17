@@ -223,4 +223,11 @@ class Session
     {
         return $this->getTitre()."(".$this->getHeureDebut()->format("H:i:s d-m-Y").", ".$this->getHeureFin()->format("H:i:s d-m-Y").")";
     }
+
+    public function getTitreComplet() : string {
+        if($this->titre) {
+            return $this->titre." - ".$this->formation->getTitre();
+        }
+        return $this->formation->getTitre();
+    }
 }
