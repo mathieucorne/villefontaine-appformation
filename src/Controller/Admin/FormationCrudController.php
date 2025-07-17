@@ -24,8 +24,8 @@ class FormationCrudController extends AbstractCrudController
             TextField::new('titre'),
             TextEditorField::new('description'),
             ImageField::new('image_url')
-            ->setUploadDir('public\img\formations')
-            ->setBasePath('public\img\formations')
+            ->setUploadDir('public\storage\formations')
+            ->setBasePath('storage/formations')
             ->setRequired(false),
             BooleanField::new('est_visible')
         ];
