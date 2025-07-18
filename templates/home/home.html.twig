@@ -3,33 +3,34 @@
 {% block title %}Accueil{% endblock %}
 
 {% block main %}
-<div class="bienvenue">
-    <h1>Bienvenue {{ app.user.prenom }}</h1>
-</div>
-<h2>Formations disponibles</h2>
-<div class="formations">
+    <div class="bienvenue">
+        <h1>Bienvenue {{ app.user.prenom }}</h1>
+    </div>
+    <h2>Formations disponibles</h2>
     {% for formation in formationsDisponibles %}
-         <h3>{{ formation.titre }}</h3>
+        <div class="home-formation-container">
+            <h3>{{ formation.titre }}</h3>
             <div class="truncate">
                 {{ formation.description|raw }}
             </div>
             <h3>Sessions</h3>
             <ul>
             {% for session in formation.sessions %}
-                <li class="formation-session">
-                <a href={{ path('app_session', {id: session.id}) }}>{{ session.titre }} - {{ session.getNbParticipantsRestants() }} restantes / {{ session.getNbParticipantsMax() }} places </span>
-                {% if session.id in participationsSessionsId %}
-                    <a href={{ path('app_session_desinscription', {id: session.id}) }} class="btn warning-button">Se désinscrire</a>
-                {% else %}
-                    <a href={{ path('app_session_inscription', {id: session.id}) }} class="btn utility-button">S'inscrire</a>
+                {% if (session.getNbParticipantsRestants() >= 1) or (session.id in participationsSessionsId) %}
+                    <li class="home-formation-session">
+                    <a href={{ path('app_session', {id: session.id}) }}>{{ session.titre }} - {{ session.getNbParticipantsRestants() }} restantes / {{ session.getNbParticipantsMax() }} places </span>
+                    {% if session.id in participationsSessionsId %}
+                        <a href={{ path('app_session_desinscription', {id: session.id}) }} class="btn warning-button">Se désinscrire</a>
+                    {% else %}
+                        <a href={{ path('app_session_inscription', {id: session.id}) }} class="btn utility-button">S'inscrire</a>
+                    {% endif %}
+                    </li>
                 {% endif %}
-                </li>
             {% endfor %}
             </ul>
+        </div>
     {% endfor %}
-
     {% if formationsDisponibles is empty %}
         <p>Aucune formation disponible.</hp>
     {% endif %}
-</div>
 {% endblock %}
