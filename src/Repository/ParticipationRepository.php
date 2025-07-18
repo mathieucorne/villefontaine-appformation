@@ -48,9 +48,9 @@ class ParticipationRepository extends ServiceEntityRepository
     ): bool {
         $participation = $this->findParticipation($utilisateur, $session);
 
-        if ($participation) {
+        if ($participation || $session->getNbParticipantsRestants() < 1) {
             return false;
-        } 
+        }
 
         $newParticipation = new Participation();
         $newParticipation->setUtilisateur($utilisateur);
