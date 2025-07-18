@@ -22,13 +22,15 @@ final class HomeController extends AbstractController
         $utilisateur = $this->getUser();
         $service = $utilisateur->getService();
 
-        $formationsDisponibles = $formationRepository->findFormationsDisponiblesPourService($service, $utilisateur);
+        $formationsDisponibles = $formationRepository->findFormationsDisponiblesPourService($utilisateur, $service);
         $participations = $participationRepository->findParticipationsUtilisateur($utilisateur);
 
         $participationsSessionsId = array_map(
             fn($p) => $p->getSession()->getId(),
             $participations
         );
+
+        
 
         return $this->render('home/home.html.twig', [
             'formationsDisponibles' => $formationsDisponibles,

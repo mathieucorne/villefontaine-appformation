@@ -18,25 +18,20 @@ class FormationRepository extends ServiceEntityRepository
         parent::__construct($registry, Formation::class);
     }
 
-    public function findFormationsDisponiblesPourService(Service $service): array {
+    /**
+     * @return Formation[] Renvoie un tableau d'objets Formation dont au moins une Session est associée à un Service donné, qui inclut les Sessions auxquelles l'Utilisateur participe et les Sessions non pleines auxquelles l'Utilisateur ne participe pas
+     */
+    public function findFormationsDisponiblesPourService(Utilisateur $utilisateur, Service $service): array {
         return $this -> createQueryBuilder('f')
             ->distinct()
             ->innerJoin('f.sessions', 's')
             ->innerJoin('s.services', 'ss')
+            ->leftJoin('s.participations', 'p')
             ->andWhere('f.estVisible = true')
             ->andWhere('ss.service = :service')
-            ->andWhere('s.nbParticipantsMax IS NULL OR SIZE(s.participations) < s.nbParticipantsMax')
+            ->andWhere('s.nbParticipantsMax IS NULL OR SIZE(s.participations) < s.nbParticipantsMax OR p.utilisateur = :utilisateur')
+            ->setParameter('utilisateur', $utilisateur)
             ->setParameter('service', $service)
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function findMesFormations(Utilisateur $utilisateur): array {
-        return $this -> createQueryBuilder('f')
-            ->distinct()
-            ->innerJoin('f.sessions', 's')
-            ->innerJoin('s.participations', 'p')
-            ->andWhere('f.estVisible = true')
             ->getQuery()
             ->getResult();
     }
