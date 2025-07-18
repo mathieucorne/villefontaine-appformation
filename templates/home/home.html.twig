@@ -11,8 +11,21 @@
     {% for formation in formationsDisponibles %}
          <h3>{{ formation.titre }}</h3>
             <div class="truncate">
-                <p>{{ session.formation.description|raw }}</p>
+                {{ formation.description|raw }}
             </div>
+            <h3>Sessions</h3>
+            <ul>
+            {% for session in formation.sessions %}
+                <li class="formation-session">
+                <a href={{ path('app_session', {id: session.id}) }}>{{ session.titre }} - {{ session.getNbParticipantsRestants() }} / {{ session.getNbParticipantsMax() }} places restantes</span>
+                {% if session.id in participationsSessionsId %}
+                    <a href={{ path('app_session_desinscription', {id: session.id}) }} class="btn warning-button">Se désinscrire</a>
+                {% else %}
+                    <a href={{ path('app_session_inscription', {id: session.id}) }} class="btn utility-button">S'inscrire</a>
+                {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
     {% endfor %}
 
     {% if formationsDisponibles is empty %}
