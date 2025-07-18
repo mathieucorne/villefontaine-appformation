@@ -17,7 +17,7 @@
             <ul>
             {% for session in formation.sessions %}
                 <li class="formation-session">
-                <a href={{ path('app_session', {id: session.id}) }}>{{ session.titre }} - {{ session.getNbParticipantsRestants() }} / {{ session.getNbParticipantsMax() }} places restantes</span>
+                <a href={{ path('app_session', {id: session.id}) }}>{{ session.titre }} - {{ session.getNbParticipantsRestants() }} restantes / {{ session.getNbParticipantsMax() }} places </span>
                 {% if session.id in participationsSessionsId %}
                     <a href={{ path('app_session_desinscription', {id: session.id}) }} class="btn warning-button">Se désinscrire</a>
                 {% else %}
