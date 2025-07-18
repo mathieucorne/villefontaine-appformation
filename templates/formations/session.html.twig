@@ -5,7 +5,14 @@
 {% block main %}
     <a href={{ path('app_formations') }}>Mes Formations</a>
     {% if session.formation.estVisible %}
-        <h1>{{ session.getTitreComplet() }}</h1>
+        <div class="session_title_container">
+            <h1>{{ session.getTitreComplet() }}</h1>
+            {% if session.id in participationsSessionsId %}
+                <a href={{ path('app_session_desinscription', {id: session.id}) }} class="btn warning-button">Se désinscrire</a>
+            {% else %}
+                <a href={{ path('app_session_inscription', {id: session.id}) }} class="btn utility-button">S'inscrire</a>
+            {% endif %}
+        </div>
         <p>Session du {{ session.heureDebut|format_datetime() }} au {{ session.heureFin|format_datetime() }}</p>
         <p>{{ session.formation.description|raw }}</p>
     {% else %}

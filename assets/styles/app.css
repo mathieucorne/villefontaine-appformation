@@ -439,6 +439,19 @@ MEDIA QUERIES
 
 }
 
+.formation-session {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.session_title_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /*
 ---------------------------------------------- 
 ADMIN PAGE
