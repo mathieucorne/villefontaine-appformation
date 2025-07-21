@@ -13,7 +13,7 @@
                 <a href={{ path('app_session_inscription', {id: session.id}) }} class="btn utility-button">S'inscrire</a>
             {% endif %}
         </div>
-        <p>Session du {{ session.heureDebut|format_datetime() }} au {{ session.heureFin|format_datetime() }}</p>
+        <p>Session du {{ session.heureDebut|format_datetime() }} au {{ session.heureFin|format_datetime() }} - {{ session.getNbParticipantsRestants() }} restantes / {{ session.getNbParticipantsMax() }} places</p>
         <p>{{ session.formation.description|raw }}</p>
     {% else %}
         <h1>Session invalide</h1>
