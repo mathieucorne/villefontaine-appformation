@@ -191,4 +191,15 @@ class Formation
 
         return count($sessionsNonPleines);
     }
+
+    public function getSessionsVisibles(Utilisateur $utilisateur): array {
+        $sessionsVisibles = array();
+        foreach($this->sessions as $session) {
+            if($session->estVisible($utilisateur)) {
+                array_push($sessionsVisibles, $session);
+            }
+        }
+
+        return $sessionsVisibles;
+    }
 }
