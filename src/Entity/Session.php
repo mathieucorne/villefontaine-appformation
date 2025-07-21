@@ -239,7 +239,31 @@ class Session
         return $this->getNbParticipantsMax() - $this->getNbParticipants();
     }
 
-    public function estComplet(): int {
+    public function estComplet(): bool {
         return $this->getNbParticipantsRestants() == 0;
+    }
+
+    public function estParticipant(Utilisateur $utilisateur) {
+        foreach($this->getParticipations() as $participation) {
+            if ($participation->getUtilisateur() == $utilisateur) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function estVisible(Utilisateur $utilisateur): bool {
+        foreach($this->getServices() as $service) {
+            if ($utilisateur->getService() == $service->getService()) {
+                if (
+                    is_null($this->getNbParticipantsMax())
+                    or (!$this->estComplet())
+                    or ($this->estParticipant($utilisateur))
+                ) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
