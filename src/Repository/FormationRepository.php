@@ -21,7 +21,7 @@ class FormationRepository extends ServiceEntityRepository
     /**
      * @return Formation[] Renvoie un tableau d'objets Formation dont au moins une Session est associée à un Service donné, qui inclut les Sessions auxquelles l'Utilisateur participe et les Sessions non pleines auxquelles l'Utilisateur ne participe pas
      */
-    public function findFormationsDisponiblesPourService(Utilisateur $utilisateur, Service $service): array {
+    public function findFormationsVisibles(Utilisateur $utilisateur, Service $service): array {
         return $this -> createQueryBuilder('f')
             ->distinct()
             ->innerJoin('f.sessions', 's')
