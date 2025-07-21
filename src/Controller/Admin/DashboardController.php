@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Formation;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -13,6 +14,10 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ParametreRepository;
 use App\Entity\Parametre;
+use App\Entity\Salle;
+use App\Entity\Service;
+use App\Entity\Session;
+use App\Entity\Utilisateur;
 
 #[AdminDashboard(routePath: '/admin', routeName: 'app_admin')]
 class DashboardController extends AbstractDashboardController
@@ -53,7 +58,11 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        yield MenuItem::linkToCrud('Formation', 'fas fa-list', Formation::class);
+        yield MenuItem::linkToCrud('Salle', 'fas fa-list', Salle::class);
+        yield MenuItem::linkToCrud('Service', 'fas fa-list', Service::class);
+        yield MenuItem::linkToCrud('Sessions', 'fas fa-list', Session::class);
+        yield MenuItem::linkToCrud('Utilisateur', 'fas fa-list', Utilisateur::class);
     }
 
     #[Route('/admin/update-colors', name: 'app_admin_update_colors', methods: ['POST'])]
