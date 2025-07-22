@@ -17,7 +17,7 @@
             <ul>
             {% for session in formation.getSessionsVisibles(app.user) %}
                 <li class="home-formation-session">
-                <a href={{ path('app_session', {id: session.id}) }}>{{ session.titre }} - {{ session.getNbParticipantsRestants() }} restantes / {{ session.getNbParticipantsMax() }} places </span>
+                <a href={{ path('app_session', {id: session.id}) }}>{{ session.titre }} - {{ session.getNbParticipantsRestants() }} restantes / {{ session.getNbParticipantsMax() }} places - du {{ session.heureDebut|format_datetime() }} au {{ session.heureFin|format_datetime() }} - {{ session.salle }}</span>
                 {% if session.estParticipant(app.user) %}
                     <a href={{ path('app_session_desinscription', {id: session.id}) }} class="btn warning-button">Se désinscrire</a>
                 {% else %}
