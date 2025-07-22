@@ -62,12 +62,14 @@ class Session
      * @var Collection<int, SessionService>
      */
     #[ORM\OneToMany(targetEntity: SessionService::class, mappedBy: 'session', orphanRemoval: true)]
-    private Collection $services;
+    private Collection $sessionServices;
+
+    private array $services = [];
 
     public function __construct()
     {
         $this->participations = new ArrayCollection();
-        $this->services = new ArrayCollection();
+        $this->sessionServices = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -192,27 +194,27 @@ class Session
     /**
      * @return Collection<int, SessionService>
      */
-    public function getServices(): Collection
+    public function getSessionServices(): Collection
     {
-        return $this->services;
+        return $this->sessionServices;
     }
 
-    public function addService(SessionService $service): static
+    public function addSessionService(SessionService $sessionService): static
     {
-        if (!$this->services->contains($service)) {
-            $this->services->add($service);
-            $service->setSession($this);
+        if (!$this->sessionServices->contains($sessionService)) {
+            $this->sessionServices->add($sessionService);
+            $sessionService->setSession($this);
         }
 
         return $this;
     }
 
-    public function removeService(SessionService $service): static
+    public function removeSessionService(SessionService $sessionService): static
     {
-        if ($this->services->removeElement($service)) {
+        if ($this->sessionServices->removeElement($sessionService)) {
             // set the owning side to null (unless already changed)
-            if ($service->getSession() === $this) {
-                $service->setSession(null);
+            if ($sessionService->getSession() === $this) {
+                $sessionService->setSession(null);
             }
         }
 
@@ -253,8 +255,8 @@ class Session
     }
 
     public function estVisible(Utilisateur $utilisateur): bool {
-        foreach($this->getServices() as $service) {
-            if ($utilisateur->getService() == $service->getService()) {
+        foreach($this->getSessionServices() as $sessionService) {
+            if ($utilisateur->getService() == $sessionService->getService()) {
                 if (
                     is_null($this->getNbParticipantsMax())
                     or (!$this->estComplet())

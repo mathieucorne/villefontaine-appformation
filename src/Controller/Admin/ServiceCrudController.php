@@ -21,7 +21,6 @@ class ServiceCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
             TextField::new('email'),
-            AssociationField::new('sessions')
         ];
     }
 }

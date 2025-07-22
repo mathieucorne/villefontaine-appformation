@@ -42,12 +42,12 @@ class Service
      */
     #[Groups(['service:read'])]
     #[ORM\OneToMany(targetEntity: SessionService::class, mappedBy: 'service', orphanRemoval: true)]
-    private Collection $sessions;
+    private Collection $sessionServices;
 
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();
-        $this->sessions = new ArrayCollection();
+        $this->sessionServices = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -112,27 +112,27 @@ class Service
     /**
      * @return Collection<int, SessionService>
      */
-    public function getSessions(): Collection
+    public function getSessionSessions(): Collection
     {
-        return $this->sessions;
+        return $this->sessionServices;
     }
 
-    public function addSession(SessionService $session): static
+    public function addSessionSession(SessionService $sessionService): static
     {
-        if (!$this->sessions->contains($session)) {
-            $this->sessions->add($session);
-            $session->setService($this);
+        if (!$this->sessionServices->contains($sessionService)) {
+            $this->sessionServices->add($sessionService);
+            $sessionService->setService($this);
         }
 
         return $this;
     }
 
-    public function removeSession(SessionService $session): static
+    public function removeSessionSession(SessionService $sessionService): static
     {
-        if ($this->sessions->removeElement($session)) {
+        if ($this->sessionServices->removeElement($sessionService)) {
             // set the owning side to null (unless already changed)
-            if ($session->getService() === $this) {
-                $session->setService(null);
+            if ($sessionService->getService() === $this) {
+                $sessionService->setService(null);
             }
         }
 
