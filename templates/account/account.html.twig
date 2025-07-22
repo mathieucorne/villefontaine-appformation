@@ -17,12 +17,12 @@
     <p>
         L’adresse mail associée à votre compte est : <b>{{ app.user.email }}</b>
         <br>
-    {% if 'ROLE_ADMIN' in app.user.roles %}
+    {% if is_granted('ROLE_ADMIN') %}
         Le statut du compte est <b>administrateur.</b>
-    {% elseif 'ROLE_USER' in app.user.roles %}
-        Le statut du compte est <b>utilisateur.</b>
+    {% elseif is_granted('ROLE_RH') %}
+        Le statut du compte est <b>gestionnaire de formations.</b>
     {% else %}
-        Le statut du compte est <b>inconnu</b>
+        Le statut du compte est <b>utilisateur.</b>
     {% endif %}        
     </p>
     <p>Service : <b>{{ app.user.service.nom }}</b></p>
