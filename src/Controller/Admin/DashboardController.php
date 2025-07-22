@@ -22,7 +22,7 @@ use App\Entity\Utilisateur;
 #[AdminDashboard(routePath: '/admin', routeName: 'app_admin')]
 class DashboardController extends AbstractDashboardController
 {
-    #[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('ROLE_RH')]
     public function index(): Response
     {
         return $this->render('admin/admin_dashboard.html.twig', [

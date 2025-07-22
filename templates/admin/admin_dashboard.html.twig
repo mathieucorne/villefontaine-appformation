@@ -4,6 +4,8 @@
 
 
 {% block main %}
+<h1>Administration</h1>
+{% if is_granted('ROLE_ADMIN') %}
 <div class="settings-container">
     <div class="settings-title-container">
         <h2 class="h2 settings-title">Infrastructures et Utilisateurs</h2>
@@ -16,6 +18,7 @@
         <a href={{ path('app_admin_salle_index') }}> <button class="btn admin-btn utility-button"> Gérer les salles </button> </a>
     </div>
 </div>
+{% endif %}
 <div class="settings-container">
     <div class="settings-title-container">
         <h2 class="h2 settings-title">Formations</h2>
@@ -28,6 +31,7 @@
         <a href={{ path('app_admin_competence_index') }}> <button class="btn responsiv admin-btn utility-button"> Gérer les compétences </button> </a>
     </div>
 </div>
+{% if is_granted('ROLE_ADMIN') %}
 <form method="post" action={{ path('app_admin_update_colors') }}>
     <div class="settings-container">
         <div class="settings-title-container">
@@ -60,4 +64,5 @@
         <button type="submit" class="btn admin-btn utility-button">Appliquer</button>
     </div>
 </form>
+{% endif %}
 {% endblock %}
