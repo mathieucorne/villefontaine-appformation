@@ -1,9 +1,11 @@
 <footer>
     <nav id="footer-nav">
         <div id="footer-nav-links">
+            {% if is_granted('ROLE_RH') %}
             <a href={{ path('app_admin') }}>
                 <i class="fa-solid fa-toolbox"></i>
             </a>
+            {% endif %}
             <a href={{ path('app_formations') }}>
                 <i class="fa-solid fa-chalkboard-user"></i>
             </a>

@@ -5,7 +5,7 @@
                 <img id="header-logo" alt="Accueil" src={{ asset('img/logo.png') }}>
             </a>
             <div id="header-nav-links">
-            {% if is_granted('ROLE_ADMIN') %}
+            {% if is_granted('ROLE_RH') %}
                 <a href={{ path('app_admin') }}>Administration</a>
             {% endif %}
                 <a href={{ path('app_formations') }}>Formations</a>
