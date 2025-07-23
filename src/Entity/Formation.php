@@ -199,7 +199,22 @@ class Formation
                 array_push($sessionsVisibles, $session);
             }
         }
-
         return $sessionsVisibles;
+    }
+
+    public function getNbParticipantsMaxTotaux() {
+        $NbParticipantsTotaux = 0;
+        foreach($this->sessions as $session) {
+            $NbParticipantsTotaux = $NbParticipantsTotaux + $session->getNbParticipantsMax();
+        }
+        return $NbParticipantsTotaux;
+    }
+
+    public function getNbParticipantsTotaux() {
+        $NbParticipantsTotaux = 0;
+        foreach($this->sessions as $session) {
+            $NbParticipantsTotaux = $NbParticipantsTotaux + $session->getNbParticipants();
+        }
+        return $NbParticipantsTotaux;
     }
 }
