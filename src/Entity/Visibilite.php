@@ -21,12 +21,12 @@ class Visibilite
     private ?int $id = null;
 
     #[Groups(['visibilite:read', 'visibilite:write'])]
-    #[ORM\ManyToOne(inversedBy: 'services')]
+    #[ORM\ManyToOne(inversedBy: 'visibilites')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Session $session = null;
 
     #[Groups(['visibilite:read', 'visibilite:write'])]
-    #[ORM\ManyToOne(inversedBy: 'sessions')]
+    #[ORM\ManyToOne(inversedBy: 'visibilites')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Service $service = null;
 
