@@ -40,6 +40,9 @@ class Participation
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
     private ?int $type_inscription = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $objectifs = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class Participation
     public function setTypeInscription(?int $type_inscription): static
     {
         $this->type_inscription = $type_inscription;
+
+        return $this;
+    }
+
+    public function getObjectifs(): ?string
+    {
+        return $this->objectifs;
+    }
+
+    public function setObjectifs(string $objectifs): static
+    {
+        $this->objectifs = $objectifs;
 
         return $this;
     }
