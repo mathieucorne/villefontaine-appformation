@@ -25,7 +25,9 @@
                     <a href={{ path('app_session_desinscription', {id: session.id}) }} class="btn warning-button">Se désinscrire</a>
                 {% else %}
                     {% if session.dateLimiteInscription > maintenant %}
-                        <a href={{ path('app_session_inscription', {id: session.id}) }} class="btn utility-button">S'inscrire</a>
+                        <button class="btn utility-button ouvrir-modal-inscription" data-id={{ session.id }} data-bs-toggle="modal" data-bs-target="#objectifsModal">S'inscrire</button>
+                    {% else %}
+                        <span>Terminé</span>
                     {% endif %}
                 {% endif %}
                 </li>

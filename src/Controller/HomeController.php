@@ -21,9 +21,11 @@ final class HomeController extends AbstractController
         $service = $utilisateur->getService();
 
         $formationsDisponibles = $formationRepository->findFormationsVisibles($utilisateur, $service);
+        $maintenant = new \DateTime();
 
         return $this->render('home/home.html.twig', [
-            'formationsDisponibles' => $formationsDisponibles
+            'formationsDisponibles' => $formationsDisponibles,
+            'maintenant' => $maintenant
         ]);
     }
 }
