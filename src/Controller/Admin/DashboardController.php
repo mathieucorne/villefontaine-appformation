@@ -54,7 +54,9 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Dashboard - AppFormation');
+            ->setTitle('Dashboard - AppFormation')
+            ->setFaviconPath('img/logo.png')
+            ->disableDarkMode();
     }
 
     public function configureMenuItems(): iterable
