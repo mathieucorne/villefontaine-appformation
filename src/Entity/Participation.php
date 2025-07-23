@@ -34,14 +34,18 @@ class Participation
 
     #[Groups(['participation:read', 'participation:write'])]
     #[ORM\Column]
-    private ?\DateTime $date_inscription = null;
-
-    #[Groups(['participation:read', 'participation:write'])]
-    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
-    private ?int $type_inscription = null;
+    private ?\DateTime $dateInscription = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $objectifs = null;
+
+    #[ORM\Column]
+    private ?bool $estPresent = null;
+
+    public function __construct()
+    {
+        $this->dateInscription = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -74,24 +78,12 @@ class Participation
 
     public function getDateInscription(): ?\DateTime
     {
-        return $this->date_inscription;
+        return $this->dateInscription;
     }
 
-    public function setDateInscription(\DateTime $date_inscription): static
+    public function setDateInscription(\DateTime $dateInscription): static
     {
-        $this->date_inscription = $date_inscription;
-
-        return $this;
-    }
-
-    public function getTypeInscription(): ?int
-    {
-        return $this->type_inscription;
-    }
-
-    public function setTypeInscription(?int $type_inscription): static
-    {
-        $this->type_inscription = $type_inscription;
+        $this->dateInscription = $dateInscription;
 
         return $this;
     }
@@ -104,6 +96,18 @@ class Participation
     public function setObjectifs(string $objectifs): static
     {
         $this->objectifs = $objectifs;
+
+        return $this;
+    }
+
+    public function isEstPresent(): ?bool
+    {
+        return $this->estPresent;
+    }
+
+    public function setEstPresent(bool $estPresent): static
+    {
+        $this->estPresent = $estPresent;
 
         return $this;
     }

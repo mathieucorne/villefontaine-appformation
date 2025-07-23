@@ -14,6 +14,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ParametreRepository;
 use App\Entity\Parametre;
+use App\Entity\Participation;
 use App\Entity\Salle;
 use App\Entity\Service;
 use App\Entity\Session;
@@ -60,6 +61,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Formation', 'fas fa-list', Formation::class);
         yield MenuItem::linkToCrud('Salle', 'fas fa-list', Salle::class);
+        yield MenuItem::linkToCrud('Participation', 'fas fa-list', Participation::class);
         yield MenuItem::linkToCrud('Service', 'fas fa-list', Service::class);
         yield MenuItem::linkToCrud('Sessions', 'fas fa-list', Session::class);
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-list', Utilisateur::class);
