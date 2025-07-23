@@ -24,12 +24,12 @@ class FormationCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('titre'),
             TextEditorField::new('description'),
+            AssociationField::new('formateur'),
             ImageField::new('image_url')
             ->setUploadDir('public\storage\formations')
             ->setBasePath('storage/formations')
             ->setRequired(false),
             BooleanField::new('estVisible'),
-            AssociationField::new('formateur')
         ];
     }
 }
