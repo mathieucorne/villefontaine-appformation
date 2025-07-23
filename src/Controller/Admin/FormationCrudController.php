@@ -28,7 +28,7 @@ class FormationCrudController extends AbstractCrudController
             ->setUploadDir('public\storage\formations')
             ->setBasePath('storage/formations')
             ->setRequired(false),
-            BooleanField::new('est_visible'),
+            BooleanField::new('estVisible'),
             AssociationField::new('formateur')
         ];
     }
