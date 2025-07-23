@@ -310,6 +310,61 @@ HOME PAGE
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
+.modal {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left:0;
+    top:0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+
+}
+
+.modal-open {
+    display: flex;
+}
+
+#modal-form-inscription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    background-color: var(--background-color);
+    border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+#modal-form-inscription > label {
+    font-size: 1.5rem;
+}
+
+#modal-form-inscription > textarea {
+    display: block;
+    padding: 2rem;
+    margin: 1rem 0;
+}
+
+.modal-buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+#modal-btn-close {
+    margin-right: 1rem;
+}
+
 /*
 ---------------------------------------------- 
 ACCOUNT PAGE
@@ -436,12 +491,6 @@ MEDIA QUERIES
     text-align: center;
     width: 550px;
     font-size: 25px;
-}
-
-.bienvenue h2 {
-    font-weight: lighter;
-    font-size: 35px;
-    width: 540px;
 }
 
 
