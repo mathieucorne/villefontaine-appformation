@@ -71,10 +71,17 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: UtilisateurCompetence::class, mappedBy: 'utilisateur', orphanRemoval: true)]
     private Collection $competences;
 
+    /**
+     * @var Collection<int, Formation>
+     */
+    #[ORM\OneToMany(targetEntity: Formation::class, mappedBy: 'formateur', orphanRemoval: true)]
+    private Collection $formations;
+
     public function __construct()
     {
         $this->participations = new ArrayCollection();
         $this->competences = new ArrayCollection();
+        $this->formations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -244,5 +251,40 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Formation>
+     */
+    public function getFormations(): Collection
+    {
+        return $this->formations;
+    }
+
+    public function addFormation(Formation $formation): static
+    {
+        if (!$this->formations->contains($formation)) {
+            $this->formations->add($formation);
+            $formation->setFormateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(Formation $formation): static
+    {
+        if ($this->formations->removeElement($formation)) {
+            // set the owning side to null (unless already changed)
+            if ($formation->getFormateur() === $this) {
+                $formation->setFormateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getPrenom()." ".$this->getNom();
     }
 }

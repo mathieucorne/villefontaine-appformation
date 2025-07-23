@@ -39,6 +39,11 @@ class Formation
     #[ORM\Column]
     private ?bool $estVisible = null;
 
+    
+    #[ORM\ManyToOne(inversedBy: 'formations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Utilisateur $formateur = null;
+
     /**
      * @var Collection<int, Session>
      */
@@ -108,6 +113,19 @@ class Formation
     public function setEstVisible(bool $estVisible): static
     {
         $this->estVisible = $estVisible;
+
+        return $this;
+    }
+
+    
+    public function getFormateur(): ?Utilisateur
+    {
+        return $this->formateur;
+    }
+
+    public function setFormateur(?Utilisateur $formateur): static
+    {
+        $this->formateur = $formateur;
 
         return $this;
     }
