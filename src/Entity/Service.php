@@ -38,16 +38,16 @@ class Service
     private Collection $utilisateurs;
 
     /**
-     * @var Collection<int, SessionService>
+     * @var Collection<int, Visibilite>
      */
     #[Groups(['service:read'])]
-    #[ORM\OneToMany(targetEntity: SessionService::class, mappedBy: 'service', orphanRemoval: true)]
-    private Collection $sessionServices;
+    #[ORM\OneToMany(targetEntity: Visibilite::class, mappedBy: 'service', orphanRemoval: true)]
+    private Collection $visibilites;
 
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();
-        $this->sessionServices = new ArrayCollection();
+        $this->visibilites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -110,29 +110,29 @@ class Service
     }
 
     /**
-     * @return Collection<int, SessionService>
+     * @return Collection<int, Visibilite>
      */
     public function getSessionSessions(): Collection
     {
-        return $this->sessionServices;
+        return $this->visibilites;
     }
 
-    public function addSessionSession(SessionService $sessionService): static
+    public function addSessionSession(Visibilite $visibilite): static
     {
-        if (!$this->sessionServices->contains($sessionService)) {
-            $this->sessionServices->add($sessionService);
-            $sessionService->setService($this);
+        if (!$this->visibilites->contains($visibilite)) {
+            $this->visibilites->add($visibilite);
+            $visibilite->setService($this);
         }
 
         return $this;
     }
 
-    public function removeSessionSession(SessionService $sessionService): static
+    public function removeSessionSession(Visibilite $visibilite): static
     {
-        if ($this->sessionServices->removeElement($sessionService)) {
+        if ($this->visibilites->removeElement($visibilite)) {
             // set the owning side to null (unless already changed)
-            if ($sessionService->getService() === $this) {
-                $sessionService->setService(null);
+            if ($visibilite->getService() === $this) {
+                $visibilite->setService(null);
             }
         }
 

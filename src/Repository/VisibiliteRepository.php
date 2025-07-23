@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\SessionService;
+use App\Entity\Visibilite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<SessionService>
+ * @extends ServiceEntityRepository<Visibilite>
  */
-class SessionServiceRepository extends ServiceEntityRepository
+class VisibiliteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, SessionService::class);
+        parent::__construct($registry, Visibilite::class);
     }
 
     //    /**
-    //     * @return SessionService[] Returns an array of SessionService objects
+    //     * @return Visibilite[] Returns an array of Visibilite objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class SessionServiceRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?SessionService
+    //    public function findOneBySomeField($value): ?Visibilite
     //    {
     //        return $this->createQueryBuilder('s')
     //            ->andWhere('s.exampleField = :val')

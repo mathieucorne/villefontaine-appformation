@@ -18,6 +18,7 @@ use App\Entity\Participation;
 use App\Entity\Salle;
 use App\Entity\Service;
 use App\Entity\Session;
+use App\Entity\Visibilite;
 use App\Entity\Utilisateur;
 
 #[AdminDashboard(routePath: '/admin', routeName: 'app_admin')]
@@ -59,12 +60,13 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Formation', 'fas fa-list', Formation::class);
-        yield MenuItem::linkToCrud('Salle', 'fas fa-list', Salle::class);
-        yield MenuItem::linkToCrud('Participation', 'fas fa-list', Participation::class);
-        yield MenuItem::linkToCrud('Service', 'fas fa-list', Service::class);
+        yield MenuItem::linkToCrud('Formations', 'fas fa-book', Formation::class);
+        yield MenuItem::linkToCrud('Salles', 'fas fa-map-marker', Salle::class);
+        yield MenuItem::linkToCrud('Participations', 'fas fa-check-square', Participation::class);
+        yield MenuItem::linkToCrud('Services', 'fas fa-id-badge', Service::class);
         yield MenuItem::linkToCrud('Sessions', 'fas fa-list', Session::class);
-        yield MenuItem::linkToCrud('Utilisateur', 'fas fa-list', Utilisateur::class);
+        yield MenuItem::linkToCrud('Visibilités', 'fas fa-eye', Visibilite::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', Utilisateur::class);
     }
 
     #[Route('/admin/update-colors', name: 'app_admin_update_colors', methods: ['POST'])]

@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use App\EasyAdmin\Field\ServiceSelectorField;
 use App\Entity\Session;
-use App\Entity\SessionService;
+use App\Entity\Visibilite;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -52,19 +52,19 @@ class SessionCrudController extends AbstractCrudController
     // }
 
     // public function syncServices(Session $session, EntityManagerInterface $em): void {
-    //     foreach($session->getSessionServices() as $sessionService) {
-    //         $em->remove($sessionService);
+    //     foreach($session->getVisibilites() as $visibilite) {
+    //         $em->remove($visibilite);
     //     }
 
-    //     $session->getSessionServices()->clear();
+    //     $session->getVisibilites()->clear();
 
     //     foreach($session->getServices() as $service) {
-    //         $sessionService = new SessionService();
-    //         $sessionService->setSession($session);
-    //         $sessionService->setService($service);
+    //         $visibilite = new Visibilite();
+    //         $visibilite->setSession($session);
+    //         $visibilite->setService($service);
 
-    //         $em->persist($sessionService);
-    //         $session->getSessionServices()->add($sessionService);
+    //         $em->persist($visibilite);
+    //         $session->getVisibilites()->add($visibilite);
     //     }
     // }
 }

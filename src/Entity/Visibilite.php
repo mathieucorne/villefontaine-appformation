@@ -3,29 +3,29 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\SessionServiceRepository;
+use App\Repository\VisibiliteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-#[ORM\Entity(repositoryClass: SessionServiceRepository::class)]
+#[ORM\Entity(repositoryClass: VisibiliteRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => ['sessionservice:read']],
-    denormalizationContext: ['groups' => ['sessionservice:write']]
+    normalizationContext: ['groups' => ['visibilite:read']],
+    denormalizationContext: ['groups' => ['visibilite:write']]
 )]
-class SessionService
+class Visibilite
 {
-    #[Groups(['sessionservice:read'])]
+    #[Groups(['visibilite:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(['sessionservice:read', 'sessionservice:write'])]
+    #[Groups(['visibilite:read', 'visibilite:write'])]
     #[ORM\ManyToOne(inversedBy: 'services')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Session $session = null;
 
-    #[Groups(['sessionservice:read', 'sessionservice:write'])]
+    #[Groups(['visibilite:read', 'visibilite:write'])]
     #[ORM\ManyToOne(inversedBy: 'sessions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Service $service = null;

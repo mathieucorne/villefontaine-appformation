@@ -25,7 +25,7 @@ class FormationRepository extends ServiceEntityRepository
         return $this -> createQueryBuilder('f')
             ->distinct()
             ->innerJoin('f.sessions', 's')
-            ->innerJoin('s.sessionServices', 'ss')
+            ->innerJoin('s.visibilites', 'ss')
             ->leftJoin('s.participations', 'p')
             ->andWhere('f.estVisible = true')
             ->andWhere('ss.service = :service')

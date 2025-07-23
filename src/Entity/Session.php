@@ -63,15 +63,15 @@ class Session
     private Collection $participations;
 
     /**
-     * @var Collection<int, SessionService>
+     * @var Collection<int, Visibilite>
      */
-    #[ORM\OneToMany(targetEntity: SessionService::class, mappedBy: 'session', orphanRemoval: true)]
-    private Collection $sessionServices;
+    #[ORM\OneToMany(targetEntity: Visibilite::class, mappedBy: 'session', orphanRemoval: true)]
+    private Collection $visibilites;
 
     public function __construct()
     {
         $this->participations = new ArrayCollection();
-        $this->sessionServices = new ArrayCollection();
+        $this->visibilites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -206,38 +206,33 @@ class Session
     }
 
     /**
-     * @return Collection<int, SessionService>
+     * @return Collection<int, Visibilite>
      */
-    public function getSessionServices(): Collection
+    public function getVisibilites(): Collection
     {
-        return $this->sessionServices;
+        return $this->visibilites;
     }
 
-    public function addSessionService(SessionService $sessionService): static
+    public function addVisibilite(Visibilite $visibilite): static
     {
-        if (!$this->sessionServices->contains($sessionService)) {
-            $this->sessionServices->add($sessionService);
-            $sessionService->setSession($this);
+        if (!$this->visibilites->contains($visibilite)) {
+            $this->visibilites->add($visibilite);
+            $visibilite->setSession($this);
         }
 
         return $this;
     }
 
-    public function removeSessionService(SessionService $sessionService): static
+    public function removeVisibilite(Visibilite $visibilite): static
     {
-        if ($this->sessionServices->removeElement($sessionService)) {
+        if ($this->visibilites->removeElement($visibilite)) {
             // set the owning side to null (unless already changed)
-            if ($sessionService->getSession() === $this) {
-                $sessionService->setSession(null);
+            if ($visibilite->getSession() === $this) {
+                $visibilite->setSession(null);
             }
         }
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->getTitre()."(".$this->getHeureDebut()->format("H:i:s d-m-Y").", ".$this->getHeureFin()->format("H:i:s d-m-Y").")";
     }
 
     public function getTitreComplet() : string {
@@ -269,8 +264,8 @@ class Session
     }
 
     public function estVisible(Utilisateur $utilisateur): bool {
-        foreach($this->getSessionServices() as $sessionService) {
-            if ($utilisateur->getService() == $sessionService->getService()) {
+        foreach($this->getVisibilites() as $visibilite) {
+            if ($utilisateur->getService() == $visibilite->getService()) {
                 if (
                     is_null($this->getNbParticipantsMax())
                     or (!$this->estComplet())
@@ -281,5 +276,10 @@ class Session
             }
         }
         return false;
+    }
+
+        public function __toString()
+    {
+        return $this->getTitre()." (".$this->getHeureDebut()->format("H:i:s d-m-Y").", ".$this->getHeureFin()->format("H:i:s d-m-Y").")";
     }
 }
