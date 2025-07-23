@@ -36,6 +36,10 @@ class Session
     private ?\DateTime $heureFin = null;
 
     #[Groups(['session:read', 'session:write'])]
+    #[ORM\Column(name:"date_limite_inscription")]
+    private ?\DateTime $dateLimiteInscription = null;
+
+    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column(name: "nb_participants_max", type: Types::SMALLINT)]
     private ?int $nbParticipantsMax = null;
 
@@ -63,8 +67,6 @@ class Session
      */
     #[ORM\OneToMany(targetEntity: SessionService::class, mappedBy: 'session', orphanRemoval: true)]
     private Collection $sessionServices;
-
-    private array $services = [];
 
     public function __construct()
     {
@@ -109,6 +111,18 @@ class Session
     public function setHeureFin(\DateTime $heureFin): static
     {
         $this->heureFin = $heureFin;
+
+        return $this;
+    }
+
+        public function getDateLimiteInscription(): ?\DateTime
+    {
+        return $this->dateLimiteInscription;
+    }
+
+    public function setDateLimiteInscription(\DateTime $dateLimiteInscription): static
+    {
+        $this->dateLimiteInscription = $dateLimiteInscription;
 
         return $this;
     }
