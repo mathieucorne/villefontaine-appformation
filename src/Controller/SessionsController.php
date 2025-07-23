@@ -7,6 +7,7 @@ use App\Entity\Session;
 use App\Repository\ParticipationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -34,14 +35,19 @@ final class SessionsController extends AbstractController
         ]);
     }
 
-    #[Route('/sessions/{id}/inscription', name: 'app_session_inscription')]
+    #[Route('/sessions/{id}/inscription', name: 'app_session_inscription', methods:['POST'])]
     public function inscrire(
         Session $session,
         Security $security,
-        ParticipationRepository $participationRepository
+        ParticipationRepository $participationRepository,
+        Request $request
     ) {
         $utilisateur = $security->getUser();
-        $participationRepository->inscrireUtilisateur($utilisateur, $session);
+
+        $objectifs = $request->request->get('objectifs');
+        if($objectifs) {
+            $participationRepository->inscrireUtilisateur($utilisateur, $session, $objectifs);
+        }
 
         return $this->redirectToRoute('app_home');
     }

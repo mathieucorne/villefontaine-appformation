@@ -35,7 +35,37 @@
             </ul>
         </div>
     {% endfor %}
+    <div class="modal" id="objectifsModal">
+        <form method="POST" id="modal-form-inscription">
+            <label for="objectifs">Quels sont vos objectifs ?</label>
+            <textarea id="objectifs" name="objectifs" rows="10" cols="100" required>test</textarea>
+            <div class="modal-buttons-container">
+                <button type="button" class="btn warning-button" id="modal-btn-close">Fermer</button>
+                <button type="submit" class="btn utility-button">S'inscrire</button>
+            </div>
+        </form>
+    </div>
     {% if formationsDisponibles is empty %}
         <p>Aucune formation disponible.</hp>
     {% endif %}
+    <script>
+        document.addEventListener('turbo:load', () => {
+            const boutons = document.querySelectorAll('.ouvrir-modal-inscription');
+            const modal = document.querySelector('.modal');
+            const form = document.getElementById('modal-form-inscription');
+            const close_btn = document.getElementById('modal-btn-close');
+            
+            boutons.forEach(bouton => {
+                bouton.addEventListener("click", () => {
+                    const sessionId = bouton.dataset.id;
+                    form.action = `/sessions/${sessionId}/inscription`;
+                    modal.classList.add("modal-open");
+                })
+            })
+
+            close_btn.addEventListener("click", () => {
+                    modal.classList.remove("modal-open");
+                })
+        })
+    </script>
 {% endblock %}

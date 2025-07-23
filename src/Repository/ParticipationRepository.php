@@ -44,7 +44,8 @@ class ParticipationRepository extends ServiceEntityRepository
      */
     public function inscrireUtilisateur(
         Utilisateur $utilisateur, 
-        Session $session
+        Session $session,
+        string $objectifs
     ): bool {
         $participation = $this->findParticipation($utilisateur, $session);
 
@@ -56,6 +57,7 @@ class ParticipationRepository extends ServiceEntityRepository
         $newParticipation->setUtilisateur($utilisateur);
         $newParticipation->setSession($session);
         $newParticipation->setDateInscription(new \DateTime());
+        $newParticipation->setObjectifs($objectifs);
 
         
         $this->getEntityManager()->persist($newParticipation);
