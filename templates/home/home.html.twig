@@ -9,7 +9,7 @@
     <h2>Formations disponibles</h2>
     {% for formation in formationsDisponibles %}
         <div class="home-formation-container">
-            <h3>{{ formation.titre }}</h3>
+            <h3>{{ formation.titre }} - {{ formation.getNbParticipantsMaxTotaux() }} places</h3>
             <div class="truncate">
                 {{ formation.description|raw }}
             </div>
