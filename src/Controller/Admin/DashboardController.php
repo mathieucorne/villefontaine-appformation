@@ -63,12 +63,15 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Formations', 'fas fa-book', Formation::class);
-        yield MenuItem::linkToCrud('Salles', 'fas fa-map-marker', Salle::class);
-        yield MenuItem::linkToCrud('Participations', 'fas fa-check-square', Participation::class);
-        yield MenuItem::linkToCrud('Services', 'fas fa-id-badge', Service::class);
         yield MenuItem::linkToCrud('Sessions', 'fas fa-list', Session::class);
+        yield MenuItem::linkToCrud('Participations', 'fas fa-check-square', Participation::class);
         yield MenuItem::linkToCrud('Visibilités', 'fas fa-eye', Visibilite::class);
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', Utilisateur::class);
+
+        if($this->isGranted('ROLE_ADMIN')) {
+            yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', Utilisateur::class);
+            yield MenuItem::linkToCrud('Services', 'fas fa-id-badge', Service::class);
+            yield MenuItem::linkToCrud('Salles', 'fas fa-map-marker', Salle::class);
+        }
     }
 
     #[Route('/admin/update-colors', name: 'app_admin_update_colors', methods: ['POST'])]
