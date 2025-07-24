@@ -19,7 +19,7 @@ class VisibiliteCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             AssociationField::new('session'),
-            AssociationField::new('service')
+            AssociationField::new('service'),
         ];
     }
 }
