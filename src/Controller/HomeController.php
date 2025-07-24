@@ -16,11 +16,7 @@ final class HomeController extends AbstractController
         FormationRepository $formationRepository,
     ): Response
     {
-        /** @var Utilisateur $utilisateur */
-        $utilisateur = $this->getUser();
-        $service = $utilisateur->getService();
-
-        $formationsDisponibles = $formationRepository->findFormationsVisibles($utilisateur, $service);
+        $formationsDisponibles = $formationRepository->findFormationsVisibles();
         $maintenant = new \DateTime();
 
         return $this->render('home/home.html.twig', [
