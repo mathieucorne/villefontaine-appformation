@@ -1,0 +1,19 @@
+{
+    "name": "Symfony DevContainer",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": ["xdebug.php-debug", "zobo.php-intellisense"],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh"
+            }
+        }
+    },
+    "forwardPorts": [],
+    "initializeCommand": "git -v",
+    "postCreateCommand": "composer install",
+    "remoteUser": "devuser"
+}
