@@ -58,6 +58,7 @@ class ParticipationRepository extends ServiceEntityRepository
         $newParticipation->setSession($session);
         $newParticipation->setDateInscription(new \DateTime());
         $newParticipation->setObjectifs($objectifs);
+        $newParticipation->setEstPresent(false);
 
         
         $this->getEntityManager()->persist($newParticipation);
