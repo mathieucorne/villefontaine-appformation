@@ -340,4 +340,4 @@ Le système par défaut de hashage est bcrypt. Les mots de passes sont chiffrés
 
 Si le hash correspond alors la connexion est autorisée.
 
-Il est possible d' augmenter le "coût" (cost) du hashage ce qui aura pour résusltat d'améliorer la protection du mot de passe en utilisant plus d'énergie en échange. 
+Il est possible d' augmenter le "coût" (cost) du hashage ce qui aura pour résultat d'améliorer la protection du mot de passe en utilisant plus d'énergie en échange. 
