@@ -6,50 +6,64 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
     <script>
         document.addEventListener('turbo:load', () => {
-        const calendarEl = document.getElementById('calendar-holder');
+            const calendarEl = document.getElementById('calendar-holder');
+            if(!calendarEl) return;
+            if (calendarEl.dataset.initialized === '1') return;
 
-        const calendar = new FullCalendar.Calendar(calendarEl, {
-            defaultView: 'dayGridMonth',
-            editable: false,
-            locale: 'fr',
-            weekends: false,
-            firstDay: 1,
-            eventSources: [
-                {
-                    url: '/fc-load-events',
-                    method: 'POST',
-                    extraParams: {
-                        filters: JSON.stringify({})
+            requestAnimationFrame(() => {
+                const calendar = new FullCalendar.Calendar(calendarEl, {
+                    defaultView: 'dayGridMonth',
+                    editable: false,
+                    locale: 'fr',
+                    weekends: false,
+                    firstDay: 1,
+                    eventSources: [
+                        {
+                            url: '/fc-load-events',
+                            method: 'POST',
+                            extraParams: {
+                                filters: JSON.stringify({})
+                            },
+                            failure: () => {
+                                // alert('There was an error while fetching FullCalendar!');
+                            },
+                            color: 'red'
+                        },
+                    ],
+                    eventTimeFormat: { // like '14:30:00'
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: false
                     },
-                    failure: () => {
-                        // alert('There was an error while fetching FullCalendar!');
-                    },
-                    color: 'red'
-                },
-            ],
-            eventTimeFormat: { // like '14:30:00'
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            },
-            eventClick: (info) => {
-                info.jsEvent.preventDefault(); // don't let the browser navigate
+                    eventClick: (info) => {
+                        info.jsEvent.preventDefault(); // don't let the browser navigate
 
-                if (info.event.url) {
-                window.open(info.event.url);
-                }
-            },
-            headerToolbar: {
-                start: 'prev,next today',
-                center: 'title',
-                end: 'dayGridMonth,timeGridWeek,timeGridDay'
-            },
-            timeZone: 'UTC',
+                        if (info.event.url) {
+                        window.open(info.event.url);
+                        }
+                    },
+                    headerToolbar: {
+                        start: 'prev,next today',
+                        center: 'title',
+                        end: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    },
+                    timeZone: 'UTC',
+                });
+
+                calendar.render();
+                calendarEl.dataset.initialized = '1';
             });
-
-            calendar.render();
         });
+            
+        document.addEventListener('turbo:before-render', () => {
+            const calendarEl = document.getElementById('calendar-holder');
+            if (calendarEl) {
+                delete calendarEl.dataset.initialized;
+            }
+        })
+            
+        
     </script>
 {% endblock %}
 
