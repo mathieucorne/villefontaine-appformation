@@ -22,15 +22,15 @@ final class AccountController extends AbstractController
         ParametreRepository $parametreRepository
     ): Response
     {
-        $user = $this -> getUser();
+        /** @var Utilisateur $utilisateur */
+        $utilisateur = $this->getUser();
 
-        if ($user instanceof Utilisateur) {
-            if ($request -> isMethod('POST')){
+        if ($request -> isMethod('POST')){
                 $oldPassword = $request->request->get('_old_password');
                 $newPassword = $request->request->get('_new_password');
                 $confirmPassword = $request->request->get('_confirm_password');
 
-                if (!$passwordHasher->isPasswordValid($user, $oldPassword)) {
+                if (!$passwordHasher->isPasswordValid($utilisateur, $oldPassword)) {
                     $this->addFlash('error', 'L\'ancien mot de passe est incorrect.');
                 }
 
@@ -43,15 +43,14 @@ final class AccountController extends AbstractController
                 }
 
                 else {
-                    $hashedPassword = $passwordHasher->hashPassword($user, $newPassword);
-                    $user->setPassword($hashedPassword);
+                    $hashedPassword = $passwordHasher->hashPassword($utilisateur, $newPassword);
+                    $utilisateur->setPassword($hashedPassword);
                     $entityManager->flush();
 
                     $this->addFlash('success', 'Mot de passe mis à jour avec succès.');
                     return $this->redirectToRoute('app_account');
                 }
             }
-        }
 
         $backgroundColor = $parametreRepository
             ->findOneBy(['nom' => 'background_color'])
