@@ -77,6 +77,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Formation::class, mappedBy: 'formateur', orphanRemoval: true)]
     private Collection $formations;
 
+    private ?string $plainPassword = null;
+
     public function __construct()
     {
         $this->participations = new ArrayCollection();
@@ -285,6 +287,16 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getNomComplet(): string {
         return $this->getPrenom()." ".$this->getNom();
+    }
+
+    public function getPlainPassword(): ?string {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword): static {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
     }
 
     public function __toString()

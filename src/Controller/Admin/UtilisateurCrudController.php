@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Utilisateur;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -18,7 +19,7 @@ class UtilisateurCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
+        $fields = [
             IdField::new('id')->hideOnForm(),
             TextField::new('nomComplet')->hideOnForm(),
             TextField::new('prenom')->hideOnIndex(),
@@ -31,7 +32,30 @@ class UtilisateurCrudController extends AbstractCrudController
                         'Gestionnaire de formations' => 'ROLE_RH',
                         'Administrateur' => 'ROLE_ADMIN'
                     ]
-                )->allowMultipleChoices()
+                )->allowMultipleChoices(),
         ];
+
+        if ($pageName === Crud::PAGE_NEW) {
+            array_push(
+                $fields, 
+                TextField::new('plainPassword', 'Nouveau mot de passe')
+                ->setFormType(PasswordType::class)
+                ->hideOnIndex()
+                ->setRequired(false)
+            );
+        }
+
+        if ($pageName === Crud::PAGE_EDIT) {
+            array_push(
+                $fields, 
+                TextField::new('plainPassword', 'Nouveau mot de passe')
+                ->setFormType(PasswordType::class)
+                ->hideOnIndex()
+                ->setRequired(false)
+                ->setHelp('Modifier pour changer le mot de passe')
+            );
+        }
+
+        return $fields;
     }
 }
