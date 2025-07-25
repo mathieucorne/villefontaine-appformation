@@ -2,10 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\EasyAdmin\Field\ServiceSelectorField;
 use App\Entity\Session;
-use App\Entity\Visibilite;
-use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -33,38 +30,4 @@ class SessionCrudController extends AbstractCrudController
             IntegerField::new('nb_participants_max'),
         ];
     }
-
-    // public function persistEntity(EntityManagerInterface $em, $entityInstance): void {
-    //     if(!$entityInstance instanceof Session) return;
-
-    //     $this->syncServices($entityInstance, $em);
-
-    //     parent::persistEntity($em, $entityInstance);
-    // }
-
-    // public function updateEntity(EntityManagerInterface $em, $entityInstance): void {
-    //     if($entityInstance instanceof Session) return;
-
-    //     $this->syncServices($entityInstance, $em);
-
-    //     parent::updateEntity($em, $entityInstance);
-
-    // }
-
-    // public function syncServices(Session $session, EntityManagerInterface $em): void {
-    //     foreach($session->getVisibilites() as $visibilite) {
-    //         $em->remove($visibilite);
-    //     }
-
-    //     $session->getVisibilites()->clear();
-
-    //     foreach($session->getServices() as $service) {
-    //         $visibilite = new Visibilite();
-    //         $visibilite->setSession($session);
-    //         $visibilite->setService($service);
-
-    //         $em->persist($visibilite);
-    //         $session->getVisibilites()->add($visibilite);
-    //     }
-    // }
 }
