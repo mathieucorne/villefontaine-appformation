@@ -132,19 +132,19 @@ Enfin, ils restent à régler quels sont les attributs renvoyées en lecture et 
 Pour cela, il faut utiliser les Groupes en modifiant l'annotation `#[ApiResource]` en :
 ```
 #[ApiResource(
-    normalizationContext: ['groups' => ['competence:read']],
-    denormalizationContext: ['groups' => ['competence:write']]
+    normalizationContext: ['groups' => ['session:read']],
+    denormalizationContext: ['groups' => ['session:write']]
 )]
 ```
 Il suffit d'annoter les variables en fonction de ce que l'on souhaite rendre disponible en lecture et en écriture. Les ID auto-générés et les attributs de relations OneToMany (les tableaux) doivent être accessibles en lecture seulement. En revanche, les autres attributs, y compris les attributs ManyToOne, doivent être accessibles à la fois en lecture et écriture : 
 ```
-    #[Groups(['competence:read'])]
+    #[Groups(['session:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(['competence:read', 'competence:write'])]
+    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 ```

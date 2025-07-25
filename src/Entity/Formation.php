@@ -51,17 +51,9 @@ class Formation
     #[ORM\OneToMany(targetEntity: Session::class, mappedBy: 'formation', orphanRemoval: true)]
     private Collection $sessions;
 
-    /**
-     * @var Collection<int, FormationCompetence>
-     */
-    #[Groups(['formation:read'])]
-    #[ORM\OneToMany(targetEntity: FormationCompetence::class, mappedBy: 'formation', orphanRemoval: true)]
-    private Collection $competences;
-
     public function __construct()
     {
         $this->sessions = new ArrayCollection();
-        $this->competences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,41 +152,6 @@ class Formation
         return $this;
     }
 
-    /**
-     * @return Collection<int, FormationCompetence>
-     */
-    public function getCompetences(): Collection
-    {
-        return $this->competences;
-    }
-
-    public function addCompetence(FormationCompetence $competence): static
-    {
-        if (!$this->competences->contains($competence)) {
-            $this->competences->add($competence);
-            $competence->setFormation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCompetence(FormationCompetence $competence): static
-    {
-        if ($this->competences->removeElement($competence)) {
-            // set the owning side to null (unless already changed)
-            if ($competence->getFormation() === $this) {
-                $competence->setFormation(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->getTitre();
-    }
-
     public function getNbSessions(): int {
         return count($this->sessions);
     }
@@ -234,5 +191,10 @@ class Formation
             $NbParticipantsTotaux = $NbParticipantsTotaux + $session->getNbParticipants();
         }
         return $NbParticipantsTotaux;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitre();
     }
 }

@@ -65,13 +65,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $participations;
 
     /**
-     * @var Collection<int, UtilisateurCompetence>
-     */
-    #[Groups(['utilisateur:read'])]
-    #[ORM\OneToMany(targetEntity: UtilisateurCompetence::class, mappedBy: 'utilisateur', orphanRemoval: true)]
-    private Collection $competences;
-
-    /**
      * @var Collection<int, Formation>
      */
     #[ORM\OneToMany(targetEntity: Formation::class, mappedBy: 'formateur', orphanRemoval: true)]
@@ -82,7 +75,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->participations = new ArrayCollection();
-        $this->competences = new ArrayCollection();
         $this->formations = new ArrayCollection();
     }
 
@@ -219,36 +211,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($participation->getUtilisateur() === $this) {
                 $participation->setUtilisateur(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, UtilisateurCompetence>
-     */
-    public function getCompetences(): Collection
-    {
-        return $this->competences;
-    }
-
-    public function addCompetence(UtilisateurCompetence $competence): static
-    {
-        if (!$this->competences->contains($competence)) {
-            $this->competences->add($competence);
-            $competence->setUtilisateur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCompetence(UtilisateurCompetence $competence): static
-    {
-        if ($this->competences->removeElement($competence)) {
-            // set the owning side to null (unless already changed)
-            if ($competence->getUtilisateur() === $this) {
-                $competence->setUtilisateur(null);
             }
         }
 
