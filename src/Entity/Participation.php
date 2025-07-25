@@ -1,38 +1,28 @@
 <?php
 
 namespace App\Entity;
-
-use ApiPlatform\Metadata\ApiResource;
+ 
 use App\Repository\ParticipationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ParticipationRepository::class)]
-#[ApiResource(
-    normalizationContext: ['groups' => ['participation:read']],
-    denormalizationContext: ['groups' => ['participation:write']]
-)]
 class Participation
 {
 
-    #[Groups(['participation:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(['participation:read', 'participation:write'])]
     #[ORM\ManyToOne(inversedBy: 'participations')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Utilisateur $utilisateur = null;
 
-    #[Groups(['participation:read', 'participation:write'])]
     #[ORM\ManyToOne(inversedBy: 'participations')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Session $session = null;
 
-    #[Groups(['participation:read', 'participation:write'])]
     #[ORM\Column]
     private ?\DateTime $dateInscription = null;
 

@@ -1,44 +1,33 @@
 <?php
 
 namespace App\Entity;
-
-use ApiPlatform\Metadata\ApiResource;
+ 
 use App\Repository\SalleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SalleRepository::class)]
-#[ApiResource(
-    normalizationContext: ['groups' => ['salle:read']],
-    denormalizationContext: ['groups' => ['salle:write']]
-)]
 class Salle
 {
-    #[Groups(['salle:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(['salle:read', 'salle:write'])]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[Groups(['salle:read', 'salle:write'])]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $batiment = null;
 
-    #[Groups(['salle:read', 'salle:write'])]
     #[ORM\Column(name: "nb_places_max", type: Types::SMALLINT)]
     private ?int $nbPlacesMax = null;
 
     /**
      * @var Collection<int, Session>
      */
-    #[Groups(['salle:read'])]
     #[ORM\OneToMany(targetEntity: Session::class, mappedBy: 'salle')]
     private Collection $sessions;
 

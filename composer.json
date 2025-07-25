@@ -9,8 +9,6 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "api-platform/doctrine-orm": ">=4.1.19",
-        "api-platform/symfony": ">=4.1.19",
         "doctrine/dbal": "^3.10.0",
         "doctrine/doctrine-bundle": "^2.15",
         "doctrine/doctrine-migrations-bundle": "^3.4.2",

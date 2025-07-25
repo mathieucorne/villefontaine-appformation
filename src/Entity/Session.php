@@ -1,58 +1,43 @@
 <?php
 
 namespace App\Entity;
-
-use ApiPlatform\Metadata\ApiResource;
+ 
 use App\Repository\SessionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SessionRepository::class)]
-#[ApiResource(
-    normalizationContext: ['groups' => ['session:read']],
-    denormalizationContext: ['groups' => ['session:write']]
-)]
 class Session
 {
-    #[Groups(['session:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
-    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column(name: "heure_debut")]
     private ?\DateTime $heureDebut = null;
 
-    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column(name: "heure_fin")]
     private ?\DateTime $heureFin = null;
 
-    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column(name:"date_limite_inscription")]
     private ?\DateTime $dateLimiteInscription = null;
 
-    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column(name: "nb_participants_max", type: Types::SMALLINT)]
     private ?int $nbParticipantsMax = null;
 
-    #[Groups(['session:read', 'session:write'])]
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
     private ?int $statut_session = null;
 
-    #[Groups(['session:read'])]
     #[ORM\ManyToOne(inversedBy: 'sessions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Formation $formation = null;
 
-    #[Groups(['session:read'])]
     #[ORM\ManyToOne(inversedBy: 'sessions')]
     private ?Salle $salle = null;
 

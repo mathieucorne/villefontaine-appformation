@@ -1,7 +1,0 @@
-api_platform:
-    title: API - AppFormation
-    version: 1.0.0
-    defaults:
-        stateless: false
-        cache_headers:
-            vary: ['Content-Type', 'Authorization', 'Origin']

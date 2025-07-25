@@ -1,31 +1,22 @@
 <?php
 
 namespace App\Entity;
-
-use ApiPlatform\Metadata\ApiResource;
+ 
 use App\Repository\VisibiliteRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: VisibiliteRepository::class)]
-#[ApiResource(
-    normalizationContext: ['groups' => ['visibilite:read']],
-    denormalizationContext: ['groups' => ['visibilite:write']]
-)]
 class Visibilite
 {
-    #[Groups(['visibilite:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(['visibilite:read', 'visibilite:write'])]
     #[ORM\ManyToOne(inversedBy: 'visibilites')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Session $session = null;
 
-    #[Groups(['visibilite:read', 'visibilite:write'])]
     #[ORM\ManyToOne(inversedBy: 'visibilites')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Service $service = null;
