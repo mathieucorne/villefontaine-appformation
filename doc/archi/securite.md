@@ -1,4 +1,6 @@
-# Sécurité 
+# 🔒 Sécurité 
+
+➡️ [Documentation technique](../doc.md)
 
 ## Système de hashage 
 

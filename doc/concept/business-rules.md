@@ -1,8 +1,8 @@
-# 📘 Règles métiers
-
-Ce document décrit les règles fonctionnelles et métiers qui régissent l'application
+# 🎯 Règles métiers
 
 ➡️ [Documentation technique](../doc.md)
+
+Ce document décrit les règles fonctionnelles et métiers qui régissent l'application
 
 ## 🎓 Sessions de formation
 

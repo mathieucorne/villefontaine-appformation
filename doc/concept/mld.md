@@ -1,4 +1,6 @@
-# 🧩 Modèle logique de données (MLD)
+# 🎯 Modèle logique de données (MLD)
+
+➡️ [Documentation technique](../doc.md)
 
 Voici le MLD de l'application de gestion de sessions de formations
 
