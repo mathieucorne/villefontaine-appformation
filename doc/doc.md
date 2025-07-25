@@ -31,7 +31,7 @@ Cette documentation couvre tous les aspects techniques du projet Symfony : conce
 - [Dépannage et solutions](./errors/errors.md)
 
 ### ⚡ Optimisations de performance
-- [Captures et explications](./perf/optimisation-requete.md)
+- [Exemple réel d'optimisation d'une requête](./perf/optimisation-requete-formations.md)
 
 ### 👤 Documentation utilisateur
 - [Guide utilisateur](./utilisateur/guide-utilisateur.md)
