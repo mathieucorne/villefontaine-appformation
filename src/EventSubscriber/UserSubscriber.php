@@ -29,7 +29,7 @@ class UserSubscriber implements EventSubscriberInterface
         if ($utilisateur->getPlainPassword() && $this->passwordHasher->isPasswordValid($utilisateur, $utilisateur->getPlainPassword())) {
             $hashed = $this->passwordHasher->hashPassword($utilisateur, $utilisateur->getPlainPassword());
             $utilisateur->setPassword($hashed);
-            $utilisateur->setPlainPassword(null);
+            $utilisateur->eraseCredentials();
         }
     }
 }

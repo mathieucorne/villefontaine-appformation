@@ -6,7 +6,6 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\UtilisateurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -166,13 +165,22 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getPlainPassword(): ?string {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword): static {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
     /**
      * @see UserInterface
      */
     public function eraseCredentials(): void
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
     }
 
     public function getService(): ?Service
@@ -249,16 +257,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getNomComplet(): string {
         return $this->getPrenom()." ".$this->getNom();
-    }
-
-    public function getPlainPassword(): ?string {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword(?string $plainPassword): static {
-        $this->plainPassword = $plainPassword;
-
-        return $this;
     }
 
     public function __toString()
