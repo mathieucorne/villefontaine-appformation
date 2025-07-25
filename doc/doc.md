@@ -10,6 +10,7 @@ Cette documentation couvre tous les aspects techniques du projet Symfony : conce
 - [Modèle Logique de données (MLD)](./concept/mld.md)
 - [Entités Symfony](./concept/entites.md)
 - [Règles métiers](./concept/business-rules.md)
+- [Maquette - Figma](https://www.figma.com/design/vgYOa2jHFVxLuumm52uM9B/Maquette---AppFormation---Mairie-de-Villefontaine)
 
 ### 🏗️ Architecture technique
 - [Stack technique](./archi/stack-technique.md)
