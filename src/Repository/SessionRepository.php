@@ -18,7 +18,7 @@ class SessionRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Session[] Retourne un tableau d'objets Session
+     * @return Session[] Retourne un tableau d'objets Session associé à un utilisateur
      */
     public function findMesSessions(Utilisateur $utilisateur): array {
         return $this -> createQueryBuilder('s')
