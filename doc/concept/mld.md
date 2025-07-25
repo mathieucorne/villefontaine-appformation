@@ -1,9 +1,6 @@
-# Documentation technique
+# 🧩 Modèle logique de données (MLD)
 
-- [Principal](../README.md)
-- [Résoudre les erreurs](./errors/README.md)
-
-## Modèle Logique de Données
+Voici le MLD de l'application de gestion de sessions de formations
 
 - `formation` (<u>**id**</u>, titre, description, imageURL, estVisible, **#formateur_id**)
 - `parametre` (<u>**id**</u>, nom, valeur, commentaires)
