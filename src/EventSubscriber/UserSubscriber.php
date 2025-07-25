@@ -23,13 +23,16 @@ class UserSubscriber implements EventSubscriberInterface
 
     public function encodePassword(AbstractLifecycleEvent $event): void
     {
-        /** @var Utilisateur $utilisateur */
-        $utilisateur = $event->getEntityInstance();
+        $entity = $event->getEntityInstance();
 
-        if ($utilisateur->getPlainPassword() && $this->passwordHasher->isPasswordValid($utilisateur, $utilisateur->getPlainPassword())) {
-            $hashed = $this->passwordHasher->hashPassword($utilisateur, $utilisateur->getPlainPassword());
-            $utilisateur->setPassword($hashed);
-            $utilisateur->eraseCredentials();
+        if (!$entity instanceof Utilisateur) {
+            return;
+        }
+        
+        if ($entity->getPlainPassword() && $this->passwordHasher->isPasswordValid($entity, $entity->getPlainPassword())) {
+            $hashed = $this->passwordHasher->hashPassword($entity, $entity->getPlainPassword());
+            $entity->setPassword($hashed);
+            $entity->eraseCredentials();
         }
     }
 }
