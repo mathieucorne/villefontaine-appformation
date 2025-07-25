@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Utilisateur;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -25,6 +26,7 @@ class UtilisateurCrudController extends AbstractCrudController
             TextField::new('prenom')->hideOnIndex(),
             TextField::new('nom')->hideOnIndex(),
             TextField::new('email'),
+            AssociationField::new('service'),
             ChoiceField::new('roles')
                 ->setChoices(
                     [
@@ -38,7 +40,7 @@ class UtilisateurCrudController extends AbstractCrudController
         if ($pageName === Crud::PAGE_NEW) {
             array_push(
                 $fields, 
-                TextField::new('plainPassword', 'Nouveau mot de passe')
+                TextField::new('password', 'Nouveau mot de passe')
                 ->setFormType(PasswordType::class)
                 ->hideOnIndex()
                 ->setRequired(false)
