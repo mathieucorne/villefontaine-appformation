@@ -4,6 +4,9 @@ namespace App\Service;
 
 use App\Repository\ParametreRepository;
 
+/**
+ * Interface pour la gestion de Paramètres
+ */
 class ParametreInterface
 {
     private array $parametres;
@@ -17,11 +20,17 @@ class ParametreInterface
         }
     }
 
-    public function getParametre(string $key, $default = null) {
+    /** 
+     * @return string Retourne un tableau d'objets Parametre
+    */
+    public function getParametre(string $key, ?string $default = null) : string {
         return $this->parametres[$key] ?? $default;
     }
 
-    public function getAllParametres() {
+    /** 
+     * @return Parametre[] Retourne un tableau d'objets Parametre
+    */
+    public function getAllParametres(): array {
         return $this->parametres;
     }
 }
