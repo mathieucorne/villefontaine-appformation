@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
     <script>
         document.addEventListener('turbo:load', () => {
-            const calendarEl = document.getElementById('calendar-holder');
+            const calendarEl = document.getElementById('calendar');
             if(!calendarEl) return;
             if (calendarEl.dataset.initialized === '1') return;
 
@@ -57,7 +57,7 @@
         });
             
         document.addEventListener('turbo:before-render', () => {
-            const calendarEl = document.getElementById('calendar-holder');
+            const calendarEl = document.getElementById('calendar');
             if (calendarEl) {
                 delete calendarEl.dataset.initialized;
             }
@@ -68,5 +68,5 @@
 {% endblock %}
 
 {% block main %}
-<div id="calendar-holder"></div>
+<div id="calendar"></div>
 {% endblock %}
