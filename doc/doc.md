@@ -21,7 +21,11 @@ Cette documentation couvre tous les aspects techniques du projet Symfony : conce
 - [EasyAdmin](./admin/easyadmin.md)
 
 ### 🧑🏻‍💻 Guides pratiques pour développeurs
-- [Dépannage et solutions](./errors/errors.md)
+- [Lancer le serveur local de développement](./dev/symfony-server.md)
+- [Créer une entité ou un controlleur](./dev/entites-controllers.md)
+- [Créer un service](./dev/services.md)
+- [Créer une variable globale Twig](./dev/twig-global.md)
+- [Utiliser FullCalendar](./dev/fullcalendar.md)
 
 ### 🚧 Erreurs fréquentes
 - [Dépannage et solutions](./errors/errors.md)
