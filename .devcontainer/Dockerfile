@@ -1,29 +1,31 @@
-FROM php:8.5-rc-alpine3.22
+FROM php:8.3-alpine
 
+# Install system & PHP dependencies
 RUN apk update && apk add --no-cache \
-    zsh \
     bash \
     git \
     unzip \
     curl \
     ca-certificates \
-    php-cli
+    libxml2-dev \
+    libxslt-dev \
+    oniguruma-dev \
+    zsh \
+    && docker-php-ext-install xsl
 
+# Install Composer globally
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install Symfony CLI
+RUN curl -sS https://get.symfony.com/cli/installer | bash \
+  && mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
+
+# Create non-root user
 ARG USERNAME=devuser
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
-
-RUN addgroup -g ${USER_GID} ${USERNAME} \
-    && adduser -D -u ${USER_UID} -G ${USERNAME} -s /bin/zsh ${USERNAME}
+RUN addgroup -g ${USER_GID} ${USERNAME} && \
+    adduser -D -u ${USER_UID} -G ${USERNAME} -s /bin/zsh ${USERNAME}
 
 USER ${USERNAME}
-WORKDIR /home/${USERNAME}/app
-
-ENV PATH="/home/${USERNAME}/.local/bin:/home/${USERNAME}/.symfony/bin:${PATH}"
-
-RUN mkdir -p /home/${USERNAME}/.local/bin \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir="/home/${USERNAME}/.local/bin" --filename=composer
-
-RUN curl -sS https://get.symfony.com/cli/installer | bash
-
-CMD ["sleep", "infinity"]
+WORKDIR /workspaces/symfony
